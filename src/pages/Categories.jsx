@@ -1,6 +1,6 @@
 import React from 'react';
-import CategoryTitle from '../CategoryTitle/CategoryTitle';
-import KimchiList from '../KimchiList/KimchiList';
+import CategoryTitle from '../components/CategoryTitle/CategoryTitle';
+import KimchiList from '../components/KimchiList/KimchiList';
 
 export default function Categories() {
   return (

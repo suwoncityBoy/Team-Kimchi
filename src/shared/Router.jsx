@@ -7,7 +7,7 @@ import Root from '../pages/Root';
 import Home from '../pages/Home';
 import NotFound from '../pages/NotFound';
 import MyPage from '../pages/MyPage';
-import Categories from '../components/Categories/Categories';
+import Categories from '../pages/Categories';
 
 const Router = createBrowserRouter(
   createRoutesFromElements(
