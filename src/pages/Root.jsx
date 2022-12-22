@@ -13,7 +13,7 @@ export default function Root() {
           position: 'relative',
         }}
       >
-        <div style={{ paddingRight: '300px' }}>
+        <div style={{ width: '100vw', paddingRight: '300px' }}>
           <Outlet />
           <div
             style={{
