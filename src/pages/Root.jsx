@@ -6,22 +6,20 @@ export default function Root() {
     <>
       <div
         style={{
-          width: '100vw',
+          width: '100%',
           minHeight: '100vh',
           display: 'flex',
           flexDirection: 'row',
           position: 'relative',
         }}
       >
-        <div style={{ paddingRight: '300px' }}>
+        <div style={{ paddingRight: '300px', width: '100%' }}>
           <Outlet />
           <div
             style={{
               backgroundColor: 'red',
               height: '200px',
               width: '100%',
-              position: 'absolute',
-              bottom: '0',
             }}
           >
             Footer
@@ -30,7 +28,7 @@ export default function Root() {
         <div
           style={{
             backgroundColor: 'green',
-            position: 'absolute',
+            position: 'fixed',
             height: '100%',
             right: '0px',
             width: '300px',
