@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BsCart3 } from 'react-icons/bs';
 import styled from 'styled-components';
 
 export default function Kimchi() {
+  const [isHovering, setIsHovering] = useState(0);
+
   const Icon = styled.div`
     background-color: #1e602b;
     opacity: 0.5;
@@ -24,21 +26,23 @@ export default function Kimchi() {
     }
   `;
 
+  const ImageBox = styled.div`
+    position: relative;
+    width: 100%;
+    padding-top: 100%;
+    overflow: hidden;
+  `;
+
   return (
     <div
+      onMouseOver={() => setIsHovering(1)}
+      onMouseOut={() => setIsHovering(0)}
       style={{
         width: '21%',
         height: '21%',
       }}
     >
-      <div
-        style={{
-          position: 'relative',
-          width: '100%',
-          paddingTop: '100%',
-          overflow: 'hidden',
-        }}
-      >
+      <ImageBox>
         <img
           src={`${process.env.PUBLIC_URL}/images/kimchi_img1.jpg`}
           style={{
@@ -50,17 +54,23 @@ export default function Kimchi() {
           }}
           alt="kimchi"
         />
-        <Icon>
-          <BsCart3
-            className="icon"
-            style={{
-              color: 'white',
-              width: '1.4rem',
-              height: '1.4rem',
-            }}
-          />
-        </Icon>
-      </div>
+
+        {isHovering ? (
+          <Icon>
+            <BsCart3
+              className="icon"
+              style={{
+                color: 'white',
+                width: '1.4rem',
+                height: '1.4rem',
+              }}
+            />
+          </Icon>
+        ) : (
+          ''
+        )}
+      </ImageBox>
+
       <div className="dec" style={{ margin: '1rem 0 1.4rem' }}>
         <h2
           style={{
