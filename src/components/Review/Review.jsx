@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function Review() {
   return (
-    <div style={{ display: 'flex' }}>
+    <div style={{ display: 'flex', padding: '10px' }}>
       <form style={{ width: '100%' }}>
         <div style={{ textAlign: 'left', margin: '30px 0' }}>
           <label>
