@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export default function Product() {
+export default function ProductDetail() {
   const [count, setCount] = useState(0);
 
   const minusHandler = () => {

@@ -6,13 +6,13 @@ import {
 import Root from '../pages/Root';
 import Home from '../pages/Home';
 import NotFound from '../pages/NotFound';
-import Product from '../pages/Product';
+import ProductDetail from '../pages/ProductDetail';
 
 const Router = createBrowserRouter(
   createRoutesFromElements(
     <Route element={<Root />} errorElement={<NotFound />}>
       <Route path="/" element={<Home />} />
-      <Route path="/kimchis/:id" element={<Product />} />
+      <Route path="/kimchis/:id" element={<ProductDetail />} />
     </Route>,
   ),
 );
