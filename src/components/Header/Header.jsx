@@ -1,13 +1,14 @@
 import React from 'react';
+import { StyledBanner } from './Header.style';
 
 export default function Header() {
   return (
-    <div style={{ width: '100%', marginBottom: '2rem' }}>
+    <StyledBanner>
       <img
+        className="Banner"
         src={`${process.env.PUBLIC_URL}/images/Banner.png`}
-        style={{ width: '100%' }}
-        alt="banner"
+        alt=""
       />
-    </div>
+    </StyledBanner>
   );
 }

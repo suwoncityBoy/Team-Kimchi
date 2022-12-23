@@ -5,9 +5,6 @@ import KimchiList from '../components/KimchiList/KimchiList';
 //import { useNavigate } from 'react-router-dom';
 
 export default function Home() {
-  // const navigate = useNavigate();
-  // navigate(``)
-
   return (
     <>
       <div
