@@ -20,7 +20,7 @@ export default function Footer() {
         <StyledLogo>
           <img
             className="Navbar_Logo"
-            src={`${process.env.PUBLIC_URL}/images/Footer_Logo.png`}
+            src={`${process.env.PUBLIC_URL}/images/common/Footer_Logo.png`}
             alt=""
           />
         </StyledLogo>
