@@ -7,7 +7,6 @@ import Root from '../pages/Root';
 import NotFound from '../pages/NotFound';
 import ProductDetail from '../pages/ProductDetail';
 import Categories from '../pages/Categories';
-import Detail from '../pages/Detail';
 import Home from '../pages/Home';
 
 const Router = createBrowserRouter(
