@@ -7,6 +7,7 @@ import Root from '../pages/Root';
 import Home from '../pages/Home';
 import NotFound from '../pages/NotFound';
 import MyPage from '../pages/MyPage';
+import Cart from '../pages/Cart';
 
 const Router = createBrowserRouter(
   createRoutesFromElements(
@@ -14,6 +15,7 @@ const Router = createBrowserRouter(
       <Route path="/" element={<Home />} />
       <Route path="/kimchis" element={<MyPage />} />
       <Route path="/kimchis/:id" element={<MyPage />} />
+      <Route path="/cart" element={<Cart />} />
     </Route>,
   ),
 );
