@@ -1,43 +1,31 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
+import Navbar from '../components/Navbar/Navbar';
+import Footer from '../components/Footer/Footer';
 
 export default function Root() {
   return (
     <>
       <div
         style={{
-          width: '100vw',
-          minHeight: '100vh',
+          width: '100%',
+          minHeight: '100%',
           display: 'flex',
           flexDirection: 'row',
           position: 'relative',
         }}
       >
-        <div style={{ paddingRight: '300px' }}>
-          <Outlet />
-          <div
-            style={{
-              backgroundColor: 'red',
-              height: '200px',
-              width: '100%',
-              position: 'absolute',
-              bottom: '0',
-            }}
-          >
-            Footer
-          </div>
-        </div>
         <div
           style={{
-            backgroundColor: 'green',
-            position: 'absolute',
-            height: '100%',
-            right: '0px',
-            width: '300px',
+            paddingRight: '150px',
+            marginBottom: '12rem',
+            width: '100%',
           }}
         >
-          Navbar
+          <Outlet />
+          <Footer />
         </div>
+        <Navbar />
       </div>
     </>
   );
