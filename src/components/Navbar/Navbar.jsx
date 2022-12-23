@@ -8,7 +8,7 @@ export default function Navbar() {
       <StyledWrap>
         <img
           className="Navbar_Logo"
-          src={`${process.env.PUBLIC_URL}/images/Logo.png`}
+          src={`${process.env.PUBLIC_URL}/images/common/Logo.png`}
           alt=""
         />
 
@@ -16,23 +16,23 @@ export default function Navbar() {
         <div>
           <img
             className="Icon"
-            src={`${process.env.PUBLIC_URL}/images/Navbar_icon_star.png`}
+            src={`${process.env.PUBLIC_URL}/images/common/Navbar_icon_star.png`}
             alt=""
           />
         </div>
         <img
           className="Icon"
-          src={`${process.env.PUBLIC_URL}/images/Navbar_icon_circle.png`}
+          src={`${process.env.PUBLIC_URL}/images/common/Navbar_icon_circle.png`}
           alt=""
         />
         <img
           className="Icon"
-          src={`${process.env.PUBLIC_URL}/images/Navbar_icon_square.png`}
+          src={`${process.env.PUBLIC_URL}/images/common/Navbar_icon_square.png`}
           alt=""
         />
         <img
           className="Icon"
-          src={`${process.env.PUBLIC_URL}/images/Navbar_icon_triangle.png`}
+          src={`${process.env.PUBLIC_URL}/images/common/Navbar_icon_triangle.png`}
           alt=""
         />
       </StyledWrap>

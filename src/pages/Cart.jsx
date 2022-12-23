@@ -13,7 +13,7 @@ function Data() {
         alignItems: 'center',
         position: 'relative',
         padding: '40px',
-        margin: '0px 10%',
+        margin: 'auto',
         borderBottom: '1px solid grey',
       }}
     >
@@ -63,11 +63,23 @@ export default function Cart() {
       </div>
       {/* 장바구니 내용 영역*/}
       <div style={items}>
-        <div>
+        {/* <div>
           <img src={`${process.env.PUBLIC_URL}/images/cabbage.png`}></img>
-        </div>
+        </div> */}
         <ul style={item}>
+          <div style={{ display: 'flex', alignItems: 'center' }}>
+            <img src={`${process.env.PUBLIC_URL}/images/cabbage.png`}></img>
+            <span>배추과 김치</span>
+          </div>
           <Data />
+          <Data />
+          <Data />
+        </ul>
+        <ul style={item}>
+          <div style={{ display: 'flex', alignItems: 'center' }}>
+            <img src={`${process.env.PUBLIC_URL}/images/cabbage.png`}></img>
+            <span>뿌리과 김치</span>
+          </div>
           <Data />
           <Data />
           <Data />
@@ -112,8 +124,8 @@ const thisPage = {
   //backgroundColor: 'black',
   width: '100%',
   height: '100%',
-  position: 'absolute',
-  margin: '20px 70px',
+  //position: 'absolute',
+  margin: '70px auto',
 };
 
 const basketTitle = {
@@ -165,7 +177,7 @@ const items = {
 
 const item = {
   margin: '50px',
-  padding: '30px 0px',
+  padding: 'auto',
   alignItems: 'center',
   display: 'block',
 };

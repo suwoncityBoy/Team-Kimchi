@@ -6,7 +6,7 @@ export default function Header() {
     <StyledBanner>
       <img
         className="Banner"
-        src={`${process.env.PUBLIC_URL}/images/Banner.png`}
+        src={`${process.env.PUBLIC_URL}/images/common/Banner.png`}
         alt=""
       />
     </StyledBanner>
