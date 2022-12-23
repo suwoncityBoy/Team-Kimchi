@@ -1,16 +1,22 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import DetailMenus from '../components/DetailMenus/DetailMenus';
+import axios from 'axios';
 
 export default function ProductDetail() {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(1);
+  const [price, setPrice] = useState(0);
 
   const minusHandler = () => {
-    if (count <= 0) return count;
+    if (count <= 1) return count;
     setCount(count - 1);
   };
   const plusHandler = () => {
     setCount(count + 1);
+  };
+  const getPrice = async () => {
+    const { data } = await axios.get('http://localhost:3001/kimchis');
+    setPrice(data);
   };
 
   return (
