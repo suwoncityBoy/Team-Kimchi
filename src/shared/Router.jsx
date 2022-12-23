@@ -6,7 +6,6 @@ import {
 import Root from '../pages/Root';
 import Home from '../pages/Home';
 import NotFound from '../pages/NotFound';
-import MyPage from '../pages/MyPage';
 import Product from '../pages/Product';
 
 const Router = createBrowserRouter(
