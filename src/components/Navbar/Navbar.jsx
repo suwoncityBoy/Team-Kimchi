@@ -1,8 +1,10 @@
 import { React } from 'react';
 import { BsCart3 } from 'react-icons/bs';
 import { StyledContainer, StyledWrap } from './Navbar.style';
-
+import { useSelector } from 'react-redux';
 export default function Navbar() {
+  const cart = useSelector((state) => state.cart.addItem);
+
   return (
     <StyledContainer>
       <StyledWrap>
@@ -13,6 +15,7 @@ export default function Navbar() {
         />
 
         <BsCart3 className="Navbar_Cart" />
+        {cart.length}
         <div>
           <img
             className="Icon"
