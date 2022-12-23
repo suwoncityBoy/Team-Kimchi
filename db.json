@@ -2,7 +2,7 @@
   "kimchis": [
     {
       "id": 1,
-      "catergory": "배추과김치",
+      "category": "배추과김치",
       "name": "시원한 배추김치1",
       "description": "맛있다",
       "price": 7000,
@@ -12,7 +12,7 @@
     },
     {
       "id": 2,
-      "catergory": "배추과김치",
+      "category": "배추과김치",
       "name": "시원한 배추김치2",
       "description": "맛있다",
       "price": 8000,
@@ -22,7 +22,7 @@
     },
     {
       "id": 3,
-      "catergory": "배추과김치",
+      "category": "배추과김치",
       "name": "시원한 배추김치3",
       "description": "맛있다",
       "price": 8000,
@@ -32,7 +32,7 @@
     },
     {
       "id": 4,
-      "catergory": "배추과김치",
+      "category": "배추과김치",
       "name": "시원한 배추김치4",
       "description": "맛있다",
       "price": 8000,
@@ -42,7 +42,7 @@
     },
     {
       "id": 5,
-      "catergory": "배추과김치",
+      "category": "배추과김치",
       "name": "시원한 배추김치5",
       "description": "맛있다",
       "price": 8000,
@@ -52,7 +52,7 @@
     },
     {
       "id": 6,
-      "catergory": "배추과김치",
+      "category": "배추과김치",
       "name": "시원한 배추김치6",
       "description": "맛있다",
       "price": 8000,
@@ -62,7 +62,7 @@
     },
     {
       "id": 7,
-      "catergory": "배추과김치",
+      "category": "배추과김치",
       "name": "시원한 배추김치7",
       "description": "맛있다",
       "price": 8000,
@@ -72,7 +72,7 @@
     },
     {
       "id": 8,
-      "catergory": "배추과김치",
+      "category": "배추과김치",
       "name": "시원한 배추김치8",
       "description": "맛있다",
       "price": 8000,
@@ -82,7 +82,7 @@
     },
     {
       "id": 9,
-      "catergory": "배추과김치",
+      "category": "배추과김치",
       "name": "시원한 배추김치9",
       "description": "맛있다",
       "price": 8000,
@@ -92,7 +92,7 @@
     },
     {
       "id": 10,
-      "catergory": "배추과김치",
+      "category": "배추과김치",
       "name": "시원한 배추김치10",
       "description": "맛있다",
       "price": 8000,
@@ -102,7 +102,7 @@
     },
     {
       "id": 11,
-      "catergory": "무과김치",
+      "category": "무과김치",
       "name": "따뜻한 무과김치1",
       "description": "맛있다",
       "price": 7000,
@@ -112,7 +112,7 @@
     },
     {
       "id": 12,
-      "catergory": "무과김치",
+      "category": "무과김치",
       "name": "따뜻한 무과김치2",
       "description": "맛있다",
       "price": 8000,
@@ -122,7 +122,7 @@
     },
     {
       "id": 13,
-      "catergory": "무과김치",
+      "category": "무과김치",
       "name": "따뜻한 무과김치3",
       "description": "맛있다",
       "price": 8000,
@@ -132,7 +132,7 @@
     },
     {
       "id": 14,
-      "catergory": "무과김치",
+      "category": "무과김치",
       "name": "따뜻한 무과김치4",
       "description": "맛있다",
       "price": 8000,
@@ -142,7 +142,7 @@
     },
     {
       "id": 15,
-      "catergory": "무과김치",
+      "category": "무과김치",
       "name": "따뜻한 무과김치5",
       "description": "맛있다",
       "price": 8000,
@@ -152,7 +152,7 @@
     },
     {
       "id": 16,
-      "catergory": "무과김치",
+      "category": "무과김치",
       "name": "따뜻한 무과김치6",
       "description": "맛있다",
       "price": 8000,
@@ -162,7 +162,7 @@
     },
     {
       "id": 17,
-      "catergory": "무과김치",
+      "category": "무과김치",
       "name": "따뜻한 무과김치7",
       "description": "맛있다",
       "price": 8000,
@@ -172,7 +172,7 @@
     },
     {
       "id": 18,
-      "catergory": "무과김치",
+      "category": "무과김치",
       "name": "따뜻한 무과김치8",
       "description": "맛있다",
       "price": 8000,
@@ -182,7 +182,7 @@
     },
     {
       "id": 19,
-      "catergory": "무과김치",
+      "category": "무과김치",
       "name": "따뜻한 무과김치9",
       "description": "맛있다",
       "price": 8000,
@@ -192,7 +192,7 @@
     },
     {
       "id": 20,
-      "catergory": "무과김치",
+      "category": "무과김치",
       "name": "따뜻한 무과김치10",
       "description": "맛있다",
       "price": 8000,
@@ -202,7 +202,7 @@
     },
     {
       "id": 21,
-      "catergory": "뿌리과김치",
+      "category": "뿌리과김치",
       "name": "달달한 뿌리과김치1",
       "description": "맛있다",
       "price": 7000,
@@ -212,7 +212,7 @@
     },
     {
       "id": 22,
-      "catergory": "뿌리과김치",
+      "category": "뿌리과김치",
       "name": "달달한 뿌리과김치2",
       "description": "맛있다",
       "price": 8000,
@@ -222,7 +222,7 @@
     },
     {
       "id": 23,
-      "catergory": "뿌리과김치",
+      "category": "뿌리과김치",
       "name": "달달한 뿌리과김치3",
       "description": "맛있다",
       "price": 8000,
@@ -232,7 +232,7 @@
     },
     {
       "id": 24,
-      "catergory": "뿌리과김치",
+      "category": "뿌리과김치",
       "name": "달달한 뿌리과김치4",
       "description": "맛있다",
       "price": 8000,
@@ -242,7 +242,7 @@
     },
     {
       "id": 25,
-      "catergory": "뿌리과김치",
+      "category": "뿌리과김치",
       "name": "달달한 뿌리과김치5",
       "description": "맛있다",
       "price": 8000,
@@ -252,7 +252,7 @@
     },
     {
       "id": 26,
-      "catergory": "뿌리과김치",
+      "category": "뿌리과김치",
       "name": "달달한 뿌리과김치6",
       "description": "맛있다",
       "price": 8000,
@@ -262,7 +262,7 @@
     },
     {
       "id": 27,
-      "catergory": "뿌리과김치",
+      "category": "뿌리과김치",
       "name": "달달한 뿌리과김치7",
       "description": "맛있다",
       "price": 8000,
@@ -272,7 +272,7 @@
     },
     {
       "id": 28,
-      "catergory": "뿌리과김치",
+      "category": "뿌리과김치",
       "name": "달달한 뿌리과김치8",
       "description": "맛있다",
       "price": 8000,
@@ -282,7 +282,7 @@
     },
     {
       "id": 29,
-      "catergory": "뿌리과김치",
+      "category": "뿌리과김치",
       "name": "달달한 뿌리과김치9",
       "description": "맛있다",
       "price": 8000,
@@ -292,7 +292,7 @@
     },
     {
       "id": 30,
-      "catergory": "뿌리과김치",
+      "category": "뿌리과김치",
       "name": "달달한 뿌리과김치10",
       "description": "맛있다",
       "price": 8000,
@@ -302,7 +302,7 @@
     },
     {
       "id": 31,
-      "catergory": "기타김치",
+      "category": "기타김치",
       "name": "상큼한 기타김치1",
       "description": "맛있다",
       "price": 7000,
@@ -312,7 +312,7 @@
     },
     {
       "id": 32,
-      "catergory": "기타김치",
+      "category": "기타김치",
       "name": "상큼한 기타김치2",
       "description": "맛있다",
       "price": 8000,
@@ -322,7 +322,7 @@
     },
     {
       "id": 33,
-      "catergory": "기타김치",
+      "category": "기타김치",
       "name": "상큼한 기타김치3",
       "description": "맛있다",
       "price": 8000,
@@ -332,7 +332,7 @@
     },
     {
       "id": 34,
-      "catergory": "기타김치",
+      "category": "기타김치",
       "name": "상큼한 기타김치4",
       "description": "맛있다",
       "price": 8000,
@@ -342,7 +342,7 @@
     },
     {
       "id": 35,
-      "catergory": "기타김치",
+      "category": "기타김치",
       "name": "상큼한 기타김치5",
       "description": "맛있다",
       "price": 8000,
@@ -352,7 +352,7 @@
     },
     {
       "id": 36,
-      "catergory": "기타김치",
+      "category": "기타김치",
       "name": "상큼한 기타김치6",
       "description": "맛있다",
       "price": 8000,
@@ -362,7 +362,7 @@
     },
     {
       "id": 37,
-      "catergory": "기타김치",
+      "category": "기타김치",
       "name": "상큼한 기타김치7",
       "description": "맛있다",
       "price": 8000,
@@ -372,7 +372,7 @@
     },
     {
       "id": 38,
-      "catergory": "기타김치",
+      "category": "기타김치",
       "name": "상큼한 기타김치8",
       "description": "맛있다",
       "price": 8000,
@@ -382,7 +382,7 @@
     },
     {
       "id": 39,
-      "catergory": "기타김치",
+      "category": "기타김치",
       "name": "상큼한 기타김치9",
       "description": "맛있다",
       "price": 8000,
@@ -392,7 +392,7 @@
     },
     {
       "id": 40,
-      "catergory": "기타김치",
+      "category": "기타김치",
       "name": "상큼한 기타김치10",
       "description": "맛있다",
       "price": 8000,

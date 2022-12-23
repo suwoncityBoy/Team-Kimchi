@@ -7,6 +7,7 @@ export default function Categories() {
 
   const fetchKimchi = async () => {
     const { data } = await axios.get('http://localhost:3003/kimchis');
+    console.log('data', data);
     setKimchi(data);
     // 서버로부터 fetching한 데이터를 useState의 state로 set 합니다.
   };
@@ -20,8 +21,18 @@ export default function Categories() {
   console.log(kimchi);
 
   const paramID = useParams().id;
+  // const [categoryName, setCategoryName] = useState("");
+  // switch(paramID) {
+  //   case "1" :
+  //     setCategoryName("배추과김치")
+
+  //   default:
+  //     return
+  // }
+
   const test = paramID ? true : false;
   console.log(paramID);
+
   console.log(test);
   return (
     <>
@@ -49,7 +60,7 @@ export default function Categories() {
           if (paramID === k.category) {
             return (
               <div>
-                <h1>{k.catergory}</h1>
+                <h1>{k.category}</h1>
                 <p>{k.name}</p>
               </div>
             );

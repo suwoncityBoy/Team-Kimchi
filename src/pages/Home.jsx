@@ -44,7 +44,7 @@ export default function Home() {
 
         <CategoryTitle>배추과 김치</CategoryTitle>
         {slide
-          .filter((s) => s.catergory === '배추과김치')
+          .filter((s) => s.category === '배추과김치')
           .map((s) => {
             return (
               <ul>
@@ -59,7 +59,7 @@ export default function Home() {
 
         <CategoryTitle>무과 김치</CategoryTitle>
         {slide
-          .filter((s) => s.catergory === '무과김치')
+          .filter((s) => s.category === '무과김치')
           .map((s) => {
             return (
               <ul>
@@ -74,7 +74,7 @@ export default function Home() {
 
         <CategoryTitle>뿌리과 김치</CategoryTitle>
         {slide
-          .filter((s) => s.catergory === '뿌리과김치')
+          .filter((s) => s.category === '뿌리과김치')
           .map((s) => {
             return (
               <ul>
@@ -89,7 +89,7 @@ export default function Home() {
 
         <CategoryTitle>기타 김치</CategoryTitle>
         {slide
-          .filter((s) => s.catergory === '기타김치')
+          .filter((s) => s.category === '기타김치')
           .map((s) => {
             return (
               <ul>
