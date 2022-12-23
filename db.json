@@ -7,8 +7,8 @@
       "description": "맛있다",
       "price": 7000,
       "image": "/images/product/kimchi_1.jpg",
-      "detail-image": "/images/product/kimchi/kimchi_1-detail.png",
-      "recipe-image": "/images/product/kimchi/kimchi_1-recipe.png"
+      "detail-image": "/images/product/kimchi_1-detail.png",
+      "recipe-image": "/images/product/kimchi_1-recipe.png"
     },
     {
       "id": 2,
@@ -17,8 +17,8 @@
       "description": "맛있다",
       "price": 8000,
       "image": "/images/product/kimchi_2.jpg",
-      "detail-image": "/images/product/kimchi/kimchi_2-detail.png",
-      "recipe-image": "/images/product/kimchi/kimchi_2-recipe.png"
+      "detail-image": "/images/product/kimchi_2-detail.png",
+      "recipe-image": "/images/product/kimchi_2-recipe.png"
     },
     {
       "id": 3,
@@ -27,8 +27,8 @@
       "description": "맛있다",
       "price": 8000,
       "image": "/images/product/kimchi_1.jpg",
-      "detail-image": "/images/product/kimchi/kimchi_1-detail.png",
-      "recipe-image": "/images/product/kimchi/kimchi_1-recipe.png"
+      "detail-image": "/images/product/kimchi_1-detail.png",
+      "recipe-image": "/images/product/kimchi_1-recipe.png"
     },
     {
       "id": 4,
@@ -37,8 +37,8 @@
       "description": "맛있다",
       "price": 8000,
       "image": "/images/product/kimchi_2.jpg",
-      "detail-image": "/images/product/kimchi/kimchi_2-detail.png",
-      "recipe-image": "/images/product/kimchi/kimchi_2-recipe.png"
+      "detail-image": "/images/product/kimchi_2-detail.png",
+      "recipe-image": "/images/product/kimchi_2-recipe.png"
     },
     {
       "id": 5,
@@ -47,8 +47,8 @@
       "description": "맛있다",
       "price": 8000,
       "image": "/images/product/kimchi_1.jpg",
-      "detail-image": "/images/product/kimchi/kimchi_1-detail.png",
-      "recipe-image": "/images/product/kimchi/kimchi_1-recipe.png"
+      "detail-image": "/images/product/kimchi_1-detail.png",
+      "recipe-image": "/images/product/kimchi_1-recipe.png"
     },
     {
       "id": 6,
@@ -57,8 +57,8 @@
       "description": "맛있다",
       "price": 8000,
       "image": "/images/product/kimchi_2.jpg",
-      "detail-image": "/images/product/kimchi/kimchi_2-detail.png",
-      "recipe-image": "/images/product/kimchi/kimchi_2-recipe.png"
+      "detail-image": "/images/product/kimchi_2-detail.png",
+      "recipe-image": "/images/product/kimchi_2-recipe.png"
     },
     {
       "id": 7,
@@ -67,8 +67,8 @@
       "description": "맛있다",
       "price": 8000,
       "image": "/images/product/kimchi_1.jpg",
-      "detail-image": "/images/product/kimchi/kimchi_1-detail.png",
-      "recipe-image": "/images/product/kimchi/kimchi_1-recipe.png"
+      "detail-image": "/images/product/kimchi_1-detail.png",
+      "recipe-image": "/images/product/kimchi_1-recipe.png"
     },
     {
       "id": 8,
@@ -77,8 +77,8 @@
       "description": "맛있다",
       "price": 8000,
       "image": "/images/product/kimchi_2.jpg",
-      "detail-image": "/images/product/kimchi/kimchi_2-detail.png",
-      "recipe-image": "/images/product/kimchi/kimchi_2-recipe.png"
+      "detail-image": "/images/product/kimchi_2-detail.png",
+      "recipe-image": "/images/product/kimchi_2-recipe.png"
     },
     {
       "id": 9,
@@ -87,8 +87,8 @@
       "description": "맛있다",
       "price": 8000,
       "image": "/images/product/kimchi_1.jpg",
-      "detail-image": "/images/product/kimchi/kimchi_1-detail.png",
-      "recipe-image": "/images/product/kimchi/kimchi_1-recipe.png"
+      "detail-image": "/images/product/kimchi_1-detail.png",
+      "recipe-image": "/images/product/kimchi_1-recipe.png"
     },
     {
       "id": 10,
@@ -97,8 +97,8 @@
       "description": "맛있다",
       "price": 8000,
       "image": "/images/product/kimchi_2.jpg",
-      "detail-image": "/images/product/kimchi/kimchi_2-detail.png",
-      "recipe-image": "/images/product/kimchi/kimchi_2-recipe.png"
+      "detail-image": "/images/product/kimchi_2-detail.png",
+      "recipe-image": "/images/product/kimchi_2-recipe.png"
     },
     {
       "id": 11,
@@ -107,8 +107,8 @@
       "description": "맛있다",
       "price": 7000,
       "image": "/images/product/kimchi_1.jpg",
-      "detail-image": "/images/product/kimchi/kimchi_1-detail.png",
-      "recipe-image": "/images/product/kimchi/kimchi_1-recipe.png"
+      "detail-image": "/images/product/kimchi_1-detail.png",
+      "recipe-image": "/images/product/kimchi_1-recipe.png"
     },
     {
       "id": 12,
@@ -117,8 +117,8 @@
       "description": "맛있다",
       "price": 8000,
       "image": "/images/product/kimchi_2.jpg",
-      "detail-image": "/images/product/kimchi/kimchi_2-detail.png",
-      "recipe-image": "/images/product/kimchi/kimchi_2-recipe.png"
+      "detail-image": "/images/product/kimchi_2-detail.png",
+      "recipe-image": "/images/product/kimchi_2-recipe.png"
     },
     {
       "id": 13,
@@ -127,8 +127,8 @@
       "description": "맛있다",
       "price": 8000,
       "image": "/images/product/kimchi_1.jpg",
-      "detail-image": "/images/product/kimchi/kimchi_1-detail.png",
-      "recipe-image": "/images/product/kimchi/kimchi_1-recipe.png"
+      "detail-image": "/images/product/kimchi_1-detail.png",
+      "recipe-image": "/images/product/kimchi_1-recipe.png"
     },
     {
       "id": 14,
@@ -137,8 +137,8 @@
       "description": "맛있다",
       "price": 8000,
       "image": "/images/product/kimchi_2.jpg",
-      "detail-image": "/images/product/kimchi/kimchi_2-detail.png",
-      "recipe-image": "/images/product/kimchi/kimchi_2-recipe.png"
+      "detail-image": "/images/product/kimchi_2-detail.png",
+      "recipe-image": "/images/product/kimchi_2-recipe.png"
     },
     {
       "id": 15,
@@ -147,8 +147,8 @@
       "description": "맛있다",
       "price": 8000,
       "image": "/images/product/kimchi_1.jpg",
-      "detail-image": "/images/product/kimchi/kimchi_1-detail.png",
-      "recipe-image": "/images/product/kimchi/kimchi_1-recipe.png"
+      "detail-image": "/images/product/kimchi_1-detail.png",
+      "recipe-image": "/images/product/kimchi_1-recipe.png"
     },
     {
       "id": 16,
@@ -157,8 +157,8 @@
       "description": "맛있다",
       "price": 8000,
       "image": "/images/product/kimchi_2.jpg",
-      "detail-image": "/images/product/kimchi/kimchi_2-detail.png",
-      "recipe-image": "/images/product/kimchi/kimchi_2-recipe.png"
+      "detail-image": "/images/product/kimchi_2-detail.png",
+      "recipe-image": "/images/product/kimchi_2-recipe.png"
     },
     {
       "id": 17,
@@ -167,8 +167,8 @@
       "description": "맛있다",
       "price": 8000,
       "image": "/images/product/kimchi_1.jpg",
-      "detail-image": "/images/product/kimchi/kimchi_1-detail.png",
-      "recipe-image": "/images/product/kimchi/kimchi_1-recipe.png"
+      "detail-image": "/images/product/kimchi_1-detail.png",
+      "recipe-image": "/images/product/kimchi_1-recipe.png"
     },
     {
       "id": 18,
@@ -177,8 +177,8 @@
       "description": "맛있다",
       "price": 8000,
       "image": "/images/product/kimchi_2.jpg",
-      "detail-image": "/images/product/kimchi/kimchi_2-detail.png",
-      "recipe-image": "/images/product/kimchi/kimchi_2-recipe.png"
+      "detail-image": "/images/product/kimchi_2-detail.png",
+      "recipe-image": "/images/product/kimchi_2-recipe.png"
     },
     {
       "id": 19,
@@ -187,8 +187,8 @@
       "description": "맛있다",
       "price": 8000,
       "image": "/images/product/kimchi_1.jpg",
-      "detail-image": "/images/product/kimchi/kimchi_1-detail.png",
-      "recipe-image": "/images/product/kimchi/kimchi_1-recipe.png"
+      "detail-image": "/images/product/kimchi_1-detail.png",
+      "recipe-image": "/images/product/kimchi_1-recipe.png"
     },
     {
       "id": 20,
@@ -197,8 +197,8 @@
       "description": "맛있다",
       "price": 8000,
       "image": "/images/product/kimchi_2.jpg",
-      "detail-image": "/images/product/kimchi/kimchi_2-detail.png",
-      "recipe-image": "/images/product/kimchi/kimchi_2-recipe.png"
+      "detail-image": "/images/product/kimchi_2-detail.png",
+      "recipe-image": "/images/product/kimchi_2-recipe.png"
     },
     {
       "id": 21,
@@ -207,8 +207,8 @@
       "description": "맛있다",
       "price": 7000,
       "image": "/images/product/kimchi_1.jpg",
-      "detail-image": "/images/product/kimchi/kimchi_1-detail.png",
-      "recipe-image": "/images/product/kimchi/kimchi_1-recipe.png"
+      "detail-image": "/images/product/kimchi_1-detail.png",
+      "recipe-image": "/images/product/kimchi_1-recipe.png"
     },
     {
       "id": 22,
@@ -217,8 +217,8 @@
       "description": "맛있다",
       "price": 8000,
       "image": "/images/product/kimchi_2.jpg",
-      "detail-image": "/images/product/kimchi/kimchi_2-detail.png",
-      "recipe-image": "/images/product/kimchi/kimchi_2-recipe.png"
+      "detail-image": "/images/product/kimchi_2-detail.png",
+      "recipe-image": "/images/product/kimchi_2-recipe.png"
     },
     {
       "id": 23,
@@ -227,8 +227,8 @@
       "description": "맛있다",
       "price": 8000,
       "image": "/images/product/kimchi_1.jpg",
-      "detail-image": "/images/product/kimchi/kimchi_1-detail.png",
-      "recipe-image": "/images/product/kimchi/kimchi_1-recipe.png"
+      "detail-image": "/images/product/kimchi_1-detail.png",
+      "recipe-image": "/images/product/kimchi_1-recipe.png"
     },
     {
       "id": 24,
@@ -237,8 +237,8 @@
       "description": "맛있다",
       "price": 8000,
       "image": "/images/product/kimchi_2.jpg",
-      "detail-image": "/images/product/kimchi/kimchi_2-detail.png",
-      "recipe-image": "/images/product/kimchi/kimchi_2-recipe.png"
+      "detail-image": "/images/product/kimchi_2-detail.png",
+      "recipe-image": "/images/product/kimchi_2-recipe.png"
     },
     {
       "id": 25,
@@ -247,8 +247,8 @@
       "description": "맛있다",
       "price": 8000,
       "image": "/images/product/kimchi_1.jpg",
-      "detail-image": "/images/product/kimchi/kimchi_1-detail.png",
-      "recipe-image": "/images/product/kimchi/kimchi_1-recipe.png"
+      "detail-image": "/images/product/kimchi_1-detail.png",
+      "recipe-image": "/images/product/kimchi_1-recipe.png"
     },
     {
       "id": 26,
@@ -257,8 +257,8 @@
       "description": "맛있다",
       "price": 8000,
       "image": "/images/product/kimchi_2.jpg",
-      "detail-image": "/images/product/kimchi/kimchi_2-detail.png",
-      "recipe-image": "/images/product/kimchi/kimchi_2-recipe.png"
+      "detail-image": "/images/product/kimchi_2-detail.png",
+      "recipe-image": "/images/product/kimchi_2-recipe.png"
     },
     {
       "id": 27,
@@ -267,8 +267,8 @@
       "description": "맛있다",
       "price": 8000,
       "image": "/images/product/kimchi_1.jpg",
-      "detail-image": "/images/product/kimchi/kimchi_1-detail.png",
-      "recipe-image": "/images/product/kimchi/kimchi_1-recipe.png"
+      "detail-image": "/images/product/kimchi_1-detail.png",
+      "recipe-image": "/images/product/kimchi_1-recipe.png"
     },
     {
       "id": 28,
@@ -277,8 +277,8 @@
       "description": "맛있다",
       "price": 8000,
       "image": "/images/product/kimchi_2.jpg",
-      "detail-image": "/images/product/kimchi/kimchi_2-detail.png",
-      "recipe-image": "/images/product/kimchi/kimchi_2-recipe.png"
+      "detail-image": "/images/product/kimchi_2-detail.png",
+      "recipe-image": "/images/product/kimchi_2-recipe.png"
     },
     {
       "id": 29,
@@ -287,8 +287,8 @@
       "description": "맛있다",
       "price": 8000,
       "image": "/images/product/kimchi_1.jpg",
-      "detail-image": "/images/product/kimchi/kimchi_1-detail.png",
-      "recipe-image": "/images/product/kimchi/kimchi_1-recipe.png"
+      "detail-image": "/images/product/kimchi_1-detail.png",
+      "recipe-image": "/images/product/kimchi_1-recipe.png"
     },
     {
       "id": 30,
@@ -297,8 +297,8 @@
       "description": "맛있다",
       "price": 8000,
       "image": "/images/product/kimchi_2.jpg",
-      "detail-image": "/images/product/kimchi/kimchi_2-detail.png",
-      "recipe-image": "/images/product/kimchi/kimchi_2-recipe.png"
+      "detail-image": "/images/product/kimchi_2-detail.png",
+      "recipe-image": "/images/product/kimchi_2-recipe.png"
     },
     {
       "id": 31,
@@ -307,8 +307,8 @@
       "description": "맛있다",
       "price": 7000,
       "image": "/images/product/kimchi_1.jpg",
-      "detail-image": "/images/product/kimchi/kimchi_1-detail.png",
-      "recipe-image": "/images/product/kimchi/kimchi_1-recipe.png"
+      "detail-image": "/images/product/kimchi_1-detail.png",
+      "recipe-image": "/images/product/kimchi_1-recipe.png"
     },
     {
       "id": 32,
@@ -317,8 +317,8 @@
       "description": "맛있다",
       "price": 8000,
       "image": "/images/product/kimchi_2.jpg",
-      "detail-image": "/images/product/kimchi/kimchi_2-detail.png",
-      "recipe-image": "/images/product/kimchi/kimchi_2-recipe.png"
+      "detail-image": "/images/product/kimchi_2-detail.png",
+      "recipe-image": "/images/product/kimchi_2-recipe.png"
     },
     {
       "id": 33,
@@ -327,8 +327,8 @@
       "description": "맛있다",
       "price": 8000,
       "image": "/images/product/kimchi_1.jpg",
-      "detail-image": "/images/product/kimchi/kimchi_1-detail.png",
-      "recipe-image": "/images/product/kimchi/kimchi_1-recipe.png"
+      "detail-image": "/images/product/kimchi_1-detail.png",
+      "recipe-image": "/images/product/kimchi_1-recipe.png"
     },
     {
       "id": 34,
@@ -337,8 +337,8 @@
       "description": "맛있다",
       "price": 8000,
       "image": "/images/product/kimchi_2.jpg",
-      "detail-image": "/images/product/kimchi/kimchi_2-detail.png",
-      "recipe-image": "/images/product/kimchi/kimchi_2-recipe.png"
+      "detail-image": "/images/product/kimchi_2-detail.png",
+      "recipe-image": "/images/product/kimchi_2-recipe.png"
     },
     {
       "id": 35,
@@ -347,8 +347,8 @@
       "description": "맛있다",
       "price": 8000,
       "image": "/images/product/kimchi_1.jpg",
-      "detail-image": "/images/product/kimchi/kimchi_1-detail.png",
-      "recipe-image": "/images/product/kimchi/kimchi_1-recipe.png"
+      "detail-image": "/images/product/kimchi_1-detail.png",
+      "recipe-image": "/images/product/kimchi_1-recipe.png"
     },
     {
       "id": 36,
@@ -357,8 +357,8 @@
       "description": "맛있다",
       "price": 8000,
       "image": "/images/product/kimchi_2.jpg",
-      "detail-image": "/images/product/kimchi/kimchi_2-detail.png",
-      "recipe-image": "/images/product/kimchi/kimchi_2-recipe.png"
+      "detail-image": "/images/product/kimchi_2-detail.png",
+      "recipe-image": "/images/product/kimchi_2-recipe.png"
     },
     {
       "id": 37,
@@ -367,8 +367,8 @@
       "description": "맛있다",
       "price": 8000,
       "image": "/images/product/kimchi_1.jpg",
-      "detail-image": "/images/product/kimchi/kimchi_1-detail.png",
-      "recipe-image": "/images/product/kimchi/kimchi_1-recipe.png"
+      "detail-image": "/images/product/kimchi_1-detail.png",
+      "recipe-image": "/images/product/kimchi_1-recipe.png"
     },
     {
       "id": 38,
@@ -377,8 +377,8 @@
       "description": "맛있다",
       "price": 8000,
       "image": "/images/product/kimchi_2.jpg",
-      "detail-image": "/images/product/kimchi/kimchi_2-detail.png",
-      "recipe-image": "/images/product/kimchi/kimchi_2-recipe.png"
+      "detail-image": "/images/product/kimchi_2-detail.png",
+      "recipe-image": "/images/product/kimchi_2-recipe.png"
     },
     {
       "id": 39,
@@ -387,8 +387,8 @@
       "description": "맛있다",
       "price": 8000,
       "image": "/images/product/kimchi_1.jpg",
-      "detail-image": "/images/product/kimchi/kimchi_1-detail.png",
-      "recipe-image": "/images/product/kimchi/kimchi_1-recipe.png"
+      "detail-image": "/images/product/kimchi_1-detail.png",
+      "recipe-image": "/images/product/kimchi_1-recipe.png"
     },
     {
       "id": 40,
@@ -397,8 +397,8 @@
       "description": "맛있다",
       "price": 8000,
       "image": "/images/product/kimchi_2.jpg",
-      "detail-image": "/images/product/kimchi/kimchi_2-detail.png",
-      "recipe-image": "/images/product/kimchi/kimchi_2-recipe.png"
+      "detail-image": "/images/product/kimchi_2-detail.png",
+      "recipe-image": "/images/product/kimchi_2-recipe.png"
     }
   ],
   "comments": [
