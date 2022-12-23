@@ -44,7 +44,7 @@ export default function Kimchi() {
     >
       <ImageBox>
         <img
-          src={`${process.env.PUBLIC_URL}/images/kimchi_img1.jpg`}
+          src={`${process.env.PUBLIC_URL}/images/product/kimchi_1.jpg`}
           style={{
             position: 'absolute',
             top: '0',
