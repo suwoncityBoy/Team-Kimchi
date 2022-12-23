@@ -6,7 +6,7 @@ import {
 import Root from '../pages/Root';
 import Home from '../pages/Home';
 import NotFound from '../pages/NotFound';
-import MyPage from '../pages/MyPage';
+import ProductDetail from '../pages/ProductDetail';
 import Categories from '../pages/Categories';
 
 const Router = createBrowserRouter(
@@ -15,8 +15,7 @@ const Router = createBrowserRouter(
       <Route path="/" element={<Home />} />
       <Route path="/categories" element={<Categories />} />
       <Route path="/categories/:id" element={<Categories />} />
-      <Route path="/kimchis" element={<MyPage />} />
-      <Route path="/kimchis/:id" element={<MyPage />} />
+      <Route path="/kimchis/:id" element={<ProductDetail />} />
     </Route>,
   ),
 );
