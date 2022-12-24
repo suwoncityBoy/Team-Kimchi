@@ -64,6 +64,8 @@ export default function Categories() {
                 <p>{k.name}</p>
               </div>
             );
+          } else {
+            return null;
           }
         })}
       </div>
