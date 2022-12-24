@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { BsCart3 } from 'react-icons/bs';
+import { useNavigate } from 'react-router';
 import styled from 'styled-components';
 
-export default function Kimchi() {
+export default function Kimchi({ k }) {
+  const navigate = useNavigate();
   const [isHovering, setIsHovering] = useState(0);
 
   const Icon = styled.div`
@@ -35,16 +37,20 @@ export default function Kimchi() {
 
   return (
     <div
+      onClick={() => {
+        navigate(`/kimchis/${k.id}`);
+      }}
       onMouseOver={() => setIsHovering(1)}
       onMouseOut={() => setIsHovering(0)}
       style={{
         width: '21%',
         height: '21%',
+        marginBottom: '2rem',
       }}
     >
       <ImageBox>
         <img
-          src={`${process.env.PUBLIC_URL}/images/product/kimchi_1.jpg`}
+          src={`${process.env.PUBLIC_URL}${k.image}`}
           style={{
             position: 'absolute',
             top: '0',
@@ -79,7 +85,7 @@ export default function Kimchi() {
             marginBottom: '0.5rem',
           }}
         >
-          김치 이름
+          {k.name}
         </h2>
         <h3
           style={{
@@ -89,10 +95,10 @@ export default function Kimchi() {
             color: '#393838',
           }}
         >
-          8,000원
+          {k.price}원
         </h3>
         <p style={{ fontSize: '1.2rem', fontWeight: '500', color: '#666' }}>
-          맛있어 김치...
+          {k.description}
         </p>
       </div>
     </div>

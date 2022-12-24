@@ -1,0 +1,16 @@
+.title {
+  border-bottom: 2px solid #ccc;
+}
+
+.titleP:hover {
+  color: red;
+}
+
+.isActive {
+  border-bottom: 2px solid red;
+}
+
+.isactive {
+  color: red;
+  padding-bottom: 1rem;
+}
