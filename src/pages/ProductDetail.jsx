@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation, useNavigate, useParams } from 'react-router-dom';
 import DetailMenus from '../components/DetailMenus/DetailMenus';
 import axios from 'axios';
 
 export default function ProductDetail() {
-  const [count, setCount] = useState(1);
-  const [price, setPrice] = useState(0);
+  const [count, setCount] = useState(0);
+  const { id } = useParams();
+  const location = useLocation();
+  const currentPath = location.pathname;
+
+  const navigate = useNavigate();
 
   const minusHandler = () => {
     if (count <= 1) return count;
@@ -14,10 +18,13 @@ export default function ProductDetail() {
   const plusHandler = () => {
     setCount(count + 1);
   };
-  const getPrice = async () => {
-    const { data } = await axios.get('http://localhost:3001/kimchis');
-    setPrice(data);
-  };
+
+  // /kimchis/:id 경로로 들어오면 description 페이지로 자동 이동
+  useEffect(() => {
+    if (currentPath === `/kimchis/${id}` || currentPath === `/kimchis/${id}/`) {
+      navigate(`/kimchis/${id}/description`);
+    }
+  }, [id, currentPath, navigate]);
 
   return (
     <>

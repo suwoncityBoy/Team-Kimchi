@@ -1,13 +1,15 @@
 import React from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink, useParams } from 'react-router-dom';
 
-export default function KimchiDetail() {
+export default function DetailMenus() {
+  const { id } = useParams();
+
   return (
     <ul style={menuStyle}>
       {/* 상품설명 */}
       <li style={listStyle}>
         <NavLink
-          to="/kimchis/kimchi1/description"
+          to={`/kimchis/${id}/description`}
           style={({ isActive }) =>
             isActive ? activeLinkStyle : inactiveLinkStyle
           }
@@ -18,7 +20,7 @@ export default function KimchiDetail() {
       {/* 레시피 */}
       <li style={listStyle}>
         <NavLink
-          to="/kimchis/kimchi1/recipe"
+          to={`/kimchis/${id}/recipe`}
           style={({ isActive }) =>
             isActive ? activeLinkStyle : inactiveLinkStyle
           }
@@ -29,7 +31,7 @@ export default function KimchiDetail() {
       {/* 후기 */}
       <li style={listStyle}>
         <NavLink
-          to="/kimchis/kimchi1/review"
+          to={`/kimchis/${id}/review`}
           style={({ isActive }) =>
             isActive ? activeLinkStyle : inactiveLinkStyle
           }
