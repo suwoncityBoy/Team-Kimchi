@@ -1,8 +1,10 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router';
+import { useLocation, useParams } from 'react-router';
+import { Link } from 'react-router-dom';
 
 export default function Categories() {
+  const location = useLocation();
   const [kimchi, setKimchi] = useState([]);
 
   const fetchKimchi = async () => {
@@ -30,12 +32,29 @@ export default function Categories() {
   //     return
   // }
 
-  const test = paramID ? true : false;
+  // const test = paramID ? true : false;
   console.log(paramID);
 
-  console.log(test);
   return (
     <>
+      <div className="menu">
+        <Link to="/categories/배추과김치">
+          <p>배추과 김치</p>
+        </Link>
+        <Link to="/categories/무과김치">
+          <p>무과 김치</p>
+        </Link>
+
+        <Link to="/categories/뿌리과김치">
+          <p>뿌리과 김치</p>
+        </Link>
+        <Link to="/categories/기타김치">
+          <p>기타 김치</p>
+        </Link>
+      </div>
+      <h1 style={{ fontSize: '3rem' }}>
+        {decodeURI(location.pathname.slice(12))}
+      </h1>
       <div
         style={{
           fontSize: '40px',
@@ -60,8 +79,10 @@ export default function Categories() {
           if (paramID === k.category) {
             return (
               <div>
-                <h1>{k.category}</h1>
+                <img src={`${process.env.PUBLIC_URL}${k.image}`} alt="" />
                 <p>{k.name}</p>
+                <p>{k.price}</p>
+                <p>{k.description}</p>
               </div>
             );
           } else {
