@@ -1,71 +1,55 @@
 import React, { useEffect, useState } from 'react';
+import styled from 'styled-components';
 import { Outlet, useLocation, useNavigate, useParams } from 'react-router-dom';
 import DetailMenus from '../components/DetailMenus/DetailMenus';
-import axios from 'axios';
+import {
+  addNumber,
+  minusNumber,
+  __getKimchis,
+} from '../redux/modules/productDetailSlice';
+import { useSelector, useDispatch } from 'react-redux';
 
 export default function ProductDetail() {
-  const [count, setCount] = useState(0);
   const { id } = useParams();
   const location = useLocation();
   const currentPath = location.pathname;
-
   const navigate = useNavigate();
+  const { number, price } = useSelector((state) => state.productDetail);
+  const dispatch = useDispatch();
 
-  const minusHandler = () => {
-    if (count <= 1) return count;
-    setCount(count - 1);
-  };
-  const plusHandler = () => {
-    setCount(count + 1);
-  };
+  const [imgPath, setImgPath] = useState('');
+
+  // const getImagPath = async () => {
+  //   const response = await axios.get(`http://localhost:3001/kimchis`);
+  //   const image = response.data['price'];
+  //   console.log(image);
+  // };
 
   // /kimchis/:id 경로로 들어오면 description 페이지로 자동 이동
   useEffect(() => {
     if (currentPath === `/kimchis/${id}` || currentPath === `/kimchis/${id}/`) {
       navigate(`/kimchis/${id}/description`);
     }
+    dispatch(__getKimchis());
   }, [id, currentPath, navigate]);
 
   return (
     <>
-      <div style={containerStyle}>
-        <div
-          style={{
-            height: '80%',
-            backgroundColor: 'yellowgreen',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
-        >
-          <div
-            style={{
-              backgroundColor: 'red',
-              width: '90%',
-              height: '90%',
-              display: 'flex',
-              justifyContent: 'center',
-              gap: '30px',
-              alignItems: 'center',
-            }}
-          >
-            <div
-              style={{
-                height: '90%',
-                width: '50%',
-              }}
-            >
+      <StyleContainer>
+        <StyleDetailWrap>
+          <StyleDetailWrapItems>
+            <StyleImageWrap>
               <img
-                src="https://img.etoday.co.kr/pto_db/2020/11/600/20201126091736_1545518_1200_1333.jpg"
-                style={{ maxWidth: '100%', height: '100%' }}
+                src={process.env.PUBLIC_URL + imgPath}
+                style={{ Width: '100%', height: '100%' }}
                 alt="img"
               ></img>
-            </div>
+            </StyleImageWrap>
 
             <div
               style={{
                 position: 'relative',
-                backgroundColor: 'yellow',
+                // backgroundColor: 'yellow',
                 height: '90%',
                 width: '50%',
               }}
@@ -73,7 +57,7 @@ export default function ProductDetail() {
               <div style={{ lineHeight: '2.2', marginTop: '100px' }}>
                 <p style={{ fontSize: '40px' }}>[종가집]하루세끼 맛김치</p>
                 <p style={{ fontSize: '25px' }}>손질없이 어디서나 간편하게</p>
-                <h1 style={{ fontSize: '40px' }}>3900 원</h1>
+                <h1 style={{ fontSize: '40px' }}>{price}</h1>
               </div>
 
               <div style={{ display: 'flex', marginTop: '80px' }}>
@@ -99,9 +83,9 @@ export default function ProductDetail() {
                     }}
                   >
                     <div>
-                      <button onClick={minusHandler}>-</button>
-                      <span>{count}</span>
-                      <button onClick={plusHandler}>+</button>
+                      <button onClick={() => dispatch(minusNumber())}>-</button>
+                      <span>{number}</span>
+                      <button onClick={() => dispatch(addNumber())}>+</button>
                     </div>
                     <p>price</p>
                   </div>
@@ -122,8 +106,8 @@ export default function ProductDetail() {
                 장바구니 담기
               </button>
             </div>
-          </div>
-        </div>
+          </StyleDetailWrapItems>
+        </StyleDetailWrap>
         <div>
           {/* 메뉴 바 */}
           <DetailMenus />
@@ -132,14 +116,32 @@ export default function ProductDetail() {
             <Outlet />
           </div>
         </div>
-      </div>
+      </StyleContainer>
     </>
   );
 }
 
-const containerStyle = {
-  margin: '1.5rem',
-};
+const StyleContainer = styled.div`
+  margin: 1.5rem;
+`;
+
+const StyleDetailWrap = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const StyleDetailWrapItems = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  align-items: center;
+`;
+
+const StyleImageWrap = styled.div`
+  width: 50%;
+`;
 
 const divStyle = {
   width: '100%',

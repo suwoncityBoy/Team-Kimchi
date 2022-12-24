@@ -2,6 +2,7 @@ import React from 'react';
 import { Outlet } from 'react-router-dom';
 import Navbar from '../components/Navbar/Navbar';
 import Footer from '../components/Footer/Footer';
+import ToTopButton from '../components/ToTop/ToTop';
 
 export default function Root() {
   return (
@@ -23,6 +24,7 @@ export default function Root() {
           }}
         >
           <Outlet />
+          <ToTopButton />
           <Footer />
         </div>
         <Navbar />
