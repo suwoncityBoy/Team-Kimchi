@@ -27,18 +27,18 @@ const StyledContainer = styled.div`
     transform: scale(1.2);
   }
   .textBalloon {
+    width: 80px;
+    text-align: center;
     position: absolute;
     margin-top: -100px;
     margin-left: -5px;
     border-radius: 5px;
-    background-color: #ff9b9b;
     padding: 10px;
-    color: black;
     font-size: 14px;
     font-weight: 700;
     margin-bottom: 50px;
   }
-  .textBalloon::before {
+  /* .textBalloon::before {
     content: '';
     position: absolute;
     right: 100%;
@@ -49,6 +49,18 @@ const StyledContainer = styled.div`
     transform: rotate(33deg);
     border-top: 10px solid transparent;
     border-right: 10px solid #ff9b9b;
+    border-bottom: 10px solid transparent;
+  } */
+  .textBalloonBottom {
+    position: absolute;
+    right: 100%;
+    top: 23px;
+    width: 0;
+    height: 0;
+    right: 60px;
+    transform: rotate(33deg);
+    border-top: 10px solid transparent;
+    border-right: 10px solid;
     border-bottom: 10px solid transparent;
   }
   .hoverText {
