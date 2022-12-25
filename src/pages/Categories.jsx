@@ -151,7 +151,7 @@ export default function Categories() {
           margin: '2rem 0',
         }}
       >
-        
+
       </div> */}
 
       <div>

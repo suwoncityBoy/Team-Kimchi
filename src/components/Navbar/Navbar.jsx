@@ -1,36 +1,38 @@
 import { React, useState } from 'react';
 import { BsCart3 } from 'react-icons/bs';
 import { StyledContainer, StyledWrap } from './Navbar.style';
+import { useNavigate } from 'react-router-dom';
 
 export default function Navbar() {
   const initialState = [
     {
       id: 1,
-      value: '배추과 김치',
+      value: '배추과김치',
       isHovered: false,
       imgUrl: 'Navbar_icon_star.png',
     },
     {
       id: 2,
-      value: '무과 김치',
+      value: '무과김치',
       isHovered: false,
       imgUrl: 'Navbar_icon_circle.png',
     },
     {
       id: 3,
-      value: '뿌리과 김치',
+      value: '뿌리과김치',
       isHovered: false,
       imgUrl: 'Navbar_icon_square.png',
     },
     {
       id: 4,
-      value: '기타 김치',
+      value: '기타김치',
       isHovered: false,
       imgUrl: 'Navbar_icon_triangle.png',
     },
   ];
 
   const [hoverState, setHoverState] = useState(initialState);
+  const navigate = useNavigate();
 
   const onHoverHandler = (item) => {
     // hoverState.filter((data) => data.id === item.id);
@@ -45,6 +47,9 @@ export default function Navbar() {
       }
     }
   };
+  // const onClickIcon = (item) => {
+  //   return <Navigate to="/categories/${item.value}" />;
+  // };
 
   return (
     <div>
@@ -54,6 +59,9 @@ export default function Navbar() {
             className="Navbar_Logo"
             src={`${process.env.PUBLIC_URL}/images/common/Logo.png`}
             alt=""
+            onClick={() => {
+              navigate(`/`);
+            }}
           />
 
           <BsCart3 className="Navbar_Cart" />
@@ -69,8 +77,12 @@ export default function Navbar() {
                   alt=""
                   onMouseEnter={() => onHoverHandler(item)}
                   onMouseLeave={() => onHoverHandler(item)}
+                  onClick={() => {
+                    navigate(`/categories/${item.value}`);
+                  }}
                   key={item.id}
                 />
+
                 <div
                   className={`${
                     item.isHovered !== false ? 'textBalloon' : 'hoverText'
