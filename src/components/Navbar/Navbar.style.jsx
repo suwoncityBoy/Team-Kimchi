@@ -45,7 +45,7 @@ const StyledContainer = styled.div`
     top: 23px;
     width: 0;
     height: 0;
-    right: 65px;
+    right: 60px;
     transform: rotate(33deg);
     border-top: 10px solid transparent;
     border-right: 10px solid #ff9b9b;
