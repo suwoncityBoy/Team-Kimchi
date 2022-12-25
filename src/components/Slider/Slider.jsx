@@ -18,7 +18,7 @@ export default function Slider({ category }) {
     fetchSlide();
   }, []);
 
-  console.log(slide);
+  // console.log(slide);
 
   const [slidePx, setSlidePx] = useState(0);
 
