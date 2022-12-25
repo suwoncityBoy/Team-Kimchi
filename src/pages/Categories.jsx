@@ -160,7 +160,7 @@ export default function Categories() {
           style={{
             display: 'flex',
             justifyContent: 'center',
-            margin: '3rem 0',
+            margin: '3rem 0 0 0',
           }}
         >
           {tabContArr.map((section, index) => {
@@ -169,19 +169,9 @@ export default function Categories() {
         </ul>
       </div>
 
-      <CategoryTitle>
-        <h1
-          style={{
-            fontSize: '3rem',
-            textAlign: 'center',
-            fontSize: '2rem',
-            marginTop: '-4rem',
-            marginBottom: '3rem',
-          }}
-        >
-          {decodeURI(location.pathname.slice(12))}
-        </h1>
-      </CategoryTitle>
+      <div style={{ marginBottom: '3rem' }}>
+        <CategoryTitle>{decodeURI(location.pathname.slice(12))}</CategoryTitle>
+      </div>
 
       <div
         style={{

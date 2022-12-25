@@ -25,7 +25,7 @@ export default function Root() {
           <Outlet />
           <Footer />
         </div>
-        <Navbar />
+        <Navbar />y{' '}
       </div>
     </>
   );
