@@ -27,7 +27,7 @@ export default function Root() {
           <ToTopButton />
           <Footer />
         </div>
-        <Navbar />
+        <Navbar />y{' '}
       </div>
     </>
   );
