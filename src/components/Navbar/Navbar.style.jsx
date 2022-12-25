@@ -9,18 +9,22 @@ const StyledContainer = styled.div`
   box-shadow: 0 0 0 3px #d82424 inset;
 
   .Navbar_Logo {
+    cursor: pointer;
     width: 90px;
     height: 80px;
   }
   .Navbar_Cart {
+    cursor: pointer;
     width: 40px;
     height: 40px;
   }
   .Icon {
+    cursor: pointer;
     width: 50px;
     height: 50px;
   }
   .hoverState {
+    cursor: pointer;
     position: relative;
     width: 75px;
     height: 75px;
