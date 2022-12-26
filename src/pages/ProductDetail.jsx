@@ -9,9 +9,6 @@ import {
 } from '../redux/modules/productDetailSlice';
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
-import { addNumber, minusNumber } from '../redux/modules/productDetailSlice';
-import DetailMenus from '../components/DetailMenus/DetailMenus';
-import KimchiRecommend from '../components/KimchiRecommend/KimchiRecommend';
 
 export default function ProductDetail() {
   const { id } = useParams();
@@ -32,7 +29,7 @@ export default function ProductDetail() {
       image,
       price, // 초기값
       sum: price, // 합계
-      description, // 설명
+      description,
     };
     dispatch(addProduct({ ...object }));
   };
@@ -69,7 +66,7 @@ export default function ProductDetail() {
               <div style={{ lineHeight: '2.2', marginTop: '100px' }}>
                 <p style={{ fontSize: '40px' }}>{name}</p>
                 <p style={{ fontSize: '25px' }}>{description}</p>
-                <h1 style={{ fontSize: '40px' }}>{price} 원</h1>
+                <h1 style={{ fontSize: '40px' }}>{price}</h1>
               </div>
 
               <div style={{ display: 'flex', marginTop: '80px' }}>
@@ -139,7 +136,6 @@ export default function ProductDetail() {
             <Outlet />
           </div>
         </div>
-        <KimchiRecommend />
       </StyleContainer>
     </>
   );
