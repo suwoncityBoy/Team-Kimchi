@@ -10,6 +10,7 @@ import {
 } from '../redux/modules/productDetailSlice';
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
+import KimchiRecommend from '../components/KimchiRecommend/KimchiRecommend';
 
 export default function ProductDetail() {
   const { id } = useParams();
@@ -130,6 +131,7 @@ export default function ProductDetail() {
             <Outlet />
           </div>
         </div>
+        <KimchiRecommend />
       </StyleContainer>
     </>
   );
