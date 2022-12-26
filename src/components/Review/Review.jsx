@@ -45,9 +45,18 @@ export default function Review() {
   };
 
   return (
-    <div style={{ display: 'flex', padding: '10px' }}>
+    <div
+      style={{
+        maxWidth: '1010px',
+        margin: 'auto',
+        display: 'flex',
+        padding: '10px',
+        flexDirection: 'column',
+      }}
+    >
+      {/* 리뷰 입력 폼 */}
       <form onSubmit={handleSubmit} style={{ width: '100%' }}>
-        <div style={{ textAlign: 'left', margin: '30px 0' }}>
+        <div style={{ textAlign: 'left', marginBottom: '30px' }}>
           <label>
             닉네임
             <input
