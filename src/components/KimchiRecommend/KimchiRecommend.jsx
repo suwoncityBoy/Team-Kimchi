@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import Kimchi from '../Kimchi/Kimchi';
 
 export default function KimchiRecommend() {
   const [kimchi, setKimchi] = useState([]);
@@ -33,20 +34,23 @@ export default function KimchiRecommend() {
     console.log(randomSetArray);
   }, [kimchi]);
   return (
-    <div>
-      <h1>이 김치는 어떠세요?</h1>
-
-      {randomSetArray.map((recommend) => {
-        if (randomSetArray.length > 0) {
-          return (
-            <div>
-              <img src={`${process.env.PUBLIC_URL}${recommend.image}`} />
-              <h1>{recommend.name}</h1>
-              <p>{recommend.description}</p>
-            </div>
-          );
-        }
-      })}
+    <div style={{ marginTop: '3rem' }}>
+      <h1 style={{ textAlign: 'center', fontSize: '1.4rem' }}>
+        이 김치는 어떠세요?
+      </h1>
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          marginTop: '3rem',
+        }}
+      >
+        {randomSetArray.map((k) => {
+          if (randomSetArray.length > 0) {
+            return <Kimchi k={k} />;
+          }
+        })}
+      </div>
     </div>
   );
 }
