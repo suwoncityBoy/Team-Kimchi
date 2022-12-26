@@ -1,145 +1,200 @@
-import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import getDate from '../../utils/getDate';
-import { validateNickname, validatePassword } from '../../utils/validate';
+import React, { useState } from 'react';
+import { checkPassword } from '../../utils/validate';
 
-export default function Review() {
-  const { id: kimchiId } = useParams();
-  const [nickname, setNickname] = useState('');
-  const [password, setPassword] = useState('');
-  const [content, setContent] = useState('');
+export default function Review({
+  id,
+  kimchiId,
+  nickname,
+  content,
+  date,
+  setReviewData,
+}) {
+  const [hover, setHover] = useState(false);
+  const [isTextareaVisible, setIsTextareaVisible] = useState(false);
+  const [editContent, setEditContent] = useState(content);
 
-  const handleSubmit = (e) => {
+  const checkDBPassword = async (input) => {
+    // 비밀번호 유효성 검사
+    if (!checkPassword(input)) return false;
+    // 서버에 비밀번호 맞는지 요청
+    const response = await axios.get(`http://localhost:3001/reviews?id=${id}`);
+    const password = response.data[0].password;
+    return password === input ? true : false;
+  };
+
+  // 수정 버튼 클릭
+  const handleEditBtnClick = async () => {
+    const inputPassword = prompt('비밀번호를 입력하세요.');
+    const checked = await checkDBPassword(inputPassword);
+    if (!checked) {
+      console.log('틀린 비밀번호 입니다.');
+      return;
+    }
+    // 수정할 textarea 보여주기
+    setIsTextareaVisible(true);
+  };
+
+  // 수정 폼 제출
+  const handleEditSubmit = async (e) => {
     e.preventDefault();
 
-    // 유효성 검사
-    const isValidNickname = validateNickname(nickname);
-    if (!isValidNickname) {
-      console.log(
-        '닉네임은 한글, 영어, 숫자로 이루어진 2자 이상 10자 이하의 문자열입니다.',
+    // 서버에 데이터 PATCH
+    await axios.patch(`http://localhost:3001/reviews/${id}`, {
+      content: editContent,
+    });
+    alert('수정이 완료되었습니다.');
+
+    // 데이터 다시 GET, state 업데이트
+    const response = await axios.get(
+      `http://localhost:3001/reviews?kimchiId=${kimchiId}`,
+    );
+    setReviewData(response.data);
+
+    // textarea 숨기기
+    setIsTextareaVisible(false);
+  };
+
+  // 삭제 버튼 클릭
+  const handleDeleteBtnClick = async () => {
+    const inputPassword = prompt('비밀번호를 입력하세요.');
+    const checked = checkPassword(inputPassword);
+    if (!checked) {
+      console.log('틀린 비밀번호 입니다.');
+      return;
+    }
+
+    if (window.confirm('정말 삭제하시겠습니까??')) {
+      // 서버에 데이터 DELETE
+      await axios.delete(`http://localhost:3001/reviews/${id}`);
+      // 데이터 다시 GET, state 업데이트
+      const response = await axios.get(
+        `http://localhost:3001/reviews?kimchiId=${kimchiId}`,
       );
-      // TODO: 경고표시 후 리턴
-      return;
+      setReviewData(response.data);
     }
-
-    const isValidPassword = validatePassword(password);
-    if (!isValidPassword) {
-      console.log('비밀번호는 숫자 4자리입니다.');
-      // TODO: 초기화 후 리턴
-      return;
-    }
-
-    // TODO: 내용 유효성 검사
-
-    const data = {
-      kimchiId,
-      nickname,
-      password,
-      content,
-      date: getDate(),
-    };
-
-    axios.post('http://localhost:3001/reviews', data);
-    console.log('review 저장 성공');
   };
 
   return (
-    <div
-      style={{
-        maxWidth: '1010px',
-        margin: 'auto',
-        display: 'flex',
-        padding: '10px',
-        flexDirection: 'column',
-      }}
+    <li
+      style={reviewStyle}
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
     >
-      {/* 리뷰 입력 폼 */}
-      <form onSubmit={handleSubmit} style={{ width: '100%' }}>
-        <div style={{ textAlign: 'left', marginBottom: '30px' }}>
-          <label>
-            닉네임
-            <input
-              type="text"
-              value={nickname}
-              onChange={(e) => {
-                setNickname(e.target.value);
-              }}
-              required
-              minLength="1"
-              maxLength="10"
-              style={inputStyle}
-            />
-          </label>
-          <label>
-            비밀번호
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => {
-                setPassword(e.target.value);
-              }}
-              required
-              minLength="4"
-              maxLength="4"
-              style={inputStyle}
-            />
-          </label>
-        </div>
-        <label
+      <div style={nicknameStyle}>{nickname}</div>
+      {isTextareaVisible ? (
+        // 수정 상태에서는 form 보여주기
+        <form
+          onSubmit={handleEditSubmit}
           style={{
             display: 'flex',
             flexDirection: 'column',
-            textAlign: 'left',
+            alignItems: 'flex-end',
           }}
         >
-          자세한 후기를 들려주세요
           <textarea
-            type="text"
-            value={content}
-            onChange={(e) => {
-              setContent(e.target.value);
-            }}
-            required
-            minLength="10"
-            maxLength="300"
             style={textareaStyle}
-          />
-        </label>
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'flex-end',
-          }}
-        >
-          <button type="submit" style={btnStyle}>
-            등록하기
+            value={editContent}
+            onChange={(e) => setEditContent(e.target.value)}
+            autoFocus={true}
+          ></textarea>
+          <button style={btnStyle}>확인</button>
+        </form>
+      ) : (
+        // 수정 상태가 아닐 때는 내용 보여주기
+        <div style={contentStyle}>{content}</div>
+      )}
+      <div style={rightStyle}>
+        <div style={dateStyle}>{date}</div>
+        <div>
+          <button
+            style={
+              // 리뷰 hover 상태일 때 버튼 보여주기
+              hover
+                ? { ...hoverBtnStyle, visibility: 'visible' }
+                : hoverBtnStyle
+            }
+            onClick={handleEditBtnClick}
+          >
+            수정
+          </button>
+          <button
+            style={
+              hover
+                ? { ...hoverBtnStyle, visibility: 'visible' }
+                : hoverBtnStyle
+            }
+            onClick={handleDeleteBtnClick}
+          >
+            삭제
           </button>
         </div>
-      </form>
-    </div>
+      </div>
+    </li>
   );
 }
 
-const textareaStyle = {
-  resize: 'none',
+const reviewStyle = {
+  display: 'flex',
+  flexDirection: 'row',
+  justifyContent: 'space-between',
+  alignItems: 'start',
   margin: '16px 0',
-  height: '200px',
+  lineHeight: '1.5',
+  paddingBottom: '16px',
+  borderBottom: '1px solid #cdcdcd',
+};
+
+const nicknameStyle = {
+  width: '100px',
+  fontWeight: '500',
+};
+
+const contentStyle = {
+  width: '600px',
+  textAlign: 'left',
+};
+
+const textareaStyle = {
+  width: '600px',
+  height: '100px',
+  resize: 'none',
   border: '1px solid #c2c2c2',
   borderRadius: '4px',
+  fontSize: '16px',
+  fontFamily: 'normal',
+};
+
+const dateStyle = {
+  width: '150px',
+  color: '#828282',
+};
+
+const rightStyle = {
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
 };
 
 const btnStyle = {
-  backgroundColor: 'red',
-  padding: '10px 20px',
-  border: 'none',
-  color: ' white',
+  fontSize: '14px',
+  border: '1px solid grey',
+  borderRadius: '4px',
+  background: 'transparent',
+  padding: '4px 8px ',
+  margin: '10px 0',
+  cursor: 'pointer',
+  width: '50px',
 };
 
-const inputStyle = {
-  margin: '0 16px',
-  height: '24px',
-  width: '200px',
-  border: '1px solid #c2c2c2',
+const hoverBtnStyle = {
+  fontSize: '14px',
+  border: '1px solid grey',
   borderRadius: '4px',
+  background: 'transparent',
+  padding: '4px 8px ',
+  margin: '10px 5px',
+  visibility: 'hidden',
+  cursor: 'pointer',
+  width: '50px',
 };
