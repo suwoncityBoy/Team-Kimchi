@@ -756,6 +756,14 @@
     },
     {
       "kimchiId": "1",
+      "nickname": "배추김치",
+      "password": "1234",
+      "content": "배추김치가 최고에요",
+      "date": "2022-12-26 20:13:41",
+      "id": 48
+    },
+    {
+      "kimchiId": "1",
       "nickname": "뾰로롱",
       "password": "1234",
       "content": "김치 너무 최고예요!",
