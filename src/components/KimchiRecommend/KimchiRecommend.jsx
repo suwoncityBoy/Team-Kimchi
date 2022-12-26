@@ -40,7 +40,9 @@ export default function KimchiRecommend() {
         if (randomSetArray.length > 0) {
           return (
             <div>
+              <img src={`${process.env.PUBLIC_URL}${recommend.image}`} />
               <h1>{recommend.name}</h1>
+              <p>{recommend.description}</p>
             </div>
           );
         }
