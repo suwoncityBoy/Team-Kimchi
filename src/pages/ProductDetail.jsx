@@ -1,35 +1,46 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Outlet, useLocation, useNavigate, useParams } from 'react-router-dom';
+import DetailMenus from '../components/DetailMenus/DetailMenus';
+import {
+  addNumber,
+  minusNumber,
+  addProduct,
+} from '../redux/modules/productDetailSlice';
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
-import { addNumber, minusNumber } from '../redux/modules/productDetailSlice';
-import DetailMenus from '../components/DetailMenus/DetailMenus';
 
 export default function ProductDetail() {
   const { id } = useParams();
   const location = useLocation();
   const currentPath = location.pathname;
   const navigate = useNavigate();
-  const { number, price } = useSelector((state) => state.productDetail);
+  const { number, price, image, name, description } = useSelector(
+    (state) => state.productDetail.product,
+  );
   const dispatch = useDispatch();
 
-  const [dataPath, setDataPath] = useState('');
+  const [product, setProduct] = useState({
+    name: '',
+    image: '',
+    description: '',
+    price: 0,
+  });
 
-  // const getData = async () => {
-  //   const { data } = await axios.get('http://localhost:3001/kimchis');
-  //   setDataPath(data);
-  // };
+  const getData = async () => {
+    const response = await axios.get(`http://localhost:3001/kimchis/${id}`);
+    const { name, image, price, description } = response.data;
+    setProduct({ name, image, price, description });
+    dispatch(addProduct({ ...product }));
+  };
 
   // /kimchis/:id 경로로 들어오면 description 페이지로 자동 이동
   useEffect(() => {
     if (currentPath === `/kimchis/${id}` || currentPath === `/kimchis/${id}/`) {
       navigate(`/kimchis/${id}/description`, { replace: true });
-      // getData();
     }
-  }, [currentPath, id, navigate]);
-
-  console.log(dataPath);
+    getData();
+  }, [id, currentPath, navigate, getData]);
 
   return (
     <>
@@ -38,7 +49,7 @@ export default function ProductDetail() {
           <StyleDetailWrapItems>
             <StyleImageWrap>
               <img
-                src={process.env.PUBLIC_URL}
+                src={process.env.PUBLIC_URL + image}
                 style={{ Width: '100%', height: '100%' }}
                 alt="img"
               ></img>
@@ -53,7 +64,7 @@ export default function ProductDetail() {
               }}
             >
               <div style={{ lineHeight: '2.2', marginTop: '100px' }}>
-                <p style={{ fontSize: '40px' }}>[종가집]하루세끼 맛김치</p>
+                <p style={{ fontSize: '40px' }}>{name}</p>
                 <p style={{ fontSize: '25px' }}>손질없이 어디서나 간편하게</p>
                 <h1 style={{ fontSize: '40px' }}>{price}</h1>
               </div>
