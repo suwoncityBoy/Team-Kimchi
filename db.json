@@ -715,12 +715,44 @@
       "date": "2022-12-12 12:13:35"
     },
     {
-      "id": 40,
+      "id": 41,
       "kimchiId": 40,
-      "nickname": "갓김치",
+      "nickname": "김치짱",
       "password": "0000",
-      "content": "김치가 너무 맛있어요.",
+      "content": "김치가 너무 맛있어요. 짱맛존맛ㄷㅎㄷㅎegeg대박적gegwegwedd1122dㅎㄷㅎㅈㄷㅎ\n하하",
       "date": "2022-12-12 12:13:35"
+    },
+    {
+      "kimchiId": "40",
+      "nickname": "가자미",
+      "password": "0000",
+      "content": "가자미 김치도 있나요?",
+      "date": "2022-12-26 18:15:43",
+      "id": 42
+    },
+    {
+      "kimchiId": "40",
+      "nickname": "dd",
+      "password": "0000",
+      "content": "안녕하세요. 김치가 아주 맛있어요.",
+      "date": "2022-12-26 18:31:44",
+      "id": 45
+    },
+    {
+      "kimchiId": "40",
+      "nickname": "하하",
+      "password": "0000",
+      "content": "ㄹㄷㄹhjhrgergwegweg",
+      "date": "2022-12-26 18:41:15",
+      "id": 46
+    },
+    {
+      "kimchiId": "40",
+      "nickname": "감자감자감자감",
+      "password": "0000",
+      "content": "감자감자감자감감자감자감자감감자감자감자감",
+      "date": "2022-12-26 18:43:10",
+      "id": 47
     }
   ],
   "cart": [
