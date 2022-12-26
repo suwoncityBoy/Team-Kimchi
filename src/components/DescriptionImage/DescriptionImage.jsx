@@ -20,7 +20,12 @@ export default function Description() {
   return (
     <img
       src={process.env.PUBLIC_URL + imgPath}
-      style={{ padding: '10px', width: '100%', boxSizing: 'border-box' }}
+      style={{
+        padding: '10px',
+        width: '100%',
+        maxWidth: '1010px',
+        boxSizing: 'border-box',
+      }}
       alt="img"
     />
   );
