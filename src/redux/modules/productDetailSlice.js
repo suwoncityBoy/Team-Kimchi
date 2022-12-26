@@ -33,8 +33,6 @@ const productDetailSlice = createSlice({
   reducers: {
     addNumber: (state, action) => {
       state.number += 1;
-      //state.sum = action.payload;
-      console.log(state.sum);
       state.product.sum += action.payload;
     },
 

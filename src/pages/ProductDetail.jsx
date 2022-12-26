@@ -27,9 +27,9 @@ export default function ProductDetail() {
     const object = {
       name,
       image,
-      price, // 8000
-      sum: price, //초기값
-      description,
+      price, // 초기값
+      sum: price, // 합계
+      description, // 설명
     };
     dispatch(addProduct({ ...object }));
   };
@@ -66,7 +66,7 @@ export default function ProductDetail() {
               <div style={{ lineHeight: '2.2', marginTop: '100px' }}>
                 <p style={{ fontSize: '40px' }}>{name}</p>
                 <p style={{ fontSize: '25px' }}>{description}</p>
-                <h1 style={{ fontSize: '40px' }}>{price}</h1>
+                <h1 style={{ fontSize: '40px' }}>{price} 원</h1>
               </div>
 
               <div style={{ display: 'flex', marginTop: '80px' }}>
