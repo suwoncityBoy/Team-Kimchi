@@ -70,7 +70,7 @@ export default function Kimchi({ k }) {
         {isHovering ? (
           <Icon
             onClick={() => {
-              navigate('/');
+              navigate('/cart');
             }}
           >
             <BsCart3

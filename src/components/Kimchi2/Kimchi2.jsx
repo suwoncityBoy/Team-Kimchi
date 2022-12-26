@@ -66,7 +66,7 @@ export default function Kimchi({ k }) {
         {isHovering ? (
           <Icon
             onClick={() => {
-              navigate('/categories/배추과김치');
+              navigate('/cart');
             }}
           >
             <BsCart3

@@ -8,16 +8,16 @@
 
 .slick-prev {
   left: 0;
-  top: 38%;
+  top: 34%;
 }
 
 .slick-next {
   right: 0;
-  top: 38%;
+  top: 34%;
 }
 
 .slick-prev:before,
 .slick-next:before {
-  color: black !important;
-  font-size: 2rem;
+  color: red !important;
+  font-size: 3rem;
 }
