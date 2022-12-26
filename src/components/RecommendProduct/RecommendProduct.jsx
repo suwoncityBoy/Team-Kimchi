@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import Kimchi from '../Kimchi/Kimchi';
-// import { StyledContainer } from './RecommendProduct.style';
+import { StyledContainer, StyledWrap } from './RecommendProduct.style';
 
 export default function RecommendProduct() {
   const [recommendedProduct, setRecommendedProduct] = useState([]);
@@ -25,6 +25,7 @@ export default function RecommendProduct() {
     }
     setRecommendedProduct(Randomkimchi);
   };
+  console.log(recommendedProduct);
 
   useEffect(() => {
     fetchproduct();
@@ -32,15 +33,15 @@ export default function RecommendProduct() {
   }, []);
 
   return (
-    <>
+    <StyledContainer>
       <h1>이 상품 어때요?</h1>
-      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+      <StyledWrap>
         {recommendedProduct.map((k) => {
           if (recommendedProduct.length > 0) {
             return <Kimchi k={k} />;
           }
         })}
-      </div>
-    </>
+      </StyledWrap>
+    </StyledContainer>
   );
 }
