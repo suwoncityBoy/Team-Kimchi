@@ -125,3 +125,7 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+:root {
+  --btnbgcolor: #aa2c2c;
+  --btnbordercolor: #aa2c2c;
+}
