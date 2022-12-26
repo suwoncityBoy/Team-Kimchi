@@ -15,32 +15,32 @@ export default function ProductDetail() {
   const location = useLocation();
   const currentPath = location.pathname;
   const navigate = useNavigate();
-  const { number, price, image, name, description } = useSelector(
+  const { price, image, name, description, sum } = useSelector(
     (state) => state.productDetail.product,
   );
+  const { number } = useSelector((state) => state.productDetail);
   const dispatch = useDispatch();
-
-  const [product, setProduct] = useState({
-    name: '',
-    image: '',
-    description: '',
-    price: 0,
-  });
 
   const getData = async () => {
     const response = await axios.get(`http://localhost:3001/kimchis/${id}`);
-    const { name, image, price, description } = response.data;
-    setProduct({ name, image, price, description });
-    dispatch(addProduct({ ...product }));
+    const { name, image, price, description } = response.data; // price
+    const object = {
+      name,
+      image,
+      price, // 8000
+      sum: price, //초기값
+      description,
+    };
+    dispatch(addProduct({ ...object }));
   };
 
   // /kimchis/:id 경로로 들어오면 description 페이지로 자동 이동
   useEffect(() => {
+    getData();
     if (currentPath === `/kimchis/${id}` || currentPath === `/kimchis/${id}/`) {
       navigate(`/kimchis/${id}/description`, { replace: true });
     }
-    getData();
-  }, [id, currentPath, navigate, getData]);
+  }, [id, currentPath, navigate]);
 
   return (
     <>
@@ -65,7 +65,7 @@ export default function ProductDetail() {
             >
               <div style={{ lineHeight: '2.2', marginTop: '100px' }}>
                 <p style={{ fontSize: '40px' }}>{name}</p>
-                <p style={{ fontSize: '25px' }}>손질없이 어디서나 간편하게</p>
+                <p style={{ fontSize: '25px' }}>{description}</p>
                 <h1 style={{ fontSize: '40px' }}>{price}</h1>
               </div>
 
@@ -87,7 +87,7 @@ export default function ProductDetail() {
                     width: '80%',
                   }}
                 >
-                  <p>[종가집] 하루세끼 맛김치</p>
+                  <p>{name}</p>
                   <div
                     style={{
                       display: 'flex',
@@ -96,11 +96,18 @@ export default function ProductDetail() {
                     }}
                   >
                     <div>
-                      <button onClick={() => dispatch(minusNumber())}>-</button>
-                      <span>{number}</span>
-                      <button onClick={() => dispatch(addNumber())}>+</button>
+                      <button onClick={() => dispatch(minusNumber(price))}>
+                        {' '}
+                        {/* 제품의 고유 가격 넣기*/}-
+                      </button>
+                      <span>{number}</span> {/* state에서 가져온 합 가격 넣기*/}
+                      <button onClick={() => dispatch(addNumber(price))}>
+                        {' '}
+                        {/* 제품의 고유 가격 넣기*/}+
+                      </button>
+                      {sum}
                     </div>
-                    <p>price</p>
+                    <p>??</p>
                   </div>
                 </div>
               </div>

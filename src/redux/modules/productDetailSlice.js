@@ -16,12 +16,14 @@ import axios from 'axios';
 // );
 
 const initialState = {
+  number: 1,
+
   product: {
-    number: 1,
     price: 0,
     name: '',
     image: '',
     description: '',
+    sum: 0,
   },
 };
 
@@ -29,14 +31,17 @@ const productDetailSlice = createSlice({
   name: 'productDetail', // 모듈 이름
   initialState, // 초기상태값
   reducers: {
-    addNumber: (state) => {
-      state.product.number = state.product.number + 1;
-      state.product.price += state.product.price;
+    addNumber: (state, action) => {
+      state.number += 1;
+      //state.sum = action.payload;
+      console.log(state.sum);
+      state.product.sum += action.payload;
     },
 
-    minusNumber: (state) => {
-      if (state.product.number > 1) {
-        state.product.number = state.product.number - 1;
+    minusNumber: (state, action) => {
+      if (state.number > 1) {
+        state.number -= 1;
+        state.product.sum -= action.payload;
       }
     },
     addProduct: (state, action) => {
