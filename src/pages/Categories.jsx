@@ -114,7 +114,7 @@ export default function Categories() {
   ];
 
   const fetchKimchi = async () => {
-    const { data } = await axios.get('http://localhost:3003/kimchis');
+    const { data } = await axios.get('http://localhost:3001/kimchis');
     console.log('data', data);
     setKimchi(data);
     // 서버로부터 fetching한 데이터를 useState의 state로 set 합니다.

@@ -17,7 +17,7 @@ export default function ProductDetail() {
   const [dataPath, setDataPath] = useState('');
 
   // const getData = async () => {
-  //   const { data } = await axios.get('http://localhost:3003/kimchis');
+  //   const { data } = await axios.get('http://localhost:3001/kimchis');
   //   setDataPath(data);
   // };
 
