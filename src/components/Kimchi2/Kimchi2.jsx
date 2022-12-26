@@ -45,6 +45,7 @@ export default function Kimchi({ k }) {
         width: '90%',
         height: '90%',
         marginBottom: '2rem',
+        cursor: 'pointer',
       }}
     >
       <ImageBox>
@@ -59,7 +60,8 @@ export default function Kimchi({ k }) {
           }}
           alt="kimchi"
           onClick={() => {
-            navigate(`/kimchis/${k.id}`);
+            navigate(`/kimchis/${k.id}/description`);
+            window.location.reload();
           }}
         />
 
@@ -67,6 +69,7 @@ export default function Kimchi({ k }) {
           <Icon
             onClick={() => {
               navigate('/cart');
+              window.location.reload();
             }}
           >
             <BsCart3
