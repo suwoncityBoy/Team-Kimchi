@@ -10,7 +10,8 @@ import Categories from '../pages/Categories';
 import ProductDetail from '../pages/ProductDetail';
 import Description from '../components/DescriptionImage/DescriptionImage';
 import Recipe from '../components/RecipeImage/RecipeImage';
-import Review from '../components/Review/Review';
+import ReviewContainer from '../components/ReviewContainer/ReviewContainer';
+import Cart from '../pages/Cart';
 
 const Router = createBrowserRouter(
   createRoutesFromElements(
@@ -20,8 +21,9 @@ const Router = createBrowserRouter(
       <Route path="/kimchis/:id" element={<ProductDetail />}>
         <Route path="/kimchis/:id/description" element={<Description />} />
         <Route path="/kimchis/:id/recipe" element={<Recipe />} />
-        <Route path="/kimchis/:id/review" element={<Review />} />
+        <Route path="/kimchis/:id/review" element={<ReviewContainer />} />
       </Route>
+      <Route path="/cart" element={<Cart />} />
     </Route>,
   ),
 );

@@ -2,32 +2,38 @@ import { React, useState } from 'react';
 import { BsCart3 } from 'react-icons/bs';
 import { StyledContainer, StyledWrap } from './Navbar.style';
 import { useNavigate } from 'react-router-dom';
-
+import { useSelector } from 'react-redux';
 export default function Navbar() {
+  const cart = useSelector((state) => state.user.inCart);
+
   const initialState = [
     {
       id: 1,
       value: '배추과김치',
       isHovered: false,
       imgUrl: 'Navbar_icon_star.png',
+      color: '#ff9b9b',
     },
     {
       id: 2,
       value: '무과김치',
       isHovered: false,
       imgUrl: 'Navbar_icon_circle.png',
+      color: '#9BC3FF',
     },
     {
       id: 3,
       value: '뿌리과김치',
       isHovered: false,
       imgUrl: 'Navbar_icon_square.png',
+      color: '#FFE99B',
     },
     {
       id: 4,
       value: '기타김치',
       isHovered: false,
       imgUrl: 'Navbar_icon_triangle.png',
+      color: '#9DFF9B',
     },
   ];
 
@@ -35,11 +41,6 @@ export default function Navbar() {
   const navigate = useNavigate();
 
   const onHoverHandler = (item) => {
-    // hoverState.filter((data) => data.id === item.id);
-    // return setHoverState({ ...hoverState, isHovered: !item.isHovered });
-    // .map((item) =>
-    //   setHoverState({ ...hoverState, isHovered: !item.isHovered }),
-    // );
     for (let i in hoverState) {
       if (hoverState[i].id === item.id) {
         hoverState[i].isHovered = !item.isHovered;
@@ -64,7 +65,8 @@ export default function Navbar() {
             }}
           />
 
-          <BsCart3 className="Navbar_Cart" />
+          {cart.length ? <div className="Navbar_Cart2">{cart.length}</div> : ''}
+          <BsCart3 className="Navbar_Cart" onClick={() => navigate(`/cart`)} />
 
           {hoverState.map((item) => {
             return (
@@ -84,10 +86,19 @@ export default function Navbar() {
                 />
 
                 <div
-                  className={`${
-                    item.isHovered !== false ? 'textBalloon' : 'hoverText'
-                  }`}
+                  className={`${item.isHovered ? 'textBalloon' : 'hoverText'}`}
+                  style={{
+                    backgroundColor: item.color,
+                  }}
                 >
+                  <div
+                    className={`${
+                      item.isHovered ? 'textBalloonBottom' : 'hoverText'
+                    }`}
+                    style={{
+                      borderRightColor: item.color,
+                    }}
+                  ></div>
                   {item.value}
                 </div>
               </div>
