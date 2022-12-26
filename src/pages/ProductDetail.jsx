@@ -2,11 +2,9 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Outlet, useLocation, useNavigate, useParams } from 'react-router-dom';
 import DetailMenus from '../components/DetailMenus/DetailMenus';
-import {
-  addNumber,
-  minusNumber,
-  __getKimchis,
-} from '../redux/modules/productDetailSlice';
+import RecommendProduct from '../components/RecommendProduct/RecommendProduct';
+import { addNumber, minusNumber } from '../redux/modules/productDetailSlice';
+import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
 
 export default function ProductDetail() {
@@ -114,6 +112,7 @@ export default function ProductDetail() {
           <div style={divStyle}>
             {/* 메뉴 바 밑에 보여줄 페이지 */}
             <Outlet />
+            <RecommendProduct />
           </div>
         </div>
       </StyleContainer>

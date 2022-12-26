@@ -7,7 +7,7 @@ export default function Categories2() {
   const [kimchi, setKimchi] = useState([]);
 
   const fetchKimchi = async () => {
-    const { data } = await axios.get('http://localhost:3003/kimchis');
+    const { data } = await axios.get('http://localhost:3001/kimchis');
     setKimchi(data);
   };
 
