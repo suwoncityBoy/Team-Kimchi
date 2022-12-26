@@ -1,5 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import Kimchi from '../Kimchi/Kimchi';
+// import { StyledContainer } from './RecommendProduct.style';
 
 export default function RecommendProduct() {
   const [recommendedProduct, setRecommendedProduct] = useState([]);
@@ -23,7 +25,6 @@ export default function RecommendProduct() {
     }
     setRecommendedProduct(Randomkimchi);
   };
-  console.log(recommendedProduct);
 
   useEffect(() => {
     fetchproduct();
@@ -32,13 +33,11 @@ export default function RecommendProduct() {
 
   return (
     <>
-      {/*그 데이터를 렌덤 함수를 사용하여 뿌려준다.*/}
-      <div className="recommendation">
-        <h3>이 상품 어때요?</h3>
-
-        {recommendedProduct.map((product) => {
+      <h1>이 상품 어때요?</h1>
+      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+        {recommendedProduct.map((k) => {
           if (recommendedProduct.length > 0) {
-            return <div>{product.name}</div>;
+            return <Kimchi k={k} />;
           }
         })}
       </div>
