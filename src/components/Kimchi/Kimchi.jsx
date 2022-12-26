@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { BsCart3 } from 'react-icons/bs';
 import { useNavigate } from 'react-router';
 import styled from 'styled-components';
+import { addItem } from '../../redux/modules/cartSlice';
 
 export default function Kimchi({ k }) {
   const navigate = useNavigate();
   const [isHovering, setIsHovering] = useState(0);
-
+  const dispatch = useDispatch();
   const Icon = styled.div`
     background-color: #1e602b;
     opacity: 0.5;
@@ -34,6 +36,10 @@ export default function Kimchi({ k }) {
     padding-top: 100%;
     overflow: hidden;
   `;
+
+  const toCart = () => {
+    dispatch(addItem(k));
+  };
 
   return (
     <div
@@ -74,6 +80,7 @@ export default function Kimchi({ k }) {
                 width: '1.4rem',
                 height: '1.4rem',
               }}
+              onClick={toCart}
             />
           </Icon>
         ) : (
@@ -101,6 +108,7 @@ export default function Kimchi({ k }) {
         >
           {k.price}원
         </h3>
+
         <p style={{ fontSize: '1.2rem', fontWeight: '500', color: '#666' }}>
           {k.description}
         </p>

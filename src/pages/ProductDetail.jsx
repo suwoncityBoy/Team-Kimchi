@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Outlet, useLocation, useNavigate, useParams } from 'react-router-dom';
-import DetailMenus from '../components/DetailMenus/DetailMenus';
-import { addNumber, minusNumber } from '../redux/modules/productDetailSlice';
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
+import { addNumber, minusNumber } from '../redux/modules/productDetailSlice';
+import DetailMenus from '../components/DetailMenus/DetailMenus';
 
 export default function ProductDetail() {
   const { id } = useParams();
@@ -24,10 +24,10 @@ export default function ProductDetail() {
   // /kimchis/:id 경로로 들어오면 description 페이지로 자동 이동
   useEffect(() => {
     if (currentPath === `/kimchis/${id}` || currentPath === `/kimchis/${id}/`) {
-      navigate(`/kimchis/${id}/description`);
+      navigate(`/kimchis/${id}/description`, { replace: true });
       // getData();
     }
-  }, [id, currentPath, navigate]);
+  }, [currentPath, id, navigate]);
 
   console.log(dataPath);
 
