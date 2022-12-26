@@ -47,6 +47,7 @@ export default function ProductDetail() {
     console.log(currentPath);
     if (currentPath === `/kimchis/${id}` || currentPath === `/kimchis/${id}/`) {
       navigate(`/kimchis/${id}/description`, { replace: true });
+      // getData();
     }
   }, []);
 
