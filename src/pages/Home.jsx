@@ -48,10 +48,8 @@ export default function Home() {
         <Header />
         {/* <CategoryTitle>배추과 김치</CategoryTitle>
         <KimchiList />
-
         <CategoryTitle>무과 김치</CategoryTitle>
         <KimchiList />
-
         <CategoryTitle>뿌리과 김치</CategoryTitle>
         <KimchiList /> */}
 

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Outlet, useLocation, useNavigate, useParams } from 'react-router-dom';
 import DetailMenus from '../components/DetailMenus/DetailMenus';
+import Button from '../components/Button/Button';
 import {
   addNumber,
   minusNumber,
@@ -15,9 +16,14 @@ export default function ProductDetail() {
   const location = useLocation();
   const currentPath = location.pathname;
   const navigate = useNavigate();
+
   const { price, image, name, description, sum } = useSelector(
     (state) => state.productDetail.product,
   );
+  const product = useSelector((state) => state.productDetail.product);
+
+  console.log(product);
+
   const { number } = useSelector((state) => state.productDetail);
   const dispatch = useDispatch();
 
@@ -37,10 +43,11 @@ export default function ProductDetail() {
   // /kimchis/:id 경로로 들어오면 description 페이지로 자동 이동
   useEffect(() => {
     getData();
+    console.log(currentPath);
     if (currentPath === `/kimchis/${id}` || currentPath === `/kimchis/${id}/`) {
       navigate(`/kimchis/${id}/description`, { replace: true });
     }
-  }, [id, currentPath, navigate]);
+  }, []);
 
   return (
     <>
@@ -107,24 +114,11 @@ export default function ProductDetail() {
                       </button>
                       {sum}
                     </div>
-                    <p>??</p>
+                    {/* <p>??</p> */}
                   </div>
                 </div>
               </div>
-
-              <button
-                style={{
-                  position: 'absolute',
-                  right: '0',
-                  bottom: '0',
-                  backgroundColor: 'red',
-                  color: '#fff',
-                  width: '300px',
-                  height: '100px',
-                }}
-              >
-                장바구니 담기
-              </button>
+              <Button>장바구니 담기</Button>
             </div>
           </StyleDetailWrapItems>
         </StyleDetailWrap>
