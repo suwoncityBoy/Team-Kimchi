@@ -12,6 +12,7 @@ import ProductDetail from '../pages/ProductDetail';
 import Description from '../components/DescriptionImage/DescriptionImage';
 import Recipe from '../components/RecipeImage/RecipeImage';
 import Review from '../components/Review/Review';
+import Cart from '../pages/Cart';
 
 const Router = createBrowserRouter(
   createRoutesFromElements(
@@ -24,6 +25,7 @@ const Router = createBrowserRouter(
         <Route path="/kimchis/:id/recipe" element={<Recipe />} />
         <Route path="/kimchis/:id/review" element={<Review />} />
       </Route>
+      <Route path="/cart" element={<Cart />} />
     </Route>,
   ),
 );

@@ -2,8 +2,10 @@ import { React, useState } from 'react';
 import { BsCart3 } from 'react-icons/bs';
 import { StyledContainer, StyledWrap } from './Navbar.style';
 import { useNavigate } from 'react-router-dom';
-
+import { useSelector } from 'react-redux';
 export default function Navbar() {
+  const cart = useSelector((state) => state.user.inCart);
+
   const initialState = [
     {
       id: 1,
@@ -63,7 +65,8 @@ export default function Navbar() {
             }}
           />
 
-          <BsCart3 className="Navbar_Cart" />
+          {cart.length ? <div className="Navbar_Cart2">{cart.length}</div> : ''}
+          <BsCart3 className="Navbar_Cart" onClick={() => navigate(`/cart`)} />
 
           {hoverState.map((item) => {
             return (
