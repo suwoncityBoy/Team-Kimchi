@@ -2,11 +2,8 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Outlet, useLocation, useNavigate, useParams } from 'react-router-dom';
 import DetailMenus from '../components/DetailMenus/DetailMenus';
-import {
-  addNumber,
-  minusNumber,
-  __getKimchis,
-} from '../redux/modules/productDetailSlice';
+import { addNumber, minusNumber } from '../redux/modules/productDetailSlice';
+import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
 
 export default function ProductDetail() {
@@ -17,21 +14,22 @@ export default function ProductDetail() {
   const { number, price } = useSelector((state) => state.productDetail);
   const dispatch = useDispatch();
 
-  const [imgPath, setImgPath] = useState('');
+  const [dataPath, setDataPath] = useState('');
 
-  // const getImagPath = async () => {
-  //   const response = await axios.get(`http://localhost:3001/kimchis`);
-  //   const image = response.data['price'];
-  //   console.log(image);
+  // const getData = async () => {
+  //   const { data } = await axios.get('http://localhost:3003/kimchis');
+  //   setDataPath(data);
   // };
 
   // /kimchis/:id 경로로 들어오면 description 페이지로 자동 이동
   useEffect(() => {
     if (currentPath === `/kimchis/${id}` || currentPath === `/kimchis/${id}/`) {
       navigate(`/kimchis/${id}/description`);
+      // getData();
     }
-    dispatch(__getKimchis());
   }, [id, currentPath, navigate]);
+
+  console.log(dataPath);
 
   return (
     <>
@@ -40,7 +38,7 @@ export default function ProductDetail() {
           <StyleDetailWrapItems>
             <StyleImageWrap>
               <img
-                src={process.env.PUBLIC_URL + imgPath}
+                src={process.env.PUBLIC_URL}
                 style={{ Width: '100%', height: '100%' }}
                 alt="img"
               ></img>
@@ -62,7 +60,11 @@ export default function ProductDetail() {
 
               <div style={{ display: 'flex', marginTop: '80px' }}>
                 <p
-                  style={{ fontSize: '25px', width: '20%', paddingTop: '20px' }}
+                  style={{
+                    fontSize: '25px',
+                    width: '20%',
+                    paddingTop: '20px',
+                  }}
                 >
                   상품선택
                 </p>
