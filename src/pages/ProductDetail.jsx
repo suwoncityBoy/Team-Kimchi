@@ -10,6 +10,13 @@ import {
 } from '../redux/modules/productDetailSlice';
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
+import {
+  addNumber,
+  minusNumber,
+  addProduct,
+} from '../redux/modules/productDetailSlice';
+import DetailMenus from '../components/DetailMenus/DetailMenus';
+import KimchiRecommend from '../components/KimchiRecommend/KimchiRecommend';
 
 export default function ProductDetail() {
   const { id } = useParams();
@@ -46,6 +53,7 @@ export default function ProductDetail() {
     console.log(currentPath);
     if (currentPath === `/kimchis/${id}` || currentPath === `/kimchis/${id}/`) {
       navigate(`/kimchis/${id}/description`, { replace: true });
+      // getData();
     }
   }, []);
 
@@ -130,6 +138,7 @@ export default function ProductDetail() {
             <Outlet />
           </div>
         </div>
+        <KimchiRecommend />
       </StyleContainer>
     </>
   );
