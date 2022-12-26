@@ -22,6 +22,8 @@ export default function Kimchi({ k }) {
     align-items: center;
 
     transition: all ease 0.5s;
+
+    z-index: 999999;
     &:hover {
       opacity: 1;
       transform: rotate(360deg);
@@ -40,8 +42,8 @@ export default function Kimchi({ k }) {
       onMouseOver={() => setIsHovering(1)}
       onMouseOut={() => setIsHovering(0)}
       style={{
-        width: '21%',
-        height: '21%',
+        width: '90%',
+        height: '90%',
         marginBottom: '2rem',
       }}
     >
@@ -64,7 +66,7 @@ export default function Kimchi({ k }) {
         {isHovering ? (
           <Icon
             onClick={() => {
-              navigate('/');
+              navigate('/categories/배추과김치');
             }}
           >
             <BsCart3
