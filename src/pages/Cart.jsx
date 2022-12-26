@@ -90,7 +90,7 @@ export default function Cart() {
         style={{
           //backgroundColor: 'orange',
           width: '100%',
-          height: '25%',
+          height: 'auto',
           display: 'grid',
           justifyContent: 'center',
         }}
@@ -100,9 +100,10 @@ export default function Cart() {
             display: 'flex',
             textAlign: 'center',
             alignItems: 'center',
+            margin: '6rem 0 4rem 0',
           }}
         >
-          <div>결정 예정 금액 :</div>
+          <div>결제 예정 금액 :</div>
           <div>3000만원</div>
         </div>
         <input
