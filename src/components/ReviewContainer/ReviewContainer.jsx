@@ -171,6 +171,7 @@ const containerStyle = {
   display: 'flex',
   padding: '10px',
   flexDirection: 'column',
+  minHeight: '600px',
 };
 
 const formStyle = {
