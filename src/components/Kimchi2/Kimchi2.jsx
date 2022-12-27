@@ -106,7 +106,7 @@ export default function Kimchi({ k }) {
         >
           {k.price}원
         </h3>
-        <p style={{ fontSize: '1.2rem', fontWeight: '500', color: '#666' }}>
+        <p style={{ fontSize: '1rem', fontWeight: '500', color: '#666' }}>
           {k.description}
         </p>
       </div>

@@ -74,8 +74,10 @@ export default function ProductDetail() {
             >
               <div style={{ lineHeight: '2.2', marginTop: '100px' }}>
                 <p style={{ fontSize: '40px' }}>{name}</p>
-                <p style={{ fontSize: '25px' }}>{description}</p>
-                <h1 style={{ fontSize: '40px' }}>{price}</h1>
+                <p style={{ fontSize: '25px', color: '#979797' }}>
+                  {description}
+                </p>
+                <h1 style={{ fontSize: '40px' }}>{price}원</h1>
               </div>
 
               <div style={{ display: 'flex', marginTop: '80px' }}>
