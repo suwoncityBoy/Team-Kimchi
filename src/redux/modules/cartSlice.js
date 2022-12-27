@@ -5,12 +5,17 @@ const initialState = {
   totalSum: 0,
   lastSum: 0,
   initSum: 0,
+  data: { number: 1, price: 0, name: '', image: '', description: '', sum: 0 },
 };
 
 const cartSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
+    addAtDetail: (state, action) => {
+      state.inCart = [...state.inCart, action.payload];
+      //state.totalSum += action.payload.price;
+    },
     addItem: (state, action) => {
       state.inCart = [...state.inCart, action.payload];
       state.totalSum += action.payload.price;
@@ -59,6 +64,7 @@ export const {
   minusPrice,
   changeChecked,
   clearItem,
+  addAtDetail,
 } = cartSlice.actions;
 // reducer 는 configStore에 등록하기 위해 export default 합니다.
 export default cartSlice.reducer;

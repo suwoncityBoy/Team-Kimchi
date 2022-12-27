@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 //import { useNavigate } from 'react-router-dom';
 import { SlBasket } from 'react-icons/sl';
 import { useDispatch, useSelector } from 'react-redux';
+import Button from '../components/Button/Button';
 import { DataList, CheckBoxList } from '../components/Cart/Cart';
 import { changeChecked } from '../redux/modules/cartSlice';
 import { popItem, clearItem } from '../redux/modules/cartSlice';
@@ -134,10 +135,9 @@ export default function Cart() {
         <div
           style={{
             width: '94%',
-            height: '100%',
             margin: '0 auto',
             borderBottom: '1px solid grey',
-            padding: '3.6rem 0 ',
+            padding: '2.4rem 0 ',
             boxSizing: 'border-box',
           }}
         >
@@ -155,7 +155,11 @@ export default function Cart() {
             </span>
           </label>
           <span style={choiceRightMargin30}>|</span>
-          <button onClick={() => clearAll()}>전체삭제</button>
+          <Button
+            onClick={() => clearAll()}
+            value="전체삭제"
+            type="button"
+          ></Button>
         </div>
       </div>
       {/* 장바구니 내용 영역*/}
@@ -181,8 +185,10 @@ export default function Cart() {
                 //backgroundColor: 'orange',
                 width: '100%',
                 height: '25%',
-                display: 'grid',
+                display: 'flex',
                 justifyContent: 'center',
+                flexDirection: 'column',
+                alignItems: 'center',
               }}
             >
               <div
@@ -196,17 +202,7 @@ export default function Cart() {
                 <p></p>
                 <div>결정 예정 금액 : {allPay} 원</div>
               </div>
-              <input
-                type="button"
-                value="결제하기"
-                style={{
-                  display: 'block',
-                  // textAlign: 'center',
-                  // alignItems: 'center',
-                  height: '50px',
-                  value: '1000',
-                }}
-              />
+              <Button value="결제하기" type="button"></Button>
             </div>
           </>
         ) : (
