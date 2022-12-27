@@ -1,6 +1,6 @@
 import { React, useState } from 'react';
 import { BsCart3 } from 'react-icons/bs';
-import { StyledContainer, StyledWrap } from './Navbar.style';
+import { StyledContainer, StyledWrap, StyledCartNumWrap } from './Navbar.style';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 export default function Navbar() {
@@ -65,7 +65,13 @@ export default function Navbar() {
             }}
           />
 
-          {cart.length ? <div className="Navbar_Cart2">{cart.length}</div> : ''}
+          {cart.length ? (
+            <StyledCartNumWrap>
+              <div className="CartNum">{cart.length}</div>
+            </StyledCartNumWrap>
+          ) : (
+            ''
+          )}
           <BsCart3 className="Navbar_Cart" onClick={() => navigate(`/cart`)} />
 
           {hoverState.map((item) => {
