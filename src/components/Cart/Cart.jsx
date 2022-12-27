@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { popItem, minusPrice, plusPrice } from '../../redux/modules/cartSlice';
 import { changeChecked } from '../../redux/modules/cartSlice';
-
+import styled from 'styled-components';
 // 데이터 카테고리별 컴포넌트
 export function DataList({
   datas, // 장바구니 데이터들
@@ -59,9 +59,15 @@ function Data({
   //const dispatch = useDispatch();
 
   const pop = () => {
-    removeMonoCheck(index);
-    //dispatch(popItem(data));
-    setAllPay(allPay - data.price);
+    if (window.confirm('삭제하시겠습니까?')) {
+      alert('삭제되었습니다.');
+      removeMonoCheck(index);
+      //dispatch(popItem(data));
+      setAllPay(allPay - data.price);
+    } else {
+      alert('취소되었습니다.');
+      return;
+    }
   };
 
   return (
@@ -76,7 +82,6 @@ function Data({
           padding: '40px',
           margin: 'auto',
           borderBottom: '1px solid grey',
-          width: '345px',
         }}
       >
         {/* 체크 박스*/}
@@ -97,7 +102,6 @@ function Data({
         <span
           style={{
             width: '345px',
-            width: '345px',
             textAlign: 'left',
             lineHeight: '1.6rem',
           }}
@@ -105,8 +109,10 @@ function Data({
           {data.name}
         </span>
         {/* 주문한 상품 갯수 */}
-        <div style={{ marginRight: '5%' }}>
+        <StyledAmountSelect>
           <button
+            className="btnMinus"
+            disabled={count <= 1 ? true : false}
             onClick={() => {
               if (count > 1) {
                 // setStock(count - 1);
@@ -115,16 +121,14 @@ function Data({
               } else alert('수량은 기본 1개 이상이여야 합니다');
             }}
             style={{
-              width: '2rem',
-              height: '2rem',
-
               cursor: 'pointer',
             }}
           >
             -
           </button>
-          <span style={{ margin: '0.6rem' }}>{count}</span>
+          <span className="amount">{count}</span>
           <button
+            className="btnPlus"
             onClick={() => {
               setStock((prev) => {
                 prev.map((stockItem, idx) => {
@@ -138,30 +142,87 @@ function Data({
               console.log('ssss>>>>>');
               setAllPay(allPay + data.price);
             }}
-            style={{
-              width: '2rem',
-              height: '2rem',
-
-              cursor: 'pointer',
-            }}
-          >
-            +
-          </button>
-        </div>
+          ></button>
+        </StyledAmountSelect>
         {/* 주문한 상품의 최종 금액 */}
         {/* <span style={{ marginRight: '1%' }}>{data.price * }</span> */}
-        <button
-          onClick={pop}
-          style={{
-            width: '2rem',
-            height: '2rem',
-
-            cursor: 'pointer',
-          }}
-        >
-          x
-        </button>
+        <StyledWrap>
+          <button className="btnMultiply" onClick={pop}>
+            x
+          </button>
+        </StyledWrap>
       </li>
     </div>
   );
 }
+
+const StyledAmountSelect = styled.div`
+  display: flex;
+  align-items: center;
+  height: 35px;
+
+  .btnMinus {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    width: 35px;
+    height: 35px;
+    border: 1px solid #e3e3e3;
+    border-radius: 2px 0px 0px 2px;
+    background-color: #f8fafb;
+    font-size: 30px;
+    text-align: center;
+  }
+  .amount {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 35px;
+    box-sizing: border-box;
+    border-top: 1px solid #e3e3e3;
+    border-bottom: 1px solid #e3e3e3;
+    font-weight: 700;
+    color: #242424;
+  }
+  .btnPlus {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 35px;
+    height: 35px;
+    border: 1px solid #e3e3e3;
+    border-radius: 0px 2px 2px 0px;
+    background-color: #f8fafb;
+  }
+  .btnPlus::before {
+    content: '';
+    display: block;
+    width: 10px;
+    height: 2px;
+    background-color: black;
+  }
+  .btnPlus::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: block;
+    width: 2px;
+    height: 10px;
+    background-color: black;
+    transform: translate(-50%, -50%);
+  }
+`;
+const StyledWrap = styled.div`
+  .btnMultiply {
+    width: 35px;
+    height: 35px;
+    border: 1px solid #e3e3e3;
+    border-radius: 2px;
+    font-size: 15px;
+  }
+`;

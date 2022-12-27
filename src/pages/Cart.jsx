@@ -148,13 +148,13 @@ export default function Cart() {
               checked={isAllChecked}
               onChange={(e) => handleAllCheck(e)}
             />
-            <span>
+            <span style={{ margin: '4px' }}>
               전체선택 (
               {checkedState.filter((item) => item.checked === true).length}/
               {checkedState.filter((item) => item.active === 'block').length})
             </span>
           </label>
-          <span style={choiceRightMargin30}>|</span>
+          <span style={choiceRightMargin50}>|</span>
           <Button
             onClick={() => clearAll()}
             value="전체삭제"
@@ -221,16 +221,13 @@ const thisPage = {
 };
 
 const basketTitle = {
-  // backgroundColor: 'yellow',
   width: '100%',
-  height: '15%',
   textAlign: 'center',
 };
 
 const basketIcon = {
-  width: '20%',
-  height: '35%',
-  padding: '3%',
+  width: '50px',
+  height: '50px',
 };
 
 const choice = {
@@ -248,12 +245,13 @@ const choiceRightMargin10 = {
 
 const choiceRightMargin30 = {
   // 합치기
-  marginRight: '30px',
+  marginRight: '10px',
 };
 
-const choiceRightMargin40 = {
+const choiceRightMargin50 = {
   // 합치기
-  marginRight: '40px',
+  fontWeight: '700',
+  marginRight: '15px',
 };
 
 const items = {

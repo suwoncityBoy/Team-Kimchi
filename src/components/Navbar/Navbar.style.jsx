@@ -42,19 +42,7 @@ const StyledContainer = styled.div`
     font-weight: 700;
     margin-bottom: 50px;
   }
-  /* .textBalloon::before {
-    content: '';
-    position: absolute;
-    right: 100%;
-    top: 23px;
-    width: 0;
-    height: 0;
-    right: 60px;
-    transform: rotate(33deg);
-    border-top: 10px solid transparent;
-    border-right: 10px solid #ff9b9b;
-    border-bottom: 10px solid transparent;
-  } */
+
   .textBalloonBottom {
     position: absolute;
     right: 100%;
@@ -83,4 +71,22 @@ const StyledWrap = styled.div`
   padding-right: 20px;
 `;
 
-export { StyledContainer, StyledWrap };
+const StyledCartNumWrap = styled.div`
+  position: fixed;
+
+  .CartNum {
+    cursor: pointer;
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    border-radius: 100px;
+    padding: 5px;
+    text-align: center;
+    color: white;
+    background-color: #d82424;
+    border: 3px solid #ffff;
+    margin-top: 110px;
+    margin-right: -2px;
+  }
+`;
+export { StyledContainer, StyledWrap, StyledCartNumWrap };
