@@ -86,6 +86,7 @@ function Data({
             checked={checkedState[index].checked}
             key={index}
             onChange={() => checkHandler(index)}
+            style={{ webkitTransform: 'scale(2)' }}
           />
         </label>
         <img
