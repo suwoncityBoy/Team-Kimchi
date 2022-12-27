@@ -28,7 +28,7 @@ export default function Review({
     const inputPassword = prompt('비밀번호를 입력하세요.');
     const checked = await checkDBPassword(inputPassword);
     if (!checked) {
-      console.log('틀린 비밀번호 입니다.');
+      alert('비밀번호가 틀립니다.');
       return;
     }
     // 수정할 textarea 보여주기
@@ -58,9 +58,9 @@ export default function Review({
   // 삭제 버튼 클릭
   const handleDeleteBtnClick = async () => {
     const inputPassword = prompt('비밀번호를 입력하세요.');
-    const checked = checkPassword(inputPassword);
+    const checked = await checkDBPassword(inputPassword);
     if (!checked) {
-      console.log('틀린 비밀번호 입니다.');
+      alert('비밀번호가 틀립니다.');
       return;
     }
 
