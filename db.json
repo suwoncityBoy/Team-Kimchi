@@ -867,26 +867,5 @@
       "id": 50
     }
   ],
-  "cart": [
-    {
-      "id": 1,
-      "kimchiId": 1,
-      "count": 2
-    },
-    {
-      "id": 2,
-      "kimchiId": 2,
-      "count": 3
-    },
-    {
-      "id": 3,
-      "kimchiId": 5,
-      "count": 1
-    },
-    {
-      "id": 4,
-      "kimchiId": 8,
-      "count": 5
-    }
-  ]
+  "cart": []
 }

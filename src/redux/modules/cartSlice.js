@@ -14,20 +14,33 @@ const cartSlice = createSlice({
   reducers: {
     addAtDetail: (state, action) => {
       state.inCart = [...state.inCart, action.payload];
-      //state.totalSum += action.payload.price;
     },
     addItem: (state, action) => {
+      // 중복 데이터 거르기(장바구니 데이터에서 중복되는게 있으면)
+      // if (
+      //   state.inCart.filter((item) => item.id === action.payload.id).length !==
+      //   0
+      // ) {
+      //   //action.payload.number; // 갯수만 +1 한다
+      // }
+
       state.inCart = [...state.inCart, action.payload];
+
       state.totalSum += action.payload.price;
+
+      // state.inCart = [...state.inCart, action.payload];
+      // state.totalSum += action.payload.price;
     },
     popItem: (state, action) => {
       state.inCart = [
         ...state.inCart.filter((item) => item.id !== action.payload.id),
       ];
+
       state.totalSum -= action.payload.stock * action.payload.price;
     },
-    clearItem: (state, action) => {
+    clearItem: (state) => {
       state.inCart = [];
+
       state.totalSum = 0;
     },
     plusPrice: (state, action) => {
