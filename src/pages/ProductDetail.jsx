@@ -69,7 +69,6 @@ export default function ProductDetail() {
 
             <div
               style={{
-                position: 'relative',
                 width: '50%',
                 height: '100%',
               }}
@@ -103,6 +102,7 @@ export default function ProductDetail() {
                       padding: '20px',
                       height: '100px',
                       width: '80%',
+                      boxSizing: 'border-box',
                     }}
                   >
                     <p>{name}</p>
@@ -111,7 +111,7 @@ export default function ProductDetail() {
                         display: 'flex',
                         justifyContent: 'space-between',
                         alignItems: 'center',
-                        marginTop: '50px',
+                        marginTop: '15px',
                       }}
                     >
                       <StyledAmountSelect>
@@ -146,6 +146,20 @@ export default function ProductDetail() {
                       {/* <p>??</p> */}
                     </div>
                   </div>
+                </div>
+                <div
+                  style={{
+                    position: 'absolute',
+                    right: '0',
+                    bottom: '0',
+                    marginRight: '40px',
+                  }}
+                >
+                  <Button
+                    onClick={onClickHandler}
+                    type="button"
+                    value="장바구니 담기"
+                  ></Button>
                 </div>
               </div>
             </div>
@@ -182,6 +196,7 @@ const StyleDetailWrapItems = styled.div`
   justify-content: center;
   gap: 40px;
   align-items: center;
+  position: relative;
 `;
 
 const StyleImageWrap = styled.div`
