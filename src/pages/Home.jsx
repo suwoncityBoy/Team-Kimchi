@@ -59,9 +59,10 @@ export default function Home() {
           <div
             style={{
               width: 'calc(100vw - 172px)',
-              padding: '0 2rem',
+              padding: '0 0.5rem 0rem 3rem',
               boxSizing: 'border-box',
               marginBottom: '4rem',
+              marginTop: '1rem',
             }}
           >
             <CategoryTitle>배추과 김치</CategoryTitle>
@@ -83,9 +84,10 @@ export default function Home() {
           <div
             style={{
               width: 'calc(100vw - 172px)',
-              padding: '0 2rem',
+              padding: '0 0.5rem 0rem 3rem',
               boxSizing: 'border-box',
               marginBottom: '4rem',
+              marginTop: '1rem',
             }}
           >
             <CategoryTitle>무과 김치</CategoryTitle>
@@ -107,7 +109,7 @@ export default function Home() {
           <div
             style={{
               width: 'calc(100vw - 172px)',
-              padding: '0 2rem',
+              padding: '0 0.5rem 0rem 3rem',
               boxSizing: 'border-box',
               marginBottom: '4rem',
             }}
@@ -131,7 +133,7 @@ export default function Home() {
           <div
             style={{
               width: 'calc(100vw - 172px)',
-              padding: '0 2rem',
+              padding: '0 0.5rem 0rem 3rem',
               boxSizing: 'border-box',
               marginBottom: '4rem',
             }}
@@ -152,23 +154,6 @@ export default function Home() {
             </Slider>
           </div>
         </div>
-        {/*{slide
-          .filter((s) => s.category === '배추과김치')
-          .map((s) => {
-            return (
-              <ul
-               onClick={() => {
-                 navigate(`/kimchis/${s.id}`);
-               }}
-              >
-                <li>
-                 <Link to={`/kimchis/${s.id}`}>
-                  <Slider s={s} />
-                  </Link>
-                </li>
-              </ul>
-            );
-          })}*/}
       </div>
     </>
   );
