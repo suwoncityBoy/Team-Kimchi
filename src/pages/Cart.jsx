@@ -2,26 +2,33 @@ import React, { useEffect, useState } from 'react';
 //import { useNavigate } from 'react-router-dom';
 import { SlBasket } from 'react-icons/sl';
 import { useDispatch, useSelector } from 'react-redux';
+import { DataList } from '../components/Cart/Cart';
+import { useNavigate } from 'react-router-dom';
+import { clearItem } from '../redux/modules/cartSlice';
+import styled from 'styled-components';
 import Button from '../components/Button/Button';
-import { DataList, CheckBoxList } from '../components/Cart/Cart';
-import { changeChecked } from '../redux/modules/cartSlice';
-import { popItem, clearItem } from '../redux/modules/cartSlice';
+
 //import { CiCircleCheck } from 'react-icons/ci';
 
 export default function Cart() {
   // 장바구니 데이터
   const { inCart } = useSelector((state) => state.user);
+  //const inCart = JSON.parse(localStorage.getItem('inCart'));
+
+  // 총 금액 셋팅하기
+  const TotalPrice = inCart.reduce((sum, kimchi) => {
+    return sum + kimchi.price * kimchi.number;
+  }, 0);
 
   // 총 금액
-  const [allPay, setAllPay] = useState(
-    inCart.reduce((sum, kimchi) => {
-      return sum + kimchi.price;
-    }, 0),
-  );
+  const [allPay, setAllPay] = useState(TotalPrice);
 
+  const arr = inCart.map((item) => {
+    return item.number;
+  });
   // 선택 제품 갯수
-  const [stock, setStock] = useState(new Array(inCart.length).fill(1));
-
+  const [stock, setStock] = useState(arr);
+  //const [stock, setStock] = useState();
   // 전체 선택 체크박스
   const [isAllChecked, setAllChecked] = useState(true);
 
@@ -30,13 +37,14 @@ export default function Cart() {
     new Array(inCart.length).fill({ checked: true, active: 'block', price: 0 }),
   );
 
+  const [opacity, setOpacity] = useState('0.5');
   // const [thisPay, setThisPay] = useState(
   //   new Array(inCart.length).fill([{ ...inCart.price }]),
   // );
 
   /* 사용하는 훅 */
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
   /* 내가 만든  */
   // 체크박스 모두 선택
   const handleAllCheck = (event) => {
@@ -56,19 +64,17 @@ export default function Cart() {
     }, []);
     setCheckedState(array);
 
-    const sum = inCart.reduce((sum, kimchi) => {
-      if (kimchi.checked) {
-        return sum + kimchi.price;
-      }
-      //return sum + kimchi.price;
-    }, 0);
-    event.target.checked === true ? setAllPay(sum) : setAllPay(0);
+    event.target.checked === true
+      ? setAllPay((prev) => prev + TotalPrice)
+      : setAllPay(0);
   };
 
   // 전체 삭제 버튼
   const clearAll = () => {
-    dispatch(clearItem());
-    setCheckedState([{}]);
+    if (window.confirm('전체 삭제 하시겠습니까?')) {
+      dispatch(clearItem());
+      setCheckedState([{}]);
+    }
   };
 
   // 조그마한 x(삭제) 버튼
@@ -94,7 +100,7 @@ export default function Cart() {
     if (
       checkedStateClone.filter((item) => item.active === 'block').length === 0
     ) {
-      clearAll();
+      dispatch(clearItem());
     }
   };
 
@@ -124,8 +130,25 @@ export default function Cart() {
     );
   };
 
+  const complete = () => {
+    if (window.confirm('결제를 진행 하시겠습니까?')) {
+      setOpacity('0.2');
+      setTimeout(() => {
+        dispatch(clearItem());
+        alert('완료');
+        navigate('/');
+      }, 1500);
+    }
+  };
   return (
-    <div style={thisPage}>
+    <div
+      style={{
+        width: '100%',
+        height: '100%',
+        margin: '70px auto',
+        opacity: { opacity },
+      }}
+    >
       {/*장바구니 영역*/}
       <div style={basketTitle}>
         <SlBasket style={basketIcon}>장바구니</SlBasket>
@@ -200,9 +223,13 @@ export default function Cart() {
                 }}
               >
                 <p></p>
-                <div>결정 예정 금액 : {allPay} 원</div>
+                <div>결제 예정 금액 : {allPay} 원</div>
               </div>
-              <Button value="결제하기" type="button"></Button>
+              <Button
+                value="결제하기"
+                type="button"
+                onClick={complete}
+              ></Button>
             </div>
           </>
         ) : (
@@ -212,13 +239,14 @@ export default function Cart() {
     </div>
   );
 }
-const thisPage = {
+const thisPage = styled.div`
   //backgroundColor: 'black',
-  width: '100%',
-  height: '100%',
+  width: '100%';
+  height: '100%';
   //position: 'absolute',
-  margin: '70px auto',
-};
+  margin: '70px auto';
+  opacity: ${(props) => props.opacity};
+`;
 
 const basketTitle = {
   width: '100%',

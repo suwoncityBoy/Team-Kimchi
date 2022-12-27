@@ -63,6 +63,7 @@ export default function Kimchi({ k }) {
           alt="kimchi"
           onClick={() => {
             navigate(`/kimchis/${k.id}/description`);
+            window.location.reload();
           }}
         />
 
@@ -70,8 +71,10 @@ export default function Kimchi({ k }) {
           <Icon
             onClick={() => {
               k.checked = true;
+              k.number = 1;
               dispatch(addItem(k));
               navigate('/cart');
+              window.location.reload();
             }}
           >
             <BsCart3

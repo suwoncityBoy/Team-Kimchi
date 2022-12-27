@@ -53,9 +53,9 @@ export default function ProductDetail() {
       name,
       image,
       price, // 초기값
-      sum: price, // 합계
+      sum, // 합계
       description,
-      number: 1,
+      number,
     };
     dispatch(addAtDetail({ ...object }));
     if (window.confirm('장바구니로 이동하시겠습니까??')) {
