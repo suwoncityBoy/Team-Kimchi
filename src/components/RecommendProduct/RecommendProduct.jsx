@@ -2,14 +2,13 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import Kimchi from '../Kimchi/Kimchi';
 import { StyledContainer, StyledWrap } from './RecommendProduct.style';
+import { SERVER_ADDRESS } from '../../utils/constant';
 
 export default function RecommendProduct() {
   const [recommendedProduct, setRecommendedProduct] = useState([]);
 
   const fetchproduct = async () => {
-    const { data } = await axios.get(
-      `https://kimchi-json-server.vercel.app/kimchis`,
-    );
+    const { data } = await axios.get(`${SERVER_ADDRESS}/kimchis`);
     // const categorykimchis = data.filter((k)=>{k.category === '배추과김치'} )
 
     // 1. 데이터를 불러온다. : data

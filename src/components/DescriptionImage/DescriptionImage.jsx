@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import { SERVER_ADDRESS } from '../../utils/constant';
 
 export default function Description() {
   const { id } = useParams();
@@ -8,9 +9,7 @@ export default function Description() {
 
   // db.json에서 상품설명 이미지 경로 받아오는 함수
   const getImgPath = async () => {
-    const response = await axios.get(
-      `https://kimchi-json-server.vercel.app/kimchis/${id}`,
-    );
+    const response = await axios.get(`${SERVER_ADDRESS}/kimchis/${id}`);
     const data = response.data['detail-image'];
     setImgPath(data);
   };
