@@ -31,7 +31,7 @@ const StyledContainer = styled.div`
     transform: scale(1.2);
   }
   .textBalloon {
-    width: 80px;
+    width: 70px;
     text-align: center;
     position: absolute;
     margin-top: -100px;
