@@ -8,7 +8,9 @@ export default function Description() {
 
   // db.json에서 상품설명 이미지 경로 받아오는 함수
   const getImgPath = async () => {
-    const response = await axios.get(`http://localhost:3001/kimchis/${id}`);
+    const response = await axios.get(
+      `https://kimchi-json-server.vercel.app/kimchis/${id}`,
+    );
     const data = response.data['detail-image'];
     setImgPath(data);
   };
