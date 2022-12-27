@@ -1,1 +1,1 @@
-export const SERVER_ADDRESS = 'https://glorious-scratch-cousin.glitch.me';
+export const SERVER_ADDRESS = process.env.API_URL;
