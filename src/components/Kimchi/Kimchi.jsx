@@ -63,9 +63,9 @@ export default function Kimchi({ k }) {
             objectFit: 'cover',
           }}
           alt="kimchi"
-          onClick={() => {
+          onClick={(e) => {
             navigate(`/kimchis/${k.id}/description`);
-            window.location.reload();
+            // window.location.reload();
           }}
         />
 
@@ -73,7 +73,6 @@ export default function Kimchi({ k }) {
           <Icon
             onClick={() => {
               navigate('/cart');
-              window.location.reload();
             }}
           >
             <BsCart3

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 //import { useNavigate } from 'react-router-dom';
 import { SlBasket } from 'react-icons/sl';
 //import { CiCircleCheck } from 'react-icons/ci';
@@ -45,6 +45,11 @@ function Data() {
 export default function Cart() {
   // const navigate = useNavigate();
   // navigate(``)
+
+  useEffect(() => {
+    // 페이지 이동 시 최상단으로 스크롤
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div style={thisPage}>

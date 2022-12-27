@@ -32,6 +32,8 @@ const productDetailSlice = createSlice({
   initialState, // 초기상태값
   reducers: {
     addNumber: (state, action) => {
+      const { price, number } = action.payload;
+      console.log(price, number);
       state.number += 1;
       state.product.sum += action.payload;
     },

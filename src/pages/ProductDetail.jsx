@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import { Outlet, useLocation, useNavigate, useParams } from 'react-router-dom';
+import { Outlet, useParams, useNavigate } from 'react-router-dom';
 import DetailMenus from '../components/DetailMenus/DetailMenus';
-import Button from '../components/Button/Button';
+// import Button from '../components/Button/Button';
 import {
   addNumber,
   minusNumber,
@@ -14,8 +14,6 @@ import KimchiRecommend from '../components/KimchiRecommend/KimchiRecommend';
 
 export default function ProductDetail() {
   const { id } = useParams();
-  const location = useLocation();
-  const currentPath = location.pathname;
   const navigate = useNavigate();
 
   const { price, image, name, description, sum } = useSelector(
@@ -38,14 +36,17 @@ export default function ProductDetail() {
     dispatch(addProduct({ ...object }));
   };
 
-  // /kimchis/:id 경로로 들어오면 description 페이지로 자동 이동
   useEffect(() => {
     getData();
-    console.log(currentPath);
-    if (currentPath === `/kimchis/${id}` || currentPath === `/kimchis/${id}/`) {
-      navigate(`/kimchis/${id}/description`, { replace: true });
+    // 페이지 이동 시 최상단으로 스크롤
+    window.scrollTo(0, 0);
+  }, [id]);
+
+  const onClickHandler = () => {
+    if (window.confirm('장바구니로 이동하시겠습니까??')) {
+      navigate('/cart');
     }
-  }, []);
+  };
 
   return (
     <>
@@ -103,22 +104,24 @@ export default function ProductDetail() {
                     }}
                   >
                     <div>
-                      <button onClick={() => dispatch(minusNumber(price))}>
-                        {' '}
-                        {/* 제품의 고유 가격 넣기*/}-
+                      <button
+                        style={{}}
+                        onClick={() => dispatch(minusNumber(price))}
+                        disabled={number <= 1 ? true : false}
+                      >
+                        -
                       </button>
-                      <span>{number}</span> {/* state에서 가져온 합 가격 넣기*/}
+                      <span>{number}</span>
                       <button onClick={() => dispatch(addNumber(price))}>
-                        {' '}
-                        {/* 제품의 고유 가격 넣기*/}+
+                        +
                       </button>
-                      {sum}
+                      <span>{sum}</span>
                     </div>
                     {/* <p>??</p> */}
                   </div>
                 </div>
               </div>
-              <Button>장바구니 담기</Button>
+              <button onClick={onClickHandler}>장바구니 담기</button>
             </div>
           </StyleDetailWrapItems>
         </StyleDetailWrap>
