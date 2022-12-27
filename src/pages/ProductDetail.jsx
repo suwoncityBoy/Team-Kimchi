@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { Outlet, useParams, useNavigate } from 'react-router-dom';
 import DetailMenus from '../components/DetailMenus/DetailMenus';
+import { addAtDetail } from '../redux/modules/cartSlice';
 import Button from '../components/Button/Button';
 import {
   addNumber,
@@ -48,6 +49,15 @@ export default function ProductDetail() {
   }, [id]);
 
   const onClickHandler = () => {
+    const object = {
+      name,
+      image,
+      price, // 초기값
+      sum: price, // 합계
+      description,
+      number: 1,
+    };
+    dispatch(addAtDetail({ ...object }));
     if (window.confirm('장바구니로 이동하시겠습니까??')) {
       navigate('/cart');
     }
