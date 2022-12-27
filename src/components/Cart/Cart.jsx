@@ -1,9 +1,7 @@
-import { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-
-import { popItem, minusPrice, plusPrice } from '../../redux/modules/cartSlice';
-import { changeChecked } from '../../redux/modules/cartSlice';
+import { useNavigate } from 'react-router-dom';
+import { popItem } from '../../redux/modules/cartSlice';
 import styled from 'styled-components';
+import { useDispatch } from 'react-redux';
 // 데이터 카테고리별 컴포넌트
 export function DataList({
   datas, // 장바구니 데이터들
@@ -56,14 +54,14 @@ function Data({
   setStock, // 갯수
   count, // 갯수
 }) {
-  //const dispatch = useDispatch();
-
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const pop = () => {
     if (window.confirm('삭제하시겠습니까?')) {
       alert('삭제되었습니다.');
       removeMonoCheck(index);
-      //dispatch(popItem(data));
-      setAllPay(allPay - data.price);
+      dispatch(popItem(data));
+      setAllPay((prev) => prev - data.price * count);
     } else {
       alert('취소되었습니다.');
       return;
@@ -105,6 +103,7 @@ function Data({
             textAlign: 'left',
             lineHeight: '1.6rem',
           }}
+          onClick={() => navigate(`/kimchis/${data.id}/description`)}
         >
           {data.name}
         </span>
@@ -114,11 +113,18 @@ function Data({
             className="btnMinus"
             disabled={count <= 1 ? true : false}
             onClick={() => {
-              if (count > 1) {
-                // setStock(count - 1);
-                // setAllPay(allPay - data.price);
-                //dispatch(minusPrice(data.price));
-              } else alert('수량은 기본 1개 이상이여야 합니다');
+              // console.log('plus button clicked');
+              if (count === 1) {
+                alert('최소 수량은 1개 입니다');
+              } else {
+                setStock((prev) =>
+                  prev.map((item, idx) => {
+                    if (idx === index) return item - 1;
+                    else return item;
+                  }),
+                );
+                setAllPay(allPay - data.price);
+              }
             }}
             style={{
               cursor: 'pointer',
@@ -130,22 +136,19 @@ function Data({
           <button
             className="btnPlus"
             onClick={() => {
-              setStock((prev) => {
-                prev.map((stockItem, idx) => {
-                  if (idx === index) {
-                    return stockItem + 1;
-                  } else {
-                    return stockItem;
-                  }
-                });
-              });
-              console.log('ssss>>>>>');
-              setAllPay(allPay + data.price);
+              // console.log('plus button clicked');
+              setStock((prev) =>
+                prev.map((item, idx) => {
+                  if (idx === index) return item + 1;
+                  else return item;
+                }),
+              );
+              setAllPay((pay) => pay + data.price);
             }}
           ></button>
         </StyledAmountSelect>
-        {/* 주문한 상품의 최종 금액 */}
-        {/* <span style={{ marginRight: '1%' }}>{data.price * }</span> */}
+        주문한 상품의 최종 금액
+        <span style={{ marginRight: '1%' }}>{data.price * count}</span>
         <StyledWrap>
           <button className="btnMultiply" onClick={pop}>
             x

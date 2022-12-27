@@ -70,6 +70,7 @@ export default function Kimchi({ k }) {
           <Icon
             onClick={() => {
               k.checked = true;
+              k.number = 1;
               dispatch(addItem(k));
               navigate('/cart');
             }}

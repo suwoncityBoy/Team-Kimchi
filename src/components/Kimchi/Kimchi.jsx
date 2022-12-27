@@ -39,7 +39,11 @@ export default function Kimchi({ k }) {
 
   const toCart = () => {
     k.checked = true;
+    k.number = 1;
     dispatch(addItem(k));
+    if (window.confirm('장바구니로 이동 하시겠습니까?')) {
+      navigate('/cart');
+    }
   };
 
   return (
@@ -72,11 +76,7 @@ export default function Kimchi({ k }) {
         )}
 
         {isHovering ? (
-          <Icon
-            onClick={() => {
-              navigate('/cart');
-            }}
-          >
+          <Icon onClick={toCart}>
             <BsCart3
               className="icon"
               style={{
@@ -84,7 +84,6 @@ export default function Kimchi({ k }) {
                 width: '1.4rem',
                 height: '1.4rem',
               }}
-              onClick={toCart}
             />
           </Icon>
         ) : (
