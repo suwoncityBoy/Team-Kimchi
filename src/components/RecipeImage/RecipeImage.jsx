@@ -25,6 +25,7 @@ export default function Recipe() {
         width: '100%',
         maxWidth: '1010px',
         boxSizing: 'border-box',
+        minHeight: '1000px',
       }}
       alt="img"
     />
