@@ -64,11 +64,11 @@ export default function ReviewContainer() {
       content,
       date: getDate(),
     };
-    await axios.post('http://localhost:3001/reviews', data);
+    await axios.post('https://kimchi-json-server.vercel.app/reviews', data);
 
     // review 데이터 GET -> state 업데이트
     const response = await axios.get(
-      `http://localhost:3001/reviews?kimchiId=${kimchiId}`,
+      `https://kimchi-json-server.vercel.app/reviews?kimchiId=${kimchiId}`,
     );
     setReviewData(response.data);
 
@@ -84,7 +84,7 @@ export default function ReviewContainer() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3001/reviews?kimchiId=${kimchiId}`)
+      .get(`https://kimchi-json-server.vercel.app/reviews?kimchiId=${kimchiId}`)
       .then((response) => setReviewData(response.data));
   }, [kimchiId]);
 

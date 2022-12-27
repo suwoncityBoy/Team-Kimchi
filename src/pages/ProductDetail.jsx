@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import { Outlet, useParams } from 'react-router-dom';
+import { Outlet, useParams, useNavigate } from 'react-router-dom';
 import DetailMenus from '../components/DetailMenus/DetailMenus';
 import Button from '../components/Button/Button';
 import {
@@ -15,6 +15,7 @@ import RecommendProduct from '../components/RecommendProduct/RecommendProduct';
 
 export default function ProductDetail() {
   const { id } = useParams();
+  const navigate = useNavigate();
 
   const { price, image, name, description, sum, number } = useSelector(
     (state) => state.productDetail.product,
@@ -23,7 +24,9 @@ export default function ProductDetail() {
   const dispatch = useDispatch();
 
   const getData = async () => {
-    const response = await axios.get(`http://localhost:3001/kimchis/${id}`);
+    const response = await axios.get(
+      `https://kimchi-json-server.vercel.app/kimchis/${id}`,
+    );
     const { name, image, price, description } = response.data; // price
     const object = {
       name,
@@ -45,6 +48,12 @@ export default function ProductDetail() {
     window.scrollTo(0, 0);
   }, [id]);
 
+  const onClickHandler = () => {
+    if (window.confirm('장바구니로 이동하시겠습니까??')) {
+      navigate('/cart');
+    }
+  };
+
   return (
     <>
       <StyleContainer>
@@ -53,7 +62,7 @@ export default function ProductDetail() {
             <StyleImageWrap>
               <img
                 src={process.env.PUBLIC_URL + image}
-                style={{ Width: '100%', height: '100%' }}
+                style={{ width: '100%', borderRadius: '8px' }}
                 alt="img"
               ></img>
             </StyleImageWrap>
@@ -61,24 +70,26 @@ export default function ProductDetail() {
             <div
               style={{
                 position: 'relative',
-                // backgroundColor: 'yellow',
-                height: '90%',
                 width: '50%',
+                height: '100%',
               }}
             >
               <div>
-                <div style={{ lineHeight: '2.2', marginTop: '10px' }}>
-                  <p style={{ fontSize: '40px' }}>{name}</p>
-                  <p style={{ fontSize: '25px', color: '#979797' }}>
+                <div style={{ lineHeight: '3', marginTop: '10px' }}>
+                  <p style={{ fontSize: '24px' }}>{name}</p>
+                  <p style={{ fontSize: '18px', color: '#979797' }}>
                     {description}
                   </p>
-                  <h1 style={{ fontSize: '40px' }}>{price}원</h1>
+                  <h1 style={{ fontSize: '30px', fontWeight: '700' }}>
+                    {price}
+                    <span style={{ fontSize: '18px' }}> 원</span>
+                  </h1>
                 </div>
 
                 <div style={{ display: 'flex', marginTop: '50px' }}>
                   <p
                     style={{
-                      fontSize: '25px',
+                      fontSize: '24px',
                       width: '20%',
                       paddingTop: '20px',
                     }}
@@ -87,6 +98,7 @@ export default function ProductDetail() {
                   </p>
                   <div
                     style={{
+                      borderRadius: '8px',
                       border: 'solid 1px #000',
                       padding: '20px',
                       height: '100px',
@@ -98,6 +110,7 @@ export default function ProductDetail() {
                       style={{
                         display: 'flex',
                         justifyContent: 'space-between',
+                        alignItems: 'center',
                         marginTop: '50px',
                       }}
                     >
@@ -119,13 +132,21 @@ export default function ProductDetail() {
                           {' '}
                           {/* 제품의 고유 가격 넣기*/}
                         </button>
-                        <div className="totalPrice">{sum}원</div>
                       </StyledAmountSelect>
+                      <div
+                        style={{
+                          fontSize: '20px',
+                          fontWeight: '700',
+                        }}
+                        className="totalPrice"
+                      >
+                        {sum}
+                        <span style={{ fontSize: '14px' }}> 원</span>
+                      </div>
                       {/* <p>??</p> */}
                     </div>
                   </div>
                 </div>
-                <Button>장바구니 담기</Button>
               </div>
             </div>
           </StyleDetailWrapItems>
@@ -149,6 +170,7 @@ const StyleContainer = styled.div`
 `;
 
 const StyleDetailWrap = styled.div`
+  min-width: 1200px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -158,7 +180,7 @@ const StyleDetailWrapItems = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
-  gap: 30px;
+  gap: 40px;
   align-items: center;
 `;
 
