@@ -102,6 +102,7 @@ export default function ProductDetail() {
                       padding: '20px',
                       height: '100px',
                       width: '80%',
+                      boxSizing: 'border-box',
                     }}
                   >
                     <p>{name}</p>
@@ -110,7 +111,7 @@ export default function ProductDetail() {
                         display: 'flex',
                         justifyContent: 'space-between',
                         alignItems: 'center',
-                        marginTop: '65px',
+                        marginTop: '15px',
                       }}
                     >
                       <StyledAmountSelect>
