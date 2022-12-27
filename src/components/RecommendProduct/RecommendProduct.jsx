@@ -21,7 +21,6 @@ export default function RecommendProduct() {
       let randomNum = Math.floor(Math.random() * allKimchis.length);
       Randomkimchi.push(allKimchis[randomNum]);
       allKimchis.splice(randomNum, 1);
-      console.log('random', randomNum);
     }
     setRecommendedProduct(Randomkimchi);
   };
