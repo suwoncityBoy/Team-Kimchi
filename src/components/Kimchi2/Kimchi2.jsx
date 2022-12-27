@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import { BsCart3 } from 'react-icons/bs';
 import { useNavigate } from 'react-router';
 import styled from 'styled-components';
-
+import { useDispatch } from 'react-redux';
+import { addItem } from '../../redux/modules/cartSlice';
 export default function Kimchi({ k }) {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [isHovering, setIsHovering] = useState(0);
 
   const Icon = styled.div`
@@ -61,15 +63,15 @@ export default function Kimchi({ k }) {
           alt="kimchi"
           onClick={() => {
             navigate(`/kimchis/${k.id}/description`);
-            window.location.reload();
           }}
         />
 
         {isHovering ? (
           <Icon
             onClick={() => {
+              k.checked = true;
+              dispatch(addItem(k));
               navigate('/cart');
-              window.location.reload();
             }}
           >
             <BsCart3

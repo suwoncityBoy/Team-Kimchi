@@ -1,21 +1,41 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+
 import { popItem, minusPrice, plusPrice } from '../../redux/modules/cartSlice';
 import { changeChecked } from '../../redux/modules/cartSlice';
 
 // 데이터 카테고리별 컴포넌트
-export function DataList({ datas, checkHandler }) {
+export function DataList({
+  datas, // 장바구니 데이터들
+  checkHandler, //체크박스
+  checkedState, //체크박스
+  setAllPay, // 총 금액
+  allPay, // 총 금액
+  removeMonoCheck, // 데이터 삭제
+  setStock, // 갯수
+  stock, // 갯수
+}) {
   if (datas.length) {
     return (
       <>
         <div style={{ display: 'flex', alignItems: 'center' }}>
           <img src={`${process.env.PUBLIC_URL}/images/cabbage.png`}></img>
-          <span>{datas[0].catergory}</span>
+          <span>주문목록</span>
         </div>
-        {datas.map((kimchi) => {
+        {datas.map((kimchi, index) => {
           return (
             <div>
-              <Data data={kimchi} checkHandler={checkHandler} />
+              <Data
+                data={kimchi} // 데이터
+                checkHandler={(index) => checkHandler(index)}
+                index={index}
+                checkedState={checkedState}
+                setAllPay={setAllPay}
+                allPay={allPay}
+                removeMonoCheck={(number) => removeMonoCheck(number)}
+                setStock={setStock}
+                count={stock[index]}
+              />
             </div>
           );
         })}
@@ -25,116 +45,100 @@ export function DataList({ datas, checkHandler }) {
 }
 
 // 데이터 카테고리에 들어가는 데이터
-function Data({ data }) {
-  const [stock, setStock] = useState(1);
-
-  const dispatch = useDispatch();
+function Data({
+  data, // 김치 데이터
+  index, // 장바구니 리스트 인덱스
+  checkHandler, // 체크박스 핸들러
+  checkedState, // 체크박스 state
+  setAllPay, // 전체 금액
+  allPay, // 전체 금액
+  removeMonoCheck, // 데이터 삭제 버튼
+  setStock, // 갯수
+  count, // 갯수
+}) {
+  //const dispatch = useDispatch();
 
   const pop = () => {
-    dispatch(popItem(data));
-  };
-  return (
-    <li
-      style={{
-        display: 'flex',
-        webkitBoxAlign: 'center',
-        alignItems: 'center',
-        position: 'relative',
-        padding: '40px',
-        margin: 'auto',
-        borderBottom: '1px solid grey',
-        width: '345px',
-      }}
-    >
-      {/* 체크 박스*/}
-      <CheckBox data={data} />
-      <img
-        src={data.image}
-        style={{ width: '60px', height: '78px', marginRight: '5%' }}
-      />
-      {/* 상품 이름*/}
-      <span style={{ width: '345px' }}>{data.name}</span>
-      {/* 주문한 상품 갯수 */}
-      <div style={{ marginRight: '5%' }}>
-        <button
-          onClick={() => {
-            if (stock > 1) {
-              setStock(stock - 1);
-              dispatch(minusPrice(data.price, stock));
-            } else alert('수량은 기본 1개 이상이여야 합니다');
-          }}
-        >
-          -
-        </button>
-        <span>{stock}</span>
-        <button
-          onClick={() => {
-            setStock(stock + 1);
-            dispatch(plusPrice(data.price));
-          }}
-        >
-          +
-        </button>
-      </div>
-      {/* 주문한 상품의 최종 금액 */}
-      <span style={{ marginRight: '1%' }}>{data.price * stock}</span>
-      <button onClick={pop}>x</button>
-    </li>
-  );
-}
-
-function CheckBox({ data }) {
-  const { inCart } = useSelector((state) => state.user); // 장바구니 데이터
-  const dispatch = useDispatch();
-  // 카트 페이지랑 겹침 나중에 합치기
-  const checkHandler = (event) => {
-    const checkData = event.target.value;
-    for (let i in inCart) {
-      if (inCart[i].id === checkData.id) {
-        inCart[i].checked = !inCart[i].checked;
-        dispatch(changeChecked([...inCart]));
-      }
-    }
+    removeMonoCheck(index);
+    //dispatch(popItem(data));
+    setAllPay(allPay - data.price);
   };
 
   return (
-    <label style={{ width: '24px', height: '24px', marginRight: '2%' }}>
-      <input
-        type="checkbox"
-        checked={data.checked}
-        value={data}
-        key={data.id}
-        onChange={(e) => checkHandler(e)}
-      />
-    </label>
+    <div style={{ display: `${checkedState[index].active}` }}>
+      <li
+        style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          webkitBoxAlign: 'center',
+          alignItems: 'center',
+          position: 'relative',
+          padding: '40px',
+          margin: 'auto',
+          borderBottom: '1px solid grey',
+          width: '345px',
+        }}
+      >
+        {/* 체크 박스*/}
+        <label style={{ width: '24px', height: '24px', marginRight: '2%' }}>
+          <input
+            type="checkbox"
+            checked={checkedState[index].checked}
+            key={index}
+            onChange={() => checkHandler(index)}
+          />
+        </label>
+        <img
+          src={data.image}
+          style={{ width: '60px', height: '78px', marginRight: '5%' }}
+        />
+        {/* 상품 이름*/}
+        <span
+          style={{
+            width: '345px',
+            width: '345px',
+            textAlign: 'left',
+            lineHeight: '1.6rem',
+          }}
+        >
+          {data.name}
+        </span>
+        {/* 주문한 상품 갯수 */}
+        <div style={{ marginRight: '5%' }}>
+          <button
+            onClick={() => {
+              if (count > 1) {
+                // setStock(count - 1);
+                // setAllPay(allPay - data.price);
+                //dispatch(minusPrice(data.price));
+              } else alert('수량은 기본 1개 이상이여야 합니다');
+            }}
+          >
+            -
+          </button>
+          <span>{count}</span>
+          <button
+            onClick={() => {
+              setStock((prev) => {
+                prev.map((stockItem, idx) => {
+                  if (idx === index) {
+                    return stockItem + 1;
+                  } else {
+                    return stockItem;
+                  }
+                });
+              });
+              console.log('ssss>>>>>');
+              setAllPay(allPay + data.price);
+            }}
+          >
+            +
+          </button>
+        </div>
+        {/* 주문한 상품의 최종 금액 */}
+        {/* <span style={{ marginRight: '1%' }}>{data.price * }</span> */}
+        <button onClick={pop}>x</button>
+      </li>
+    </div>
   );
 }
-
-// export function CheckBoxList({datas}) {
-
-//   const [isCheckAll, setIsCheckAll] = useState(false); // 전체체크 상태 관리
-//   const [isChecking, setIsChecking] = useState(false); // 체크한 항목이 하나라도 있을경우를 관리
-//   const [arrChecked, setArrChecked] = useState(datas); // 체크된 항목을 관리
-
-//   const changeAllCheck = (event) => {
-//     if (event.target.checked) {
-//       setIsCheckAll(true); //전체 체크
-//     } else {
-//       setIsChecking(false);
-//       setArrChecked([]);
-//     }
-//     const checkingCheckedBos = () => {
-//       setIsCheckAll(false);
-//       setIsChecking(true);
-//       setArrChecked([]);
-//     };
-//   };
-//   return (
-//     <input
-//       type="checkbox"
-//       style={choiceRightMargin10}
-//       //onClick={pop}
-//       checked
-//     />
-//   );
-// }
