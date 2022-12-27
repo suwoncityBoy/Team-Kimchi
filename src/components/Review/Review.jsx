@@ -1,6 +1,8 @@
 import axios from 'axios';
 import React, { useState } from 'react';
+import { SERVER_ADDRESS } from '../../utils/constant';
 import { checkPassword } from '../../utils/validate';
+import EditForm from '../EditForm/EditForm';
 
 export default function Review({
   id,
@@ -18,9 +20,7 @@ export default function Review({
     // 비밀번호 유효성 검사
     if (!checkPassword(input)) return false;
     // 서버에 비밀번호 맞는지 요청
-    const response = await axios.get(
-      `https://kimchi-json-server.vercel.app/reviews?id=${id}`,
-    );
+    const response = await axios.get(`${SERVER_ADDRESS}/reviews?id=${id}`);
     const password = response.data[0].password;
     return password === input ? true : false;
   };
@@ -42,14 +42,14 @@ export default function Review({
     e.preventDefault();
 
     // 서버에 데이터 PATCH
-    await axios.patch(`https://kimchi-json-server.vercel.app/reviews/${id}`, {
+    await axios.patch(`${SERVER_ADDRESS}/reviews/${id}`, {
       content: editContent,
     });
     alert('수정이 완료되었습니다.');
 
     // 데이터 다시 GET, state 업데이트
     const response = await axios.get(
-      `https://kimchi-json-server.vercel.app/reviews?kimchiId=${kimchiId}`,
+      `${SERVER_ADDRESS}/reviews?kimchiId=${kimchiId}`,
     );
     setReviewData(response.data);
 
@@ -68,10 +68,10 @@ export default function Review({
 
     if (window.confirm('정말 삭제하시겠습니까??')) {
       // 서버에 데이터 DELETE
-      await axios.delete(`https://kimchi-json-server.vercel.app/reviews/${id}`);
+      await axios.delete(`${SERVER_ADDRESS}/reviews/${id}`);
       // 데이터 다시 GET, state 업데이트
       const response = await axios.get(
-        `https://kimchi-json-server.vercel.app/reviews?kimchiId=${kimchiId}`,
+        `${SERVER_ADDRESS}/reviews?kimchiId=${kimchiId}`,
       );
       setReviewData(response.data);
     }
@@ -86,22 +86,11 @@ export default function Review({
       <div style={nicknameStyle}>{nickname}</div>
       {isTextareaVisible ? (
         // 수정 상태에서는 form 보여주기
-        <form
+        <EditForm
           onSubmit={handleEditSubmit}
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'flex-end',
-          }}
-        >
-          <textarea
-            style={textareaStyle}
-            value={editContent}
-            onChange={(e) => setEditContent(e.target.value)}
-            autoFocus={true}
-          ></textarea>
-          <button style={btnStyle}>확인</button>
-        </form>
+          editContent={editContent}
+          onChange={(e) => setEditContent(e.target.value)}
+        />
       ) : (
         // 수정 상태가 아닐 때는 내용 보여주기
         <div style={contentStyle}>{content}</div>
@@ -157,16 +146,6 @@ const contentStyle = {
   textAlign: 'left',
 };
 
-const textareaStyle = {
-  width: '600px',
-  height: '100px',
-  resize: 'none',
-  border: '1px solid #c2c2c2',
-  borderRadius: '4px',
-  fontSize: '16px',
-  fontFamily: 'normal',
-};
-
 const dateStyle = {
   width: '150px',
   color: '#828282',
@@ -176,17 +155,6 @@ const rightStyle = {
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
-};
-
-const btnStyle = {
-  fontSize: '14px',
-  border: '1px solid grey',
-  borderRadius: '4px',
-  background: 'transparent',
-  padding: '4px 8px ',
-  margin: '10px 0',
-  cursor: 'pointer',
-  width: '50px',
 };
 
 const hoverBtnStyle = {

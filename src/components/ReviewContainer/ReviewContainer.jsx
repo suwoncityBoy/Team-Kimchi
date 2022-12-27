@@ -8,6 +8,10 @@ import {
   checkPassword,
 } from '../../utils/validate';
 import Review from '../Review/Review';
+import Input from '../Input/Input';
+import TextareaForm from '../TextareaForm/TextareaForm';
+import * as styled from './ReviewContainer.style';
+import { SERVER_ADDRESS } from '../../utils/constant';
 
 export default function ReviewContainer() {
   const { id: kimchiId } = useParams();
@@ -64,11 +68,11 @@ export default function ReviewContainer() {
       content,
       date: getDate(),
     };
-    await axios.post('https://kimchi-json-server.vercel.app/reviews', data);
+    await axios.post(`${SERVER_ADDRESS}/reviews`, data);
 
     // review 데이터 GET -> state 업데이트
     const response = await axios.get(
-      `https://kimchi-json-server.vercel.app/reviews?kimchiId=${kimchiId}`,
+      `${SERVER_ADDRESS}/reviews?kimchiId=${kimchiId}`,
     );
     setReviewData(response.data);
 
@@ -84,56 +88,40 @@ export default function ReviewContainer() {
 
   useEffect(() => {
     axios
-      .get(`https://kimchi-json-server.vercel.app/reviews?kimchiId=${kimchiId}`)
+      .get(`${SERVER_ADDRESS}/reviews?kimchiId=${kimchiId}`)
       .then((response) => setReviewData(response.data));
   }, [kimchiId]);
 
   return (
-    <div style={containerStyle}>
+    <styled.Container>
       {/* 리뷰 입력 폼 */}
       <form onSubmit={handleSubmit} style={formStyle}>
         <div style={{ textAlign: 'left', marginBottom: '30px' }}>
-          <label>
-            닉네임
-            <input
-              type="text"
-              value={nickname}
-              onChange={(e) => {
-                setNickname(e.target.value);
-              }}
-              maxLength="7"
-              style={inputStyle}
-            />
-          </label>
-          <label>
-            비밀번호
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => {
-                setPassword(e.target.value);
-              }}
-              maxLength="4"
-              style={inputStyle}
-            />
-          </label>
+          <Input
+            label="닉네임"
+            type="text"
+            value={nickname}
+            onChange={(e) => setNickname(e.target.value)}
+            maxLength="7"
+          />
+          <Input
+            label="비밀번호"
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            maxLength="4"
+          />
           {/* 경고 문구 */}
           {alertDisplay && <p style={alertStyle}>{alertText}</p>}
         </div>
-        <label style={contentLabelStyle}>
-          자세한 후기를 들려주세요
-          <textarea
-            type="text"
-            value={content}
-            onChange={(e) => {
-              setContent(e.target.value);
-            }}
-            // required
-            minLength="10"
-            maxLength="300"
-            style={textareaStyle}
-          />
-        </label>
+
+        <TextareaForm
+          label="자세한 후기를 들려주세요"
+          content={content}
+          onChange={(e) => {
+            setContent(e.target.value);
+          }}
+        />
         <div
           style={{
             display: 'flex',
@@ -161,48 +149,13 @@ export default function ReviewContainer() {
           ))}
         </ul>
       </div>
-    </div>
+    </styled.Container>
   );
 }
-
-const containerStyle = {
-  maxWidth: '1010px',
-  margin: 'auto',
-  display: 'flex',
-  padding: '10px',
-  flexDirection: 'column',
-  minHeight: '600px',
-};
 
 const formStyle = {
   width: '100%',
   marginBottom: '20px',
-};
-
-const inputStyle = {
-  margin: '0 16px',
-  height: '24px',
-  width: '200px',
-  border: '1px solid #c2c2c2',
-  borderRadius: '4px',
-  fontFamily: 'normal',
-  fontSize: '16px',
-};
-
-const contentLabelStyle = {
-  display: 'flex',
-  flexDirection: 'column',
-  textAlign: 'left',
-};
-
-const textareaStyle = {
-  fontSize: '16px',
-  resize: 'none',
-  margin: '16px 0',
-  height: '200px',
-  border: '1px solid #c2c2c2',
-  borderRadius: '4px',
-  fontFamily: 'normal',
 };
 
 const alertStyle = {
