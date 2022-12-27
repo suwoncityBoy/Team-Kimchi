@@ -32,9 +32,14 @@ const cartSlice = createSlice({
       // state.totalSum += action.payload.price;
     },
     popItem: (state, action) => {
-      state.inCart = [
-        ...state.inCart.filter((item) => item.id !== action.payload.id),
-      ];
+      for (let i in state.inCart) {
+        if (state.inCart[i].id === action.payload.id) {
+          state.inCart[i].checked = false;
+        }
+      }
+      // state.inCart = [
+      //   ...state.inCart.filter((item) => item.id !== action.payload.id),
+      // ];
 
       state.totalSum -= action.payload.stock * action.payload.price;
     },

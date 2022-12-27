@@ -64,9 +64,17 @@ export default function Cart() {
     }, []);
     setCheckedState(array);
 
-    event.target.checked === true
-      ? setAllPay((prev) => prev + TotalPrice)
-      : setAllPay(0);
+    const total = inCart.reduce((total, item, index) => {
+      if (event.target.checked === false) {
+        return total;
+      } else {
+        return total + item.price * stock[index];
+      }
+    }, 0);
+    setAllPay(total);
+    // event.target.checked === true
+    //   ? setAllPay((prev) => prev + TotalPrice)
+    //   : setAllPay(0);
   };
 
   // 전체 삭제 버튼

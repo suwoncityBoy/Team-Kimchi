@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
-import { Location } from 'react-router-dom';
+import { popItem } from '../../redux/modules/cartSlice';
 import styled from 'styled-components';
+import { useDispatch } from 'react-redux';
 // 데이터 카테고리별 컴포넌트
 export function DataList({
   datas, // 장바구니 데이터들
@@ -53,12 +54,13 @@ function Data({
   setStock, // 갯수
   count, // 갯수
 }) {
-  //const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const pop = () => {
     if (window.confirm('삭제하시겠습니까?')) {
       alert('삭제되었습니다.');
       removeMonoCheck(index);
+      dispatch(popItem(data));
       setAllPay((prev) => prev - data.price * count);
     } else {
       alert('취소되었습니다.');
@@ -121,7 +123,7 @@ function Data({
                     else return item;
                   }),
                 );
-                setAllPay((pay) => pay - data.price);
+                setAllPay(allPay - data.price);
               }
             }}
             style={{
