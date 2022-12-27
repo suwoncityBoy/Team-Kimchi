@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import { Outlet, useLocation, useNavigate, useParams } from 'react-router-dom';
+import { Outlet, useParams } from 'react-router-dom';
 import DetailMenus from '../components/DetailMenus/DetailMenus';
 import Button from '../components/Button/Button';
 import {
@@ -14,16 +14,11 @@ import KimchiRecommend from '../components/KimchiRecommend/KimchiRecommend';
 
 export default function ProductDetail() {
   const { id } = useParams();
-  const location = useLocation();
-  const currentPath = location.pathname;
-  const navigate = useNavigate();
 
   const { price, image, name, description, sum } = useSelector(
     (state) => state.productDetail.product,
   );
   const product = useSelector((state) => state.productDetail.product);
-
-  console.log(product);
 
   const { number } = useSelector((state) => state.productDetail);
   const dispatch = useDispatch();
@@ -41,14 +36,11 @@ export default function ProductDetail() {
     dispatch(addProduct({ ...object }));
   };
 
-  // /kimchis/:id 경로로 들어오면 description 페이지로 자동 이동
   useEffect(() => {
     getData();
-    console.log(currentPath);
-    if (currentPath === `/kimchis/${id}` || currentPath === `/kimchis/${id}/`) {
-      navigate(`/kimchis/${id}/description`, { replace: true });
-    }
-  }, []);
+    // 페이지 이동 시 최상단으로 스크롤
+    window.scrollTo(0, 0);
+  }, [id]);
 
   return (
     <>
