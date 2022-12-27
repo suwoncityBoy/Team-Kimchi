@@ -26,7 +26,14 @@ function Data() {
         style={{ width: '60px', height: '78px', marginRight: '5%' }}
       />
       {/* 상품 이름*/}
-      <span style={{ marginRight: '20%' }}>
+      <span
+        style={{
+          marginRight: '20%',
+          width: '345px',
+          textAlign: 'left',
+          lineHeight: '1.6rem',
+        }}
+      >
         [비비고] 완죤 맛있뉸, 아삭 그자체 배추김치
       </span>
       {/* 주문한 상품 갯수 */}
