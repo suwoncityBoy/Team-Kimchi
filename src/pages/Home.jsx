@@ -9,14 +9,13 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import './Slide.css';
 import Kimchi2 from '../components/Kimchi2/Kimchi2';
+import { SERVER_ADDRESS } from '../utils/constant';
 
 export default function Home() {
   const [slide, setSlide] = useState([]);
 
   const fetchSlide = async () => {
-    const { data } = await axios.get(
-      'https://kimchi-json-server.vercel.app/kimchis',
-    );
+    const { data } = await axios.get(`${SERVER_ADDRESS}/kimchis`);
     setSlide(data);
     // 서버로부터 fetching한 데이터를 useState의 state로 set 합니다.
   };

@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react';
+import { SERVER_ADDRESS } from '../../utils/constant';
 import { checkPassword } from '../../utils/validate';
 
 export default function Review({
@@ -18,9 +19,7 @@ export default function Review({
     // 비밀번호 유효성 검사
     if (!checkPassword(input)) return false;
     // 서버에 비밀번호 맞는지 요청
-    const response = await axios.get(
-      `https://kimchi-json-server.vercel.app/reviews?id=${id}`,
-    );
+    const response = await axios.get(`${SERVER_ADDRESS}/reviews?id=${id}`);
     const password = response.data[0].password;
     return password === input ? true : false;
   };
@@ -42,14 +41,14 @@ export default function Review({
     e.preventDefault();
 
     // 서버에 데이터 PATCH
-    await axios.patch(`https://kimchi-json-server.vercel.app/reviews/${id}`, {
+    await axios.patch(`${SERVER_ADDRESS}/reviews/${id}`, {
       content: editContent,
     });
     alert('수정이 완료되었습니다.');
 
     // 데이터 다시 GET, state 업데이트
     const response = await axios.get(
-      `https://kimchi-json-server.vercel.app/reviews?kimchiId=${kimchiId}`,
+      `${SERVER_ADDRESS}/reviews?kimchiId=${kimchiId}`,
     );
     setReviewData(response.data);
 
@@ -68,10 +67,10 @@ export default function Review({
 
     if (window.confirm('정말 삭제하시겠습니까??')) {
       // 서버에 데이터 DELETE
-      await axios.delete(`https://kimchi-json-server.vercel.app/reviews/${id}`);
+      await axios.delete(`${SERVER_ADDRESS}/reviews/${id}`);
       // 데이터 다시 GET, state 업데이트
       const response = await axios.get(
-        `https://kimchi-json-server.vercel.app/reviews?kimchiId=${kimchiId}`,
+        `${SERVER_ADDRESS}/reviews?kimchiId=${kimchiId}`,
       );
       setReviewData(response.data);
     }
