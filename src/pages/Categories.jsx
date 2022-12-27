@@ -4,6 +4,7 @@ import { useLocation, useParams } from 'react-router';
 import { Link } from 'react-router-dom';
 import CategoryTitle from '../components/CategoryTitle/CategoryTitle';
 import Kimchi from '../components/Kimchi/Kimchi';
+import { SERVER_ADDRESS } from '../utils/constant';
 import './Categories-style.css';
 
 export default function Categories() {
@@ -114,9 +115,7 @@ export default function Categories() {
   ];
 
   const fetchKimchi = async () => {
-    const { data } = await axios.get(
-      'https://kimchi-json-server.vercel.app/kimchis',
-    );
+    const { data } = await axios.get(`${SERVER_ADDRESS}/kimchis`);
     console.log('data', data);
     setKimchi(data);
     // 서버로부터 fetching한 데이터를 useState의 state로 set 합니다.
