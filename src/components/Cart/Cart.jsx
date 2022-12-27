@@ -113,10 +113,19 @@ function Data({
                 //dispatch(minusPrice(data.price));
               } else alert('수량은 기본 1개 이상이여야 합니다');
             }}
+            style={{
+              width: '2rem',
+              height: '2rem',
+              fontSize: '1.4rem',
+              backgroundColor: '#d82424',
+              border: 'none',
+              borderRadius: '0.4rem',
+              color: 'white',
+            }}
           >
             -
           </button>
-          <span>{count}</span>
+          <span style={{ margin: '0.6rem' }}>{count}</span>
           <button
             onClick={() => {
               setStock((prev) => {
@@ -131,13 +140,35 @@ function Data({
               console.log('ssss>>>>>');
               setAllPay(allPay + data.price);
             }}
+            style={{
+              width: '2rem',
+              height: '2rem',
+              fontSize: '1.4rem',
+              backgroundColor: '#d82424',
+              border: 'none',
+              borderRadius: '0.4rem',
+              color: 'white',
+            }}
           >
             +
           </button>
         </div>
         {/* 주문한 상품의 최종 금액 */}
         {/* <span style={{ marginRight: '1%' }}>{data.price * }</span> */}
-        <button onClick={pop}>x</button>
+        <button
+          onClick={pop}
+          style={{
+            width: '2rem',
+            height: '2rem',
+            fontSize: '1.4rem',
+            backgroundColor: '#d82424',
+            border: 'none',
+            borderRadius: '0.4rem',
+            color: 'white',
+          }}
+        >
+          x
+        </button>
       </li>
     </div>
   );
