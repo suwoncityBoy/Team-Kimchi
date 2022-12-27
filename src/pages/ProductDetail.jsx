@@ -23,7 +23,9 @@ export default function ProductDetail() {
   const dispatch = useDispatch();
 
   const getData = async () => {
-    const response = await axios.get(`http://localhost:3001/kimchis/${id}`);
+    const response = await axios.get(
+      `https://kimchi-json-server.vercel.app/kimchis/${id}`,
+    );
     const { name, image, price, description } = response.data; // price
     const object = {
       name,

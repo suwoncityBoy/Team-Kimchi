@@ -7,7 +7,7 @@ import axios from 'axios';
 //   // 두번째 인자 : 콜백함수
 //   async (payload, thunkAPI) => {
 //     try {
-//       const data = await axios.get('http://localhost:3001/kimchis');
+//       const data = await axios.get('https://kimchi-json-server.vercel.app/kimchis');
 //       console.log(data);
 //     } catch (error) {
 //       console.log(error);
