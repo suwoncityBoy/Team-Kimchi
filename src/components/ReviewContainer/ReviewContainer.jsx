@@ -1,17 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+
+import { SERVER_ADDRESS } from '../../utils/constant';
 import getDate from '../../utils/getDate';
 import {
   checkContent,
   checkNickname,
   checkPassword,
 } from '../../utils/validate';
+
+import * as styled from './ReviewContainer.style';
+
 import Review from '../Review/Review';
 import Input from '../Input/Input';
-import TextareaForm from '../TextareaForm/TextareaForm';
-import * as styled from './ReviewContainer.style';
-import { SERVER_ADDRESS } from '../../utils/constant';
+import Textarea from '../Textarea/Textarea';
 
 export default function ReviewContainer() {
   const { id: kimchiId } = useParams();
@@ -95,7 +98,7 @@ export default function ReviewContainer() {
   return (
     <styled.Container>
       {/* 리뷰 입력 폼 */}
-      <form onSubmit={handleSubmit} style={formStyle}>
+      <styled.Form onSubmit={handleSubmit}>
         <div style={{ textAlign: 'left', marginBottom: '30px' }}>
           <Input
             label="닉네임"
@@ -112,27 +115,18 @@ export default function ReviewContainer() {
             maxLength="4"
           />
           {/* 경고 문구 */}
-          {alertDisplay && <p style={alertStyle}>{alertText}</p>}
+          {alertDisplay && <styled.Alert>{alertText}</styled.Alert>}
         </div>
 
-        <TextareaForm
+        <Textarea
           label="자세한 후기를 들려주세요"
           content={content}
           onChange={(e) => {
             setContent(e.target.value);
           }}
         />
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'flex-end',
-          }}
-        >
-          <button type="submit" style={btnStyle}>
-            등록하기
-          </button>
-        </div>
-      </form>
+        <styled.Button type="submit">등록하기</styled.Button>
+      </styled.Form>
       {/* 리뷰 리스트 */}
       <div style={{ padding: '10px' }}>
         <ul>
@@ -152,22 +146,3 @@ export default function ReviewContainer() {
     </styled.Container>
   );
 }
-
-const formStyle = {
-  width: '100%',
-  marginBottom: '20px',
-};
-
-const alertStyle = {
-  marginTop: '10px',
-  color: 'red',
-};
-
-const btnStyle = {
-  backgroundColor: '#d82424',
-  padding: '10px 20px',
-  border: 'none',
-  borderRadius: '4px',
-  color: ' white',
-  cursor: 'pointer',
-};

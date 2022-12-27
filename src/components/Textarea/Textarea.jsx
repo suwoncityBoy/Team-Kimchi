@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function TextareaForm({ label, content, onChange }) {
+export default function Textarea({ label, content, onChange }) {
   return (
     <label style={contentLabelStyle}>
       {label}
