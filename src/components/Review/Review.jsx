@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { SERVER_ADDRESS } from '../../utils/constant';
 import { checkPassword } from '../../utils/validate';
+import EditForm from '../EditForm/EditForm';
 
 export default function Review({
   id,
@@ -85,22 +86,11 @@ export default function Review({
       <div style={nicknameStyle}>{nickname}</div>
       {isTextareaVisible ? (
         // 수정 상태에서는 form 보여주기
-        <form
+        <EditForm
           onSubmit={handleEditSubmit}
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'flex-end',
-          }}
-        >
-          <textarea
-            style={textareaStyle}
-            value={editContent}
-            onChange={(e) => setEditContent(e.target.value)}
-            autoFocus={true}
-          ></textarea>
-          <button style={btnStyle}>확인</button>
-        </form>
+          editContent={editContent}
+          onChange={(e) => setEditContent(e.target.value)}
+        />
       ) : (
         // 수정 상태가 아닐 때는 내용 보여주기
         <div style={contentStyle}>{content}</div>
@@ -156,16 +146,6 @@ const contentStyle = {
   textAlign: 'left',
 };
 
-const textareaStyle = {
-  width: '600px',
-  height: '100px',
-  resize: 'none',
-  border: '1px solid #c2c2c2',
-  borderRadius: '4px',
-  fontSize: '16px',
-  fontFamily: 'normal',
-};
-
 const dateStyle = {
   width: '150px',
   color: '#828282',
@@ -175,17 +155,6 @@ const rightStyle = {
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
-};
-
-const btnStyle = {
-  fontSize: '14px',
-  border: '1px solid grey',
-  borderRadius: '4px',
-  background: 'transparent',
-  padding: '4px 8px ',
-  margin: '10px 0',
-  cursor: 'pointer',
-  width: '50px',
 };
 
 const hoverBtnStyle = {

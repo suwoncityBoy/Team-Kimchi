@@ -1,1 +1,1 @@
-export const SERVER_ADDRESS = 'https://kimchi-json-server.vercel.app';
+export const SERVER_ADDRESS = 'https://glorious-scratch-cousin.glitch.me';
