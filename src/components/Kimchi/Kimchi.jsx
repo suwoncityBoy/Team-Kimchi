@@ -63,9 +63,8 @@ export default function Kimchi({ k }) {
             objectFit: 'cover',
           }}
           alt="kimchi"
-          onClick={(e) => {
+          onClick={() => {
             navigate(`/kimchis/${k.id}/description`);
-            // window.location.reload();
           }}
         />
 
