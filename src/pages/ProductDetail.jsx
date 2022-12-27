@@ -21,9 +21,6 @@ export default function ProductDetail() {
   const { price, image, name, description, sum } = useSelector(
     (state) => state.productDetail.product,
   );
-  const product = useSelector((state) => state.productDetail.product);
-
-  console.log(product);
 
   const { number } = useSelector((state) => state.productDetail);
   const dispatch = useDispatch();
