@@ -53,20 +53,22 @@ export default function Kimchi({ k }) {
       }}
     >
       <ImageBox>
-        <img
-          src={`${process.env.PUBLIC_URL}${k.image}`}
-          style={{
-            position: 'absolute',
-            top: '0',
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-          }}
-          alt="kimchi"
-          onClick={() => {
-            navigate(`/kimchis/${k.id}/description`);
-          }}
-        />
+        {k && (
+          <img
+            src={`${process.env.PUBLIC_URL}${k.image}`}
+            style={{
+              position: 'absolute',
+              top: '0',
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+            }}
+            alt="kimchi"
+            onClick={() => {
+              navigate(`/kimchis/${k.id}/description`);
+            }}
+          />
+        )}
 
         {isHovering ? (
           <Icon
@@ -89,31 +91,33 @@ export default function Kimchi({ k }) {
         )}
       </ImageBox>
 
-      <div className="dec" style={{ margin: '1rem 0 1.4rem' }}>
-        <h2
-          style={{
-            fontSize: '1.2rem',
-            fontWeight: '500',
-            marginBottom: '0.5rem',
-          }}
-        >
-          {k.name}
-        </h2>
-        <h3
-          style={{
-            fontSize: '1.1rem',
-            fontWeight: '600',
-            marginBottom: '1.3rem',
-            color: '#393838',
-          }}
-        >
-          {k.price}원
-        </h3>
+      {k && (
+        <div className="dec" style={{ margin: '1rem 0 1.4rem' }}>
+          <h2
+            style={{
+              fontSize: '1.2rem',
+              fontWeight: '500',
+              marginBottom: '0.5rem',
+            }}
+          >
+            {k.name}
+          </h2>
+          <h3
+            style={{
+              fontSize: '1.1rem',
+              fontWeight: '600',
+              marginBottom: '1.3rem',
+              color: '#393838',
+            }}
+          >
+            {k.price}원
+          </h3>
 
-        <p style={{ fontSize: '1rem', fontWeight: '500', color: '#666' }}>
-          {k.description}
-        </p>
-      </div>
+          <p style={{ fontSize: '1rem', fontWeight: '500', color: '#666' }}>
+            {k.description}
+          </p>
+        </div>
+      )}
     </div>
   );
 }
