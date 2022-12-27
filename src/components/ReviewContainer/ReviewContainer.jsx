@@ -8,6 +8,7 @@ import {
   checkPassword,
 } from '../../utils/validate';
 import Review from '../Review/Review';
+import { SERVER_ADDRESS } from '../../utils/constant';
 
 export default function ReviewContainer() {
   const { id: kimchiId } = useParams();
@@ -64,11 +65,11 @@ export default function ReviewContainer() {
       content,
       date: getDate(),
     };
-    await axios.post('https://kimchi-json-server.vercel.app/reviews', data);
+    await axios.post(`${SERVER_ADDRESS}/reviews`, data);
 
     // review 데이터 GET -> state 업데이트
     const response = await axios.get(
-      `https://kimchi-json-server.vercel.app/reviews?kimchiId=${kimchiId}`,
+      `${SERVER_ADDRESS}/reviews?kimchiId=${kimchiId}`,
     );
     setReviewData(response.data);
 
@@ -84,7 +85,7 @@ export default function ReviewContainer() {
 
   useEffect(() => {
     axios
-      .get(`https://kimchi-json-server.vercel.app/reviews?kimchiId=${kimchiId}`)
+      .get(`${SERVER_ADDRESS}/reviews?kimchiId=${kimchiId}`)
       .then((response) => setReviewData(response.data));
   }, [kimchiId]);
 
