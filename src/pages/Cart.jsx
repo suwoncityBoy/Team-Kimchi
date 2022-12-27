@@ -1,55 +1,127 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 //import { useNavigate } from 'react-router-dom';
 import { SlBasket } from 'react-icons/sl';
+import { useDispatch, useSelector } from 'react-redux';
+import { DataList, CheckBoxList } from '../components/Cart/Cart';
+import { changeChecked } from '../redux/modules/cartSlice';
+import { popItem, clearItem } from '../redux/modules/cartSlice';
 //import { CiCircleCheck } from 'react-icons/ci';
 
-function Data() {
-  // 장바구니에 담은 상품 데이터
-  return (
-    <li
-      style={{
-        display: 'flex',
-        webkitBoxAlign: 'center',
-        alignItems: 'center',
-        position: 'relative',
-        padding: '40px',
-        margin: 'auto',
-        borderBottom: '1px solid grey',
-      }}
-    >
-      {/* 체크 박스*/}
-      <label style={{ width: '24px', height: '24px', marginRight: '2%' }}>
-        <input type="checkbox" checked />
-      </label>
-      <img
-        src="#"
-        style={{ width: '60px', height: '78px', marginRight: '5%' }}
-      />
-      {/* 상품 이름*/}
-      <span style={{ marginRight: '20%' }}>
-        [비비고] 완죤 맛있뉸, 아삭 그자체 배추김치
-      </span>
-      {/* 주문한 상품 갯수 */}
-      <div style={{ marginRight: '5%' }}>
-        <button>-</button>
-        <span>1123</span>
-        <button>+</button>
-      </div>
-      {/* 주문한 상품의 최종 금액 */}
-      <span style={{ marginRight: '1%' }}>3000만원</span>
-      <button>x</button>
-    </li>
-  );
-}
-
 export default function Cart() {
-  // const navigate = useNavigate();
-  // navigate(``)
+  // 장바구니 데이터
+  const { inCart } = useSelector((state) => state.user);
 
-  useEffect(() => {
-    // 페이지 이동 시 최상단으로 스크롤
-    window.scrollTo(0, 0);
-  }, []);
+  // 총 금액
+  const [allPay, setAllPay] = useState(
+    inCart.reduce((sum, kimchi) => {
+      return sum + kimchi.price;
+    }, 0),
+  );
+
+  // 선택 제품 갯수
+  const [stock, setStock] = useState(new Array(inCart.length).fill(1));
+
+  // 전체 선택 체크박스
+  const [isAllChecked, setAllChecked] = useState(true);
+
+  // 체크박스 하나
+  const [checkedState, setCheckedState] = useState(
+    new Array(inCart.length).fill({ checked: true, active: 'block', price: 0 }),
+  );
+
+  // const [thisPay, setThisPay] = useState(
+  //   new Array(inCart.length).fill([{ ...inCart.price }]),
+  // );
+
+  /* 사용하는 훅 */
+  const dispatch = useDispatch();
+
+  /* 내가 만든  */
+  // 체크박스 모두 선택
+  const handleAllCheck = (event) => {
+    setAllChecked((prev) => !prev);
+
+    // 합치기
+    let array = new Array(inCart.length).fill({
+      checked: event.target.checked,
+    });
+    array = array.reduce((data, item, index) => {
+      data.push({
+        checked: item.checked,
+        active: checkedState[index].active,
+        //price: inCart[index].price,
+      });
+      return data;
+    }, []);
+    setCheckedState(array);
+
+    const sum = inCart.reduce((sum, kimchi) => {
+      if (kimchi.checked) {
+        return sum + kimchi.price;
+      }
+      //return sum + kimchi.price;
+    }, 0);
+    event.target.checked === true ? setAllPay(sum) : setAllPay(0);
+  };
+
+  // 전체 삭제 버튼
+  const clearAll = () => {
+    dispatch(clearItem());
+    setCheckedState([{}]);
+  };
+
+  // 조그마한 x(삭제) 버튼
+  const removeMonoCheck = (number) => {
+    const checkedStateClone = checkedState.reduce((datas, items, index) => {
+      if (index === number) {
+        datas.push({
+          active: items.active === 'block' ? 'none' : 'block',
+          checked: false,
+        });
+      } else {
+        datas.push({
+          active: items.active,
+          checked: items.checked,
+        });
+      }
+      return datas;
+    }, []);
+
+    setCheckedState(checkedStateClone);
+
+    //마지막 제품 삭제할때 장바구니 내역 다 지우기
+    if (
+      checkedStateClone.filter((item) => item.active === 'block').length === 0
+    ) {
+      clearAll();
+    }
+  };
+
+  // 체크박스
+  const handleMonoCheck = (number) => {
+    //number : index 번호
+    const updatedCheckedState = checkedState.map((item, index) =>
+      index === number
+        ? {
+            checked: !item.checked,
+            active: item.active,
+          }
+        : item,
+    );
+    setCheckedState(updatedCheckedState);
+    const checkedLength = updatedCheckedState.reduce((sum, currentState) => {
+      if (currentState.checked === true) {
+        return sum + 1;
+      }
+      return sum;
+    }, 0);
+    setAllChecked(checkedLength === updatedCheckedState.length);
+    setAllPay(
+      updatedCheckedState[number].checked
+        ? allPay + inCart[number].price * stock[number] // 체크 된 경우
+        : allPay - inCart[number].price * stock[number], // 체크 푼 경우
+    );
+  };
 
   return (
     <div style={thisPage}>
@@ -60,68 +132,74 @@ export default function Cart() {
       {/*전체선택 , 선택삭제 영역*/}
       <div style={choice}>
         <label style={choiceRightMargin30}>
-          <input type="checkbox" style={choiceRightMargin10} checked />
-          <span>전체선택 (3/3)</span>
+          <input
+            type="checkbox"
+            style={choiceRightMargin10}
+            checked={isAllChecked}
+            onChange={(e) => handleAllCheck(e)}
+          />
+          <span>
+            전체선택 (
+            {checkedState.filter((item) => item.checked === true).length}/
+            {checkedState.filter((item) => item.active === 'block').length})
+          </span>
         </label>
         <span style={choiceRightMargin30}>|</span>
-        <button>선택삭제</button>
+        <button onClick={() => clearAll()}>전체삭제</button>
       </div>
       {/* 장바구니 내용 영역*/}
       <div style={items}>
-        {/* <div>
-          <img src={`${process.env.PUBLIC_URL}/images/cabbage.png`}></img>
-        </div> */}
-        <ul style={item}>
-          <div style={{ display: 'flex', alignItems: 'center' }}>
-            <img src={`${process.env.PUBLIC_URL}/images/cabbage.png`}></img>
-            <span>배추과 김치</span>
-          </div>
-          <Data />
-          <Data />
-          <Data />
-        </ul>
-        <ul style={item}>
-          <div style={{ display: 'flex', alignItems: 'center' }}>
-            <img src={`${process.env.PUBLIC_URL}/images/cabbage.png`}></img>
-            <span>뿌리과 김치</span>
-          </div>
-          <Data />
-          <Data />
-          <Data />
-        </ul>
-      </div>
-      {/* 결제 금액 , 결제 버튼 영역*/}
-      <div
-        style={{
-          //backgroundColor: 'orange',
-          width: '100%',
-          height: 'auto',
-          display: 'grid',
-          justifyContent: 'center',
-        }}
-      >
-        <div
-          style={{
-            display: 'flex',
-            textAlign: 'center',
-            alignItems: 'center',
-            margin: '6rem 0 4rem 0',
-          }}
-        >
-          <div>결제 예정 금액 :</div>
-          <div>3000만원</div>
-        </div>
-        <input
-          type="button"
-          value="결제하기"
-          style={{
-            display: 'block',
-            // textAlign: 'center',
-            // alignItems: 'center',
-            height: '50px',
-            value: '1000',
-          }}
-        />
+        {checkedState.filter((item) => item.active === 'block').length !== 0 ? ( // 장바구니 데이터가 있을 경우에만
+          <>
+            <ul style={item}>
+              <DataList
+                datas={inCart}
+                checkHandler={(number) => handleMonoCheck(number)}
+                checkedState={checkedState}
+                setAllPay={setAllPay}
+                allPay={allPay}
+                removeMonoCheck={(number) => removeMonoCheck(number)}
+                setStock={setStock}
+                stock={stock}
+              />
+            </ul>
+
+            {/* 결제 금액 , 결제 버튼 영역*/}
+            <div
+              style={{
+                //backgroundColor: 'orange',
+                width: '100%',
+                height: '25%',
+                display: 'grid',
+                justifyContent: 'center',
+              }}
+            >
+              <div
+                style={{
+                  display: 'flex',
+                  textAlign: 'center',
+                  alignItems: 'center',
+                }}
+              >
+                <p></p>
+                <div>결정 예정 금액 : {allPay} 원</div>
+              </div>
+              <input
+                type="button"
+                value="결제하기"
+                style={{
+                  display: 'block',
+                  // textAlign: 'center',
+                  // alignItems: 'center',
+                  height: '50px',
+                  value: '1000',
+                }}
+              />
+            </div>
+          </>
+        ) : (
+          '장바구니가 비어 있습니다.'
+        )}
       </div>
     </div>
   );
