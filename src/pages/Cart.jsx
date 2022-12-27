@@ -9,6 +9,7 @@ function Data() {
     <li
       style={{
         display: 'flex',
+        justifyContent: 'space-between',
         webkitBoxAlign: 'center',
         alignItems: 'center',
         position: 'relative',
