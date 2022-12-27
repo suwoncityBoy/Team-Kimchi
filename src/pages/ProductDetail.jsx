@@ -12,6 +12,7 @@ import {
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
 import RecommendProduct from '../components/RecommendProduct/RecommendProduct';
+import { SERVER_ADDRESS } from '../utils/constant';
 
 export default function ProductDetail() {
   const { id } = useParams();
@@ -24,9 +25,7 @@ export default function ProductDetail() {
   const dispatch = useDispatch();
 
   const getData = async () => {
-    const response = await axios.get(
-      `https://kimchi-json-server.vercel.app/kimchis/${id}`,
-    );
+    const response = await axios.get(`${SERVER_ADDRESS}/kimchis/${id}`);
     const { name, image, price, description } = response.data; // price
     const object = {
       name,
