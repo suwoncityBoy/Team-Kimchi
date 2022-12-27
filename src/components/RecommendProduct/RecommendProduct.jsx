@@ -14,17 +14,18 @@ export default function RecommendProduct() {
     // 2. 랜덤 함수를 사용해서 숫자를 받는다. : number
     // 3. data[number]를 인덱스로 사용한다.
     // 4. 변수에 push하여 data[number]해서 뿌려준다.
-    const Randomkimchi = [];
+    let Randomkimchi = [];
 
+    let allKimchis = data;
     for (let i = 0; i < 4; i++) {
-      let randomNum = Math.floor(Math.random() * data.length) + 1;
-      Randomkimchi.push(data[randomNum]);
-
-      // state 배열 -> 참조 값 변경이 되야 리액트가 인지를 한다.
-      // 새로운 배열을 만들어야 state가 변경됬다고 인지를 한다. 그래서 map, filter를 사용한다.
+      let randomNum = Math.floor(Math.random() * allKimchis.length);
+      Randomkimchi.push(allKimchis[randomNum]);
+      allKimchis.splice(randomNum, 1);
+      console.log('random', randomNum);
     }
     setRecommendedProduct(Randomkimchi);
   };
+
   console.log(recommendedProduct);
 
   useEffect(() => {
