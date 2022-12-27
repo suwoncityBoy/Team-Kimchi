@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-export default function Button({ value, type }) {
+export default function Button({ value, type, onClick }) {
   const ButtonStyle = styled.button`
     width: 200px;
     padding: 1.4rem 2rem;
@@ -18,5 +18,9 @@ export default function Button({ value, type }) {
     }
   `;
 
-  return <ButtonStyle type={type}>{value}</ButtonStyle>;
+  return (
+    <ButtonStyle onClick={onClick} type={type}>
+      {value}
+    </ButtonStyle>
+  );
 }
