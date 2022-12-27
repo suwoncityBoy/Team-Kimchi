@@ -43,6 +43,7 @@ function Data({ data }) {
         padding: '40px',
         margin: 'auto',
         borderBottom: '1px solid grey',
+        width: '345px',
       }}
     >
       {/* 체크 박스*/}
@@ -52,7 +53,7 @@ function Data({ data }) {
         style={{ width: '60px', height: '78px', marginRight: '5%' }}
       />
       {/* 상품 이름*/}
-      <span style={{ marginRight: '20%' }}>{data.name}</span>
+      <span style={{ width: '345px' }}>{data.name}</span>
       {/* 주문한 상품 갯수 */}
       <div style={{ marginRight: '5%' }}>
         <button
