@@ -26,4 +26,5 @@ yarn-error.log*
 .yarn
 .gitignore
 .yarnrc.yml
-.yarn.lock
+.vercel
+.env
