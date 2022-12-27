@@ -41,7 +41,9 @@ export default function Kimchi({ k }) {
     k.checked = true;
     k.number = 1;
     dispatch(addItem(k));
-    navigate('/cart');
+    if (window.confirm('장바구니로 이동 하시겠습니까?')) {
+      navigate('/cart');
+    }
   };
 
   return (
