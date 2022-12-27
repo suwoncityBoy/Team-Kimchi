@@ -16,9 +16,8 @@ import axios from 'axios';
 // );
 
 const initialState = {
-  number: 1,
-
   product: {
+    number: 1,
     price: 0,
     name: '',
     image: '',
@@ -32,18 +31,22 @@ const productDetailSlice = createSlice({
   initialState, // 초기상태값
   reducers: {
     addNumber: (state, action) => {
-      const { price, number } = action.payload;
-      console.log(price, number);
-      state.number += 1;
+      state.product.number += 1;
       state.product.sum += action.payload;
     },
 
     minusNumber: (state, action) => {
-      if (state.number > 1) {
-        state.number -= 1;
+      if (state.product.number > 1) {
+        state.product.number -= 1;
         state.product.sum -= action.payload;
       }
     },
+
+    resetNumber: (state, action) => {
+      state.product.number = 1;
+      state.product.sum = action.payload;
+    },
+
     addProduct: (state, action) => {
       state.product = action.payload;
     },
@@ -51,7 +54,7 @@ const productDetailSlice = createSlice({
 });
 
 // 액션크리에이터는 컴포넌트에서 사용하기 위해 export 하고
-export const { addNumber, minusNumber, addProduct } =
+export const { addNumber, minusNumber, resetNumber, addProduct } =
   productDetailSlice.actions;
 // reducer 는 configStore에 등록하기 위해 export default 합니다.
 export default productDetailSlice.reducer;

@@ -6,6 +6,7 @@ import DetailMenus from '../components/DetailMenus/DetailMenus';
 import {
   addNumber,
   minusNumber,
+  resetNumber,
   addProduct,
 } from '../redux/modules/productDetailSlice';
 import axios from 'axios';
@@ -16,11 +17,10 @@ export default function ProductDetail() {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const { price, image, name, description, sum } = useSelector(
+  const { price, image, name, description, sum, number } = useSelector(
     (state) => state.productDetail.product,
   );
 
-  const { number } = useSelector((state) => state.productDetail);
   const dispatch = useDispatch();
 
   const getData = async () => {
@@ -32,11 +32,15 @@ export default function ProductDetail() {
       price, // 초기값
       sum: price, // 합계
       description,
+      number: 1,
     };
     dispatch(addProduct({ ...object }));
   };
 
   useEffect(() => {
+    // 수량 선택 초기화
+    resetNumber(price);
+    // DB에서 제품 상세정보 가져오기
     getData();
     // 페이지 이동 시 최상단으로 스크롤
     window.scrollTo(0, 0);
@@ -122,7 +126,7 @@ export default function ProductDetail() {
                           {' '}
                           {/* 제품의 고유 가격 넣기*/}
                         </button>
-                        <div className="totalPrice">{sum}</div>
+                        <div className="totalPrice">{sum}원</div>
                       </StyledAmountSelect>
                       {/* <p>??</p> */}
                     </div>
