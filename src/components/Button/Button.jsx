@@ -13,6 +13,7 @@ export default function Button({ value, type, onClick }) {
     font-size: 1rem;
     border-radius: 1rem;
     transition: all ease 0.5s;
+    cursor: pointer;
     &:hover {
       background-color: white;
       color: #d82424;
