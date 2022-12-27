@@ -38,6 +38,7 @@ export default function Kimchi({ k }) {
   `;
 
   const toCart = () => {
+    k.checked = true;
     dispatch(addItem(k));
   };
 
