@@ -116,11 +116,8 @@ function Data({
             style={{
               width: '2rem',
               height: '2rem',
-              fontSize: '1.4rem',
-              backgroundColor: '#d82424',
-              border: 'none',
-              borderRadius: '0.4rem',
-              color: 'white',
+
+              cursor: 'pointer',
             }}
           >
             -
@@ -143,11 +140,8 @@ function Data({
             style={{
               width: '2rem',
               height: '2rem',
-              fontSize: '1.4rem',
-              backgroundColor: '#d82424',
-              border: 'none',
-              borderRadius: '0.4rem',
-              color: 'white',
+
+              cursor: 'pointer',
             }}
           >
             +
@@ -160,11 +154,8 @@ function Data({
           style={{
             width: '2rem',
             height: '2rem',
-            fontSize: '1.4rem',
-            backgroundColor: '#d82424',
-            border: 'none',
-            borderRadius: '0.4rem',
-            color: 'white',
+
+            cursor: 'pointer',
           }}
         >
           x
