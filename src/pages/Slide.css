@@ -20,4 +20,5 @@
 .slick-next:before {
   color: red !important;
   font-size: 3rem;
+  margin-left: -2rem;
 }

@@ -10,7 +10,7 @@ import {
 } from '../redux/modules/productDetailSlice';
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
-import KimchiRecommend from '../components/KimchiRecommend/KimchiRecommend';
+import RecommendProduct from '../components/RecommendProduct/RecommendProduct';
 
 export default function ProductDetail() {
   const { id } = useParams();
@@ -63,57 +63,67 @@ export default function ProductDetail() {
                 width: '50%',
               }}
             >
-              <div style={{ lineHeight: '2.2', marginTop: '100px' }}>
-                <p style={{ fontSize: '40px' }}>{name}</p>
-                <p style={{ fontSize: '25px', color: '#979797' }}>
-                  {description}
-                </p>
-                <h1 style={{ fontSize: '40px' }}>{price}원</h1>
-              </div>
+              <div>
+                <div style={{ lineHeight: '2.2', marginTop: '10px' }}>
+                  <p style={{ fontSize: '40px' }}>{name}</p>
+                  <p style={{ fontSize: '25px', color: '#979797' }}>
+                    {description}
+                  </p>
+                  <h1 style={{ fontSize: '40px' }}>{price}원</h1>
+                </div>
 
-              <div style={{ display: 'flex', marginTop: '80px' }}>
-                <p
-                  style={{
-                    fontSize: '25px',
-                    width: '20%',
-                    paddingTop: '20px',
-                  }}
-                >
-                  상품선택
-                </p>
-                <div
-                  style={{
-                    border: 'solid 1px #000',
-                    padding: '20px',
-                    height: '100px',
-                    width: '80%',
-                  }}
-                >
-                  <p>{name}</p>
-                  <div
+                <div style={{ display: 'flex', marginTop: '50px' }}>
+                  <p
                     style={{
-                      display: 'flex',
-                      justifyContent: 'space-between',
-                      marginTop: '50px',
+                      fontSize: '25px',
+                      width: '20%',
+                      paddingTop: '20px',
                     }}
                   >
-                    <div>
-                      <button onClick={() => dispatch(minusNumber(price))}>
-                        {' '}
-                        {/* 제품의 고유 가격 넣기*/}-
-                      </button>
-                      <span>{number}</span> {/* state에서 가져온 합 가격 넣기*/}
-                      <button onClick={() => dispatch(addNumber(price))}>
-                        {' '}
-                        {/* 제품의 고유 가격 넣기*/}+
-                      </button>
-                      {sum}
+                    상품선택
+                  </p>
+                  <div
+                    style={{
+                      border: 'solid 1px #000',
+                      padding: '20px',
+                      height: '100px',
+                      width: '80%',
+                    }}
+                  >
+                    <p>{name}</p>
+                    <div
+                      style={{
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        marginTop: '50px',
+                      }}
+                    >
+                      <StyledAmountSelect>
+                        <button
+                          className="btnMinus"
+                          onClick={() => dispatch(minusNumber(price))}
+                          disabled={number <= 1 ? true : false}
+                        >
+                          - {/* 제품의 고유 가격 넣기*/}
+                        </button>
+                        <span className="amount">{number}</span>
+
+                        {/* state에서 가져온 합 가격 넣기*/}
+                        <button
+                          className="btnPlus"
+                          onClick={() => dispatch(addNumber(price))}
+                        >
+                          {' '}
+                          {/* 제품의 고유 가격 넣기*/}
+                        </button>
+                        <div className="totalPrice">{sum}</div>
+                      </StyledAmountSelect>
+                      {/* <p>??</p> */}
                     </div>
-                    {/* <p>??</p> */}
                   </div>
                 </div>
+                <Button>장바구니 담기</Button>
               </div>
-              <Button>장바구니 담기</Button>
             </div>
           </StyleDetailWrapItems>
         </StyleDetailWrap>
@@ -125,7 +135,7 @@ export default function ProductDetail() {
             <Outlet />
           </div>
         </div>
-        <KimchiRecommend />
+        <RecommendProduct />
       </StyleContainer>
     </>
   );
@@ -150,10 +160,72 @@ const StyleDetailWrapItems = styled.div`
 `;
 
 const StyleImageWrap = styled.div`
-  width: 50%;
+  width: 40%;
 `;
 
 const divStyle = {
   width: '100%',
   textAlign: 'center',
 };
+
+const StyledAmountSelect = styled.div`
+  display: flex;
+  align-items: center;
+  height: 35px;
+
+  .btnMinus {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    width: 35px;
+    height: 35px;
+    border: 1px solid #e3e3e3;
+    border-radius: 2px 0px 0px 2px;
+    background-color: #f8fafb;
+    font-size: 30px;
+    text-align: center;
+  }
+  .amount {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 35px;
+    box-sizing: border-box;
+    border-top: 1px solid #e3e3e3;
+    border-bottom: 1px solid #e3e3e3;
+    font-weight: 700;
+    color: #242424;
+  }
+  .btnPlus {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 35px;
+    height: 35px;
+    border: 1px solid #e3e3e3;
+    border-radius: 0px 2px 2px 0px;
+    background-color: #f8fafb;
+  }
+  .btnPlus::before {
+    content: '';
+    display: block;
+    width: 10px;
+    height: 2px;
+    background-color: black;
+  }
+  .btnPlus::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: block;
+    width: 2px;
+    height: 10px;
+    background-color: black;
+    transform: translate(-50%, -50%);
+  }
+`;

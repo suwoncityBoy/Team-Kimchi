@@ -49,9 +49,9 @@ const StyleScrollButton = styled.div`
   border: solid 1px #d82424;
   background-color: #fff;
   bottom: 50px;
-  right: 220px;
-  width: 80px;
-  height: 80px;
+  right: 180px;
+  width: 70px;
+  height: 70px;
   display: flex;
   justify-content: center;
   align-items: center;
