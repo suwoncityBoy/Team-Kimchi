@@ -69,6 +69,7 @@ function Data({
       <li
         style={{
           display: 'flex',
+          justifyContent: 'space-between',
           webkitBoxAlign: 'center',
           alignItems: 'center',
           position: 'relative',
@@ -91,7 +92,16 @@ function Data({
           style={{ width: '60px', height: '78px', marginRight: '5%' }}
         />
         {/* 상품 이름*/}
-        <span style={{ marginRight: '20%' }}>{data.name}</span>
+        <span
+          style={{
+            marginRight: '20%',
+            width: '345px',
+            textAlign: 'left',
+            lineHeight: '1.6rem',
+          }}
+        >
+          {data.name}
+        </span>
         {/* 주문한 상품 갯수 */}
         <div style={{ marginRight: '5%' }}>
           <button

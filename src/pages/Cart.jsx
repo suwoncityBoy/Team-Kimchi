@@ -179,6 +179,7 @@ export default function Cart() {
                   display: 'flex',
                   textAlign: 'center',
                   alignItems: 'center',
+                  margin: '5rem 0 4rem 0',
                 }}
               >
                 <p></p>
