@@ -131,21 +131,32 @@ export default function Cart() {
       </div>
       {/*전체선택 , 선택삭제 영역*/}
       <div style={choice}>
-        <label style={choiceRightMargin30}>
-          <input
-            type="checkbox"
-            style={choiceRightMargin10}
-            checked={isAllChecked}
-            onChange={(e) => handleAllCheck(e)}
-          />
-          <span>
-            전체선택 (
-            {checkedState.filter((item) => item.checked === true).length}/
-            {checkedState.filter((item) => item.active === 'block').length})
-          </span>
-        </label>
-        <span style={choiceRightMargin30}>|</span>
-        <button onClick={() => clearAll()}>전체삭제</button>
+        <div
+          style={{
+            width: '94%',
+            height: '100%',
+            margin: '0 auto',
+            borderBottom: '1px solid grey',
+            padding: '3.6rem 0 ',
+            boxSizing: 'border-box',
+          }}
+        >
+          <label style={choiceRightMargin30}>
+            <input
+              type="checkbox"
+              style={choiceRightMargin10}
+              checked={isAllChecked}
+              onChange={(e) => handleAllCheck(e)}
+            />
+            <span>
+              전체선택 (
+              {checkedState.filter((item) => item.checked === true).length}/
+              {checkedState.filter((item) => item.active === 'block').length})
+            </span>
+          </label>
+          <span style={choiceRightMargin30}>|</span>
+          <button onClick={() => clearAll()}>전체삭제</button>
+        </div>
       </div>
       {/* 장바구니 내용 영역*/}
       <div style={items}>
@@ -229,7 +240,6 @@ const basketIcon = {
 const choice = {
   width: '100%',
   height: '5%',
-  borderBottom: '2px solid',
   alignItems: 'center',
   display: 'flex',
 };
@@ -237,6 +247,7 @@ const choice = {
 const choiceRightMargin10 = {
   // 합치기
   marginRight: '10px',
+  webkitTransform: 'scale(2)',
 };
 
 const choiceRightMargin30 = {
