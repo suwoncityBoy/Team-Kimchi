@@ -47,7 +47,6 @@ export default function ProductDetail() {
     console.log(currentPath);
     if (currentPath === `/kimchis/${id}` || currentPath === `/kimchis/${id}/`) {
       navigate(`/kimchis/${id}/description`, { replace: true });
-      // getData();
     }
   }, []);
 
@@ -74,7 +73,9 @@ export default function ProductDetail() {
             >
               <div style={{ lineHeight: '2.2', marginTop: '100px' }}>
                 <p style={{ fontSize: '40px' }}>{name}</p>
-                <p style={{ fontSize: '25px' }}>{description}</p>
+                <p style={{ fontSize: '25px', color: '#94969b' }}>
+                  {description}
+                </p>
                 <h1 style={{ fontSize: '40px' }}>{price}</h1>
               </div>
 
