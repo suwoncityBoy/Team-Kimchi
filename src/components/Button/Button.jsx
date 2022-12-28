@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import Cart from '../../pages/Cart';
 
 const ButtonStyle = styled.button`
   width: ${({ small }) => (small ? '100px' : '200px')};
