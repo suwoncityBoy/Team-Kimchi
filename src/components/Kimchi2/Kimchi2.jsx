@@ -39,6 +39,15 @@ export default function Kimchi({ k }) {
     overflow: hidden;
   `;
 
+  const toCart = () => {
+    k.checked = true;
+    k.number = 1;
+    dispatch(addItem(k));
+    if (window.confirm('장바구니로 이동 하시겠습니까?')) {
+      navigate('/cart');
+    }
+  };
+
   return (
     <div
       onMouseOver={() => setIsHovering(1)}
@@ -61,9 +70,7 @@ export default function Kimchi({ k }) {
             objectFit: 'cover',
           }}
           alt="kimchi"
-          onClick={() => {
-            navigate(`/kimchis/${k.id}/description`);
-          }}
+          onClick={toCart}
         />
 
         {isHovering ? (

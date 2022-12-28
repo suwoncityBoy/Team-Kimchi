@@ -38,9 +38,6 @@ export default function Cart() {
   );
 
   const [opacity, setOpacity] = useState('0.5');
-  // const [thisPay, setThisPay] = useState(
-  //   new Array(inCart.length).fill([{ ...inCart.price }]),
-  // );
 
   /* 사용하는 훅 */
   const dispatch = useDispatch();
