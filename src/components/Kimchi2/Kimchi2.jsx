@@ -2,11 +2,15 @@ import React, { useState } from 'react';
 import { BsCart3 } from 'react-icons/bs';
 import { useNavigate } from 'react-router';
 import styled from 'styled-components';
-import { useDispatch } from 'react-redux';
-import { addItem } from '../../redux/modules/cartSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import axios from 'axios';
+import { updateTotalCount } from '../../redux/modules/cartSlice';
+import { SERVER_ADDRESS } from '../../utils/constant';
+
 export default function Kimchi({ k }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { IPv4 } = useSelector((state) => state.user.customIP);
   const [isHovering, setIsHovering] = useState(0);
 
   const Icon = styled.div`
@@ -39,11 +43,21 @@ export default function Kimchi({ k }) {
     overflow: hidden;
   `;
 
-  const toCart = () => {
-    k.checked = true;
-    k.number = 1;
-    dispatch(addItem(k));
-    alert('장바구니에 담았습니다');
+  const toCart = async (event) => {
+    event.preventDefault();
+    const object = { ...k };
+    object.number = 1;
+
+    delete object.id; // id 값이 없어야 들어감
+
+    try {
+      await axios.post(`${SERVER_ADDRESS}/cart/`, object);
+      dispatch(updateTotalCount(object.number));
+      //await axios.post(`${SERVER_ADDRESS}/reviews`, data);
+      alert('장바구니에 담았습니다.');
+    } catch (e) {
+      alert('다시 시도해주세요.');
+    }
   };
 
   return (

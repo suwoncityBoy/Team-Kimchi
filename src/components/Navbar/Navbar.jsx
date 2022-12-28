@@ -1,10 +1,14 @@
-import { React, useState } from 'react';
+import { React, useState, useEffect } from 'react';
 import { BsCart3 } from 'react-icons/bs';
 import { StyledContainer, StyledWrap, StyledCartNumWrap } from './Navbar.style';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+
 export default function Navbar() {
-  const cart = useSelector((state) => state.user.inCart);
+  //
+  const totalCount = useSelector((state) => state.user.totalCount);
+
+  const [count, setCount] = useState(0);
 
   const initialState = [
     {
@@ -49,6 +53,9 @@ export default function Navbar() {
     }
   };
 
+  useEffect(() => {
+    setCount(totalCount);
+  });
   return (
     <div>
       <StyledContainer>
@@ -62,9 +69,9 @@ export default function Navbar() {
             }}
           />
 
-          {cart.length ? (
+          {count ? (
             <StyledCartNumWrap>
-              <div className="CartNum">{cart.length}</div>
+              <div className="CartNum">{count}</div>
             </StyledCartNumWrap>
           ) : (
             ''
