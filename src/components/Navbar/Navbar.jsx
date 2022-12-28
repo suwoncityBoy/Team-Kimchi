@@ -48,9 +48,6 @@ export default function Navbar() {
       }
     }
   };
-  // const onClickIcon = (item) => {
-  //   return <Navigate to="/categories/${item.value}" />;
-  // };
 
   return (
     <div>

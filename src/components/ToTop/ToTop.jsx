@@ -4,7 +4,6 @@ import styled from 'styled-components';
 
 export default function ToTopButton() {
   const [showButton, setShowButton] = useState(false);
-  // const [animateButton, setAnimateButton] = useState(false);
 
   const scrollToTop = () => {
     window.scroll({
@@ -30,11 +29,7 @@ export default function ToTopButton() {
 
   return (
     <>
-      <StyleScrollButton
-        showButton={showButton}
-        // animateButton={animateButton}
-        onClick={scrollToTop}
-      >
+      <StyleScrollButton showButton={showButton} onClick={scrollToTop}>
         <AiOutlineArrowUp size="50" color="#d82424">
           Top
         </AiOutlineArrowUp>

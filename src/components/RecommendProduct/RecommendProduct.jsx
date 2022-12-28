@@ -9,7 +9,6 @@ export default function RecommendProduct() {
 
   const fetchproduct = async () => {
     const { data } = await axios.get(`${SERVER_ADDRESS}/kimchis`);
-    // const categorykimchis = data.filter((k)=>{k.category === '배추과김치'} )
 
     // 상품 추천 랜덤 함수
     const Randomkimchi = [];

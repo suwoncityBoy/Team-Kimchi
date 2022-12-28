@@ -1,20 +1,4 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'; // redux toolkit createSlice
-import axios from 'axios';
-
-// export const __getKimchis = createAsyncThunk(
-//   // 첫번째 인자 : action type
-//   'kimchis/getKimchis',
-//   // 두번째 인자 : 콜백함수
-//   async (payload, thunkAPI) => {
-//     try {
-//       const data = await axios.get('https://kimchi-json-server.vercel.app/kimchis');
-//       console.log(data);
-//     } catch (error) {
-//       console.log(error);
-//     }
-//   },
-// );
-
+import { createSlice } from '@reduxjs/toolkit'; // redux toolkit createSlice
 const initialState = {
   product: {
     number: 1,

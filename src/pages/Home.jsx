@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import CategoryTitle from '../components/CategoryTitle/CategoryTitle';
 import Header from '../components/Header/Header';
-//import { useNavigate } from 'react-router-dom';
-// import { useNavigate } from 'react-router-dom';
 import Slider from 'react-slick';
 import axios from 'axios';
 import 'slick-carousel/slick/slick.css';
@@ -25,9 +23,6 @@ export default function Home() {
     fetchSlide();
   }, []);
 
-  // console.log(slide);
-
-  //const navigate = useNavigate();
   const settings = {
     dots: true,
     infinite: true,
@@ -49,13 +44,6 @@ export default function Home() {
         }}
       >
         <Header />
-        {/* <CategoryTitle>배추과 김치</CategoryTitle>
-        <KimchiList />
-        <CategoryTitle>무과 김치</CategoryTitle>
-        <KimchiList />
-        <CategoryTitle>뿌리과 김치</CategoryTitle>
-        <KimchiList /> */}
-
         <div>
           <div
             style={{
