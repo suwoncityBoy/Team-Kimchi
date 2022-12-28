@@ -8,19 +8,28 @@ import 'slick-carousel/slick/slick-theme.css';
 import './Slide.css';
 import Kimchi2 from '../components/Kimchi2/Kimchi2';
 import { SERVER_ADDRESS } from '../utils/constant';
-
+import { useDispatch } from 'react-redux';
+import { initTotalCount } from '../redux/modules/cartSlice';
 export default function Home() {
   const [slide, setSlide] = useState([]);
+  const dispatch = useDispatch();
 
   const fetchSlide = async () => {
     const { data } = await axios.get(`${SERVER_ADDRESS}/kimchis`);
     setSlide(data);
     // 서버로부터 fetching한 데이터를 useState의 state로 set 합니다.
   };
+  const getCart = async () => {
+    const { data } = await axios.get(`${SERVER_ADDRESS}/cart`);
+    dispatch(initTotalCount(data.length));
+    // 서버로부터 fetching한 데이터를 useState의 state로 set 합니다.
+  };
 
   useEffect(() => {
     //effect 구문에 생성한 함수를 넣어 실행합니다.
+
     fetchSlide();
+    getCart();
   }, []);
 
   const settings = {

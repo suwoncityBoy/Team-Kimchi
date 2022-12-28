@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { Outlet, useParams, useNavigate } from 'react-router-dom';
 import DetailMenus from '../components/DetailMenus/DetailMenus';
-import { addAtDetail } from '../redux/modules/cartSlice';
+import { updateTotalCount } from '../redux/modules/cartSlice';
 import Button from '../components/Button/Button';
 import {
   addNumber,
@@ -48,7 +48,7 @@ export default function ProductDetail() {
     window.scrollTo(0, 0);
   }, [id]);
 
-  const onClickHandler = () => {
+  const onClickHandler = async (event) => {
     const object = {
       name,
       image,
@@ -57,9 +57,16 @@ export default function ProductDetail() {
       description,
       number,
     };
-    dispatch(addAtDetail({ ...object }));
-    alert('장바구니에 담았습니다!');
-    navigate('/cart');
+
+    event.preventDefault();
+
+    try {
+      await axios.post(`${SERVER_ADDRESS}/cart/`, object);
+      dispatch(updateTotalCount(object.number));
+      alert('장바구니에 담았습니다.');
+    } catch (e) {
+      alert('다시 시도해주세요.');
+    }
   };
 
   return (
@@ -164,7 +171,7 @@ export default function ProductDetail() {
                   }}
                 >
                   <Button
-                    onClick={onClickHandler}
+                    onClick={(event) => onClickHandler(event)}
                     type="button"
                     value="장바구니 담기"
                   ></Button>

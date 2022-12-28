@@ -4,7 +4,7 @@ import { SlBasket } from 'react-icons/sl';
 import { useDispatch, useSelector } from 'react-redux';
 import { DataList } from '../components/Cart/Cart';
 import { useNavigate } from 'react-router-dom';
-import { clearItem } from '../redux/modules/cartSlice';
+
 import styled from 'styled-components';
 import Button from '../components/Button/Button';
 
@@ -77,7 +77,6 @@ export default function Cart() {
   // 전체 삭제 버튼
   const clearAll = () => {
     if (window.confirm('전체 삭제 하시겠습니까?')) {
-      dispatch(clearItem());
       setCheckedState([{}]);
     }
   };
@@ -105,7 +104,6 @@ export default function Cart() {
     if (
       checkedStateClone.filter((item) => item.active === 'block').length === 0
     ) {
-      dispatch(clearItem());
     }
   };
 
@@ -139,7 +137,6 @@ export default function Cart() {
     if (window.confirm('결제를 진행 하시겠습니까?')) {
       setOpacity('0.2');
       setTimeout(() => {
-        dispatch(clearItem());
         alert('완료');
         navigate('/');
       }, 1500);

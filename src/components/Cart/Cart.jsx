@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { popItem } from '../../redux/modules/cartSlice';
+
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 // 데이터 카테고리별 컴포넌트
@@ -60,7 +60,7 @@ function Data({
     if (window.confirm('삭제하시겠습니까?')) {
       alert('삭제되었습니다.');
       removeMonoCheck(index);
-      dispatch(popItem(data));
+
       setAllPay((prev) => prev - data.price * count);
     } else {
       alert('취소되었습니다.');

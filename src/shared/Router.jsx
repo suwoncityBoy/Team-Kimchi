@@ -9,7 +9,7 @@ import Home from '../pages/Home';
 import Categories from '../pages/Categories';
 import ProductDetail from '../pages/ProductDetail';
 import ReviewContainer from '../components/ReviewContainer/ReviewContainer';
-import Cart from '../pages/Cart';
+import Cart from '../pages/Cart2';
 import DetailImage from '../components/DetailImage/DetailImage';
 
 const Router = createBrowserRouter(
