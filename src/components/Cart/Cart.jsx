@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 // 데이터 카테고리별 컴포넌트
 export function DataList({
   datas, // 장바구니 데이터들
-  checkHandler, //체크박스
+  checkHandler, //체크박스 처리 핸들러
   checkedState, //체크박스
   setAllPay, // 총 금액
   allPay, // 총 금액
@@ -25,14 +25,14 @@ export function DataList({
             <div>
               <Data
                 data={kimchi} // 데이터
-                checkHandler={(index) => checkHandler(index)}
                 index={index}
                 checkedState={checkedState}
+                checkHandler={(index) => checkHandler(index)}
                 setAllPay={setAllPay}
                 allPay={allPay}
                 removeMonoCheck={(number) => removeMonoCheck(number)}
                 setStock={setStock}
-                count={stock[index]}
+                count={stock[index]} //
               />
             </div>
           );
@@ -123,7 +123,7 @@ function Data({
                     else return item;
                   }),
                 );
-                setAllPay(allPay - data.price);
+                setAllPay((pay) => pay - data.price);
               }
             }}
             style={{
