@@ -58,9 +58,8 @@ export default function ProductDetail() {
       number,
     };
     dispatch(addAtDetail({ ...object }));
-    if (window.confirm('장바구니로 이동하시겠습니까??')) {
-      navigate('/cart');
-    }
+    alert('장바구니에 담았습니다!');
+    navigate('/cart');
   };
 
   return (
