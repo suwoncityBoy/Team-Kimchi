@@ -43,9 +43,7 @@ export default function Kimchi({ k }) {
     k.checked = true;
     k.number = 1;
     dispatch(addItem(k));
-    if (window.confirm('장바구니로 이동 하시겠습니까?')) {
-      navigate('/cart');
-    }
+    alert('장바구니에 담았습니다');
   };
 
   return (
@@ -70,18 +68,13 @@ export default function Kimchi({ k }) {
             objectFit: 'cover',
           }}
           alt="kimchi"
-          onClick={toCart}
+          onClick={() => {
+            navigate(`/kimchis/${k.id}/description`);
+          }}
         />
 
         {isHovering ? (
-          <Icon
-            onClick={() => {
-              k.checked = true;
-              k.number = 1;
-              dispatch(addItem(k));
-              navigate('/cart');
-            }}
-          >
+          <Icon onClick={toCart}>
             <BsCart3
               className="icon"
               style={{
